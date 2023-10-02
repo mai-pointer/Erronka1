@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">erronka1</string>
+
+    <string name="registrar">Regitrar</string>
+    <string name="acceder">Acceder</string>
+    <string name="email">Email</string>
+    <string name="pass">Contraseña</string>
+    <string name="salir">Cerrar Sesion</string>
+    <string name="pantalla">Pantalla</string>
+
 </resources>
