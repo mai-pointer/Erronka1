@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">erronka1</string>
+    <string name="title_activity_main_pagina_tienda">MainActivity_Pagina_Tienda</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="btn_tienda_1">Recomendaciones</string>
+    <string name="btn_tienda_2">Primeros platos</string>
+    <string name="btn_tienda_3">Entrantes</string>
+    <string name="btn_tienda_4">Gose sorpresa</string>
+
+
+
+</resources>
