@@ -4,15 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorgreyDark"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="428dp"
+        android:layout_height="112dp"
+        app:srcCompat="@drawable/mainmenuseasonal"
+        tools:layout_editor_absoluteX="15dp"
+        tools:layout_editor_absoluteY="96dp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@drawable/roundednav"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
