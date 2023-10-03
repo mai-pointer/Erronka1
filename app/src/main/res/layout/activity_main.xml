@@ -4,25 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorgreyDark"
+    android:background="@color/colorAccent"
     tools:context=".MainActivity">
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="428dp"
-        android:layout_height="112dp"
-        app:srcCompat="@drawable/mainmenuseasonal"
-        tools:layout_editor_absoluteX="15dp"
-        tools:layout_editor_absoluteY="96dp" />
+
+    <LinearLayout
+        android:layout_width="312dp"
+        android:layout_height="76dp"
+        android:background="@drawable/rounded_button"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="56dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/menu" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:gravity="right|left"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:fontFamily="@font/catamaran_black"
+                android:includeFontPadding="false"
+                android:text="Texto 1"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorAccent"
+                android:textSize="24sp"
+                tools:text="Sasoikoa" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/catamaran"
+                android:text="Texto 2"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                tools:text="Ikusi zer daukagun menuan" />
+        </LinearLayout>
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="96dp"
+        android:background="@drawable/roundednav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/roundednav"/>
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/login" />
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
