@@ -7,5 +7,8 @@ class Proveedores : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_proveedores)
+
+        MenuNav.Crear(this)
+
     }
 }

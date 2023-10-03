@@ -29,4 +29,9 @@
     <string name="o3">Pedidos</string>
     <string name="o4">Compras</string>
 
+    <!-- Otros -->
+    <string name="descripcionMapa">Esto es un mapa</string>
+    <string name="descripcionLayout">Esto es un Layout</string>
+
+
 </resources>

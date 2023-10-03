@@ -28,5 +28,10 @@ class MainActivity : AppCompatActivity() {
             mAuth.signOut()
             findViewById<TextView>(R.id.prueba1Txt).text = mAuth.currentUser?.email.toString()
         }
+
+        findViewById<Button>(R.id.prueba3Btn).setOnClickListener{
+            val intent = Intent(this, Proveedores::class.java)
+            startActivity(intent)
+        }
     }
 }

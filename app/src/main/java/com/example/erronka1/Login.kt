@@ -3,6 +3,7 @@ package com.example.erronka1
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -60,12 +61,8 @@ class Login : AppCompatActivity() {
     }
 
     fun Vacio(): Boolean{
-        var vacio = emailTxt.text.toString().trim().isEmpty()
-        vacio = emailTxt.text.toString().trim().isEmpty() || vacio
-
-        if (vacio){
-            Error(getString(R.string.error1))
-        }
+        val vacio = passTxt.text.toString().trim().isEmpty() || emailTxt.text.toString().trim().isEmpty()
+        if (vacio)Error(getString(R.string.error1))
 
         return vacio
     }

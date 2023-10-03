@@ -6,4 +6,88 @@
     android:layout_height="match_parent"
     tools:context=".Proveedores">
 
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapa"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="47dp"
+        android:contentDescription="@string/descripcionMapa"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toStartOf="@+id/_dynamic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UnknownId" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="41dp"
+        app:layout_constraintBottom_toTopOf="@+id/navMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mapa">
+
+        <TextView
+            android:id="@+id/nombreTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginBottom="13dp"
+            android:text="NOMBRE PROV"
+            android:textSize="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginBottom="36dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac ipsum vitae purus hendrerit congue eu et quam. Maecenas sed orci dolor. Aliquam erat volutpat. Cras iaculis justo eget lacus sollicitudin, in mattis lorem iaculis. "
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nombreTxt" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="126dp"
+            android:layout_height="170dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="36dp"
+            android:text="- Ejemplo 1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ListView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mapa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mapa"
+        app:layout_constraintTop_toTopOf="@+id/mapa" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:background="@drawable/roundednav"
+        android:id="@+id/navMenu"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

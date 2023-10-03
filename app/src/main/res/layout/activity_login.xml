@@ -95,6 +95,7 @@
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:background="@drawable/roundednav"
         android:id="@+id/navMenu"
         android:layout_width="0dp"
         android:layout_height="75dp"
