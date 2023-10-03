@@ -1,11 +1,32 @@
 <resources>
+    <!-- Apicaccion -->
     <string name="app_name">erronka1</string>
+    <string name="Tag">Error-TX</string>
 
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <!-- Login  -->
     <string name="registrar">Regitrar</string>
     <string name="acceder">Acceder</string>
     <string name="email">Email</string>
     <string name="pass">Contraseña</string>
     <string name="salir">Cerrar Sesion</string>
     <string name="pantalla">Pantalla</string>
+    <string name="google">Google</string>
+    <string name="recordar">Recuerdame</string>
+
+    <!-- Errores -->
+    <string name="error1">"Uno de los campos estan vacios"</string>
+    <string name="title_activity_base">BaseActivity</string>
+
+    <!-- Menu -->
+    <string name="o1">Inicio</string>
+    <string name="o2">Usuario</string>
+    <string name="o3">Pedidos</string>
+    <string name="o4">Compras</string>
 
 </resources>

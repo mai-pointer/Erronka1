@@ -8,13 +8,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="412dp"
-        android:layout_height="507dp"
-        android:layout_margin="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="381dp"
+        android:layout_height="516dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginEnd="19dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +24,8 @@
             android:layout_height="85dp"
             android:ems="10"
             android:hint="@string/email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textAlignment="center" />
 
         <EditText
             android:id="@+id/passTxt"
@@ -35,27 +33,73 @@
             android:layout_height="85dp"
             android:ems="10"
             android:hint="@string/pass"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textAlignment="center" />
 
-        <LinearLayout
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="8dp"
-            android:orientation="horizontal">
+            android:layout_height="51dp" />
 
-            <Button
-                android:id="@+id/registrarBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/registrar" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="223dp">
 
             <Button
                 android:id="@+id/accederBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="107dp"
                 android:layout_weight="1"
-                android:text="@string/acceder" />
-        </LinearLayout>
+                android:text="@string/acceder"
+                app:layout_constraintBottom_toTopOf="@+id/googleBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/registrarBtn"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="59dp"
+                android:layout_weight="1"
+                android:text="@string/registrar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/accederBtn" />
+
+            <Button
+                android:id="@+id/googleBtn"
+                android:layout_width="200dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:text="@string/google"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/accederBtn" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="35dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/googlelogo"
+                app:layout_constraintBottom_toBottomOf="@+id/googleBtn"
+                app:layout_constraintStart_toStartOf="@+id/googleBtn"
+                app:layout_constraintTop_toTopOf="@+id/googleBtn"
+                app:layout_constraintVertical_bias="0.478" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navMenu"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

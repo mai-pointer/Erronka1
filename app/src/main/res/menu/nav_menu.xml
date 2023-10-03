@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/inicio"
+        android:title="@string/o1"
+        android:icon="@drawable/iniciologo" />
+    <item
+        android:id="@+id/usuario"
+        android:title="@string/o2"
+        android:icon="@drawable/usuariologo" />
+    <item
+        android:id="@+id/pedidos"
+        android:title="@string/o3"
+        android:icon="@drawable/pedidoslogo" />
+    <item
+        android:id="@+id/comprar"
+        android:title="@string/o4"
+        android:icon="@drawable/comprarlogo" />
+</menu>

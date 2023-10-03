@@ -1,9 +1,8 @@
-package com.gernika.bd1
+package com.example.erronka1
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -20,18 +19,19 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        MenuNav.Crear(this);
+
         emailTxt = findViewById(R.id.emailTxt)
         passTxt = findViewById(R.id.passTxt)
 
         findViewById<Button>(R.id.registrarBtn).setOnClickListener{
-            if (!vacio()){
+            if (!Vacio()){
 
                 mAuth.createUserWithEmailAndPassword(emailTxt.text.toString(), passTxt.text.toString())
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             Acceder()
                         } else {
-                            //Error("Ese usuario ya existe")
                             Error("${task.exception?.message}")
                         }
                     }
@@ -39,14 +39,13 @@ class Login : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.accederBtn).setOnClickListener{
-            if (!vacio()) {
+            if (!Vacio()) {
 
                 mAuth.signInWithEmailAndPassword(emailTxt.text.toString(), passTxt.text.toString())
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             Acceder()
                         } else {
-                            //Error("El email o la contraseña no son correctas")
                             Error("${task.exception?.message}")
                         }
                     }
@@ -56,25 +55,22 @@ class Login : AppCompatActivity() {
     }
 
     fun Acceder(){
-        val intent = Intent(this, Inicio::class.java)
-        //intent.putExtra(getString(R.string.email), emailTxt.text.toString())
-        intent.putExtra(getString(R.string.pass), passTxt.text.toString())
-
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 
-    fun vacio(): Boolean{
+    fun Vacio(): Boolean{
         var vacio = emailTxt.text.toString().trim().isEmpty()
         vacio = emailTxt.text.toString().trim().isEmpty() || vacio
 
         if (vacio){
-            Error(getString(R.string.error3))
+            Error(getString(R.string.error1))
         }
 
         return vacio
     }
 
     fun Error(texto: String){
-        Toast.makeText(this, getString(R.string.Error) + ": " +texto, Toast.LENGTH_LONG).show()
+        Toast.makeText(this, getString(R.string.Tag) + ": " +texto, Toast.LENGTH_LONG).show()
     }
 }
