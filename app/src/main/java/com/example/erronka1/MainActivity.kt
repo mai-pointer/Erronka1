@@ -13,23 +13,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Crea el menu
         MenuNav.Crear(this);
 
-        val mAuth = FirebaseAuth.getInstance()
-
-        findViewById<TextView>(R.id.prueba1Txt).text = mAuth.currentUser?.email.toString()
-
-        findViewById<Button>(R.id.prueba1Btn).setOnClickListener{
-            val intent = Intent(this, Login::class.java)
-            startActivity(intent)
-        }
-
-        findViewById<Button>(R.id.prueba2Btn).setOnClickListener{
-            mAuth.signOut()
-            findViewById<TextView>(R.id.prueba1Txt).text = mAuth.currentUser?.email.toString()
-        }
-
+        //Botones para pruebas
         findViewById<Button>(R.id.prueba3Btn).setOnClickListener{
+            MenuNav.Seleccionar(0)
             val intent = Intent(this, Proveedores::class.java)
             startActivity(intent)
         }
