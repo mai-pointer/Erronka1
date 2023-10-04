@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">erronka1</string>
     <string name="seasonButtonMainMenu">seasonButtonMainMenu</string>
+    <string name="menuicon">menuIcon</string>
+    <string name="loginicon">loginIcon</string>
+    <string name="farmericon">farmericon</string>
 </resources>
