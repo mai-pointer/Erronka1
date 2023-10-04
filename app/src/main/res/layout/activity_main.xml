@@ -7,11 +7,13 @@
     android:background="@color/colorAccent"
     tools:context=".MainActivity">
 
-
     <LinearLayout
-        android:layout_width="314dp"
+        android:id="@+id/btnCarta"
+        android:layout_width="0dp"
         android:layout_height="90dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="88dp"
+        android:layout_marginEnd="50dp"
         android:background="@drawable/rounded_button"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -58,9 +60,12 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="314dp"
+        android:id="@+id/btnDelivery"
+        android:layout_width="0dp"
         android:layout_height="90dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="224dp"
+        android:layout_marginEnd="50dp"
         android:background="@drawable/rounded_button"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -109,9 +114,12 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="314dp"
+        android:id="@+id/btnProviders"
+        android:layout_width="0dp"
         android:layout_height="90dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="356dp"
+        android:layout_marginEnd="50dp"
         android:background="@drawable/rounded_button"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -158,9 +166,12 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="314dp"
+        android:id="@+id/btnZeroWaste"
+        android:layout_width="0dp"
         android:layout_height="90dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="488dp"
+        android:layout_marginEnd="50dp"
         android:background="@drawable/rounded_button"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -209,13 +220,13 @@
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navMenu"
         android:layout_width="0dp"
-        android:layout_height="96dp"
+        android:layout_height="75dp"
         android:background="@drawable/roundednav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,4 +4,8 @@
     <string name="menuicon">menuIcon</string>
     <string name="loginicon">loginIcon</string>
     <string name="farmericon">farmericon</string>
+    <string name="o4">option4</string>
+    <string name="o3">option3</string>
+    <string name="o2">option2</string>
+    <string name="o1">option1</string>
 </resources>
