@@ -2,6 +2,6 @@ package com.example.erronka1
 
 data class Proveedor(
     val nombre: String,
-    val descripcion: Int,
-    val productos : List<String>
+    val descripcion: String,
+    val productos: List<String>
 )
