@@ -4,17 +4,18 @@
     <item
         android:id="@+id/inicio"
         android:title="@string/o1"
-        android:icon="@drawable/home" />
+        android:icon="@drawable/menu_item_selector_home"
+        android:iconTint="@color/colorPrimary"/>
     <item
         android:id="@+id/usuario"
         android:title="@string/o2"
-        android:icon="@drawable/user" />
+        android:icon="@drawable/menu_item_selector_user"/>
     <item
         android:id="@+id/pedidos"
         android:title="@string/o3"
-        android:icon="@drawable/truck_side" />
+        android:icon="@drawable/menu_item_selector_truck"/>
     <item
         android:id="@+id/comprar"
         android:title="@string/o4"
-        android:icon="@drawable/shopping_cart" />
+        android:icon="@drawable/menu_item_selector_cart"/>
 </menu>
