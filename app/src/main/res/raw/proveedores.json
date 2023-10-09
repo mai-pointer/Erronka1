@@ -1,0 +1,52 @@
+[
+  {
+    "nombre": "Prov ABC",
+    "descripcion": "Proveedor líder en suministros industriales y materiales de construcción. Ofrecemos productos de alta calidad y servicio al cliente excepcional.",
+    "productos": ["Herramientas eléctricas", "Materiales de construcción", "Equipos de seguridad"]
+  },
+  {
+    "nombre": "Distr Martínez",
+    "descripcion": "Empresa familiar con más de 30 años en la distribución de alimentos y productos de consumo masivo.",
+    "productos": ["Alimentos enlatados", "Bebidas", "Productos de limpieza"]
+  },
+  {
+    "nombre": "Ferretería López",
+    "descripcion": "Su ferretería de confianza desde 1990. Amplio inventario de herramientas, materiales de construcción y productos para el hogar.",
+    "productos": ["Herramientas manuales", "Pinturas", "Fontanería"]
+  },
+  {
+    "nombre": "TechWorld",
+    "descripcion": "Especializados en la distribución de productos electrónicos y dispositivos móviles de última generación. Innovación y calidad en cada entrega.",
+    "productos": ["Teléfonos inteligentes", "Tabletas", "Accesorios electrónicos"]
+  },
+  {
+    "nombre": "FashionStyle",
+    "descripcion": "Ofrecemos las últimas tendencias de moda a precios asequibles. Ropa, calzado y accesorios para hombres, mujeres y niños.",
+    "productos": ["Ropa de moda", "Zapatos elegantes", "Accesorios de estilo"]
+  },
+  {
+    "nombre": "BellezaTotal",
+    "descripcion": "Productos de belleza y cuidado personal de las mejores marcas. Ayudamos a nuestros clientes a lucir y sentirse mejor.",
+    "productos": ["Cosméticos", "Productos para el cuidado del cabello", "Fragancias"]
+  },
+  {
+    "nombre": "FitLife",
+    "descripcion": "Equipos de fitness de alta calidad para gimnasios y entrenamiento personal. Contribuimos a un estilo de vida saludable y activo.",
+    "productos": ["Máquinas de ejercicio", "Pesas y barras", "Equipos de cardio"]
+  },
+  {
+    "nombre": "MediCare",
+    "descripcion": "Suministramos productos médicos y equipos de diagnóstico a hospitales y clínicas. Nuestra misión es mejorar la atención médica.",
+    "productos": ["Equipo médico", "Instrumentos de diagnóstico", "Material quirúrgico"]
+  },
+  {
+    "nombre": "Innovatech",
+    "descripcion": "Especializados en soluciones tecnológicas avanzadas para empresas y particulares. Desde computadoras hasta sistemas de seguridad.",
+    "productos": ["Computadoras", "Software empresarial", "Cámaras de seguridad"]
+  },
+  {
+    "nombre": "EcoLife",
+    "descripcion": "Productos amigables con el medio ambiente para un estilo de vida sostenible. Cuidamos nuestro planeta y promovemos la ecología.",
+    "productos": ["Productos orgánicos", "Artículos reciclados", "Energía renovable"]
+  }
+]

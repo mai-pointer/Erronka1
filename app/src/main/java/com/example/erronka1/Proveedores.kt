@@ -2,6 +2,7 @@ package com.example.erronka1
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
@@ -14,25 +15,11 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
+import com.example.erronka1.Proveedor
+import com.example.erronka1.Proveedor as Proveedor1
 
 
 class Proveedores : AppCompatActivity() {
-
-    //Lista de proveedores
-    val proveedores = listOf(
-        Proveedor("prov1", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris accumsan, metus sed imperdiet euismod, neque ipsum accumsan diam, eget blandit elit velit et metus. Vestibulum sit amet mi a nulla ultricies auctor et sed neque. Proin felis sem, lobortis eu nunc non, eleifend placerat arcu. Suspendisse vel lectus lacus. Vestibulum et massa dapibus, sagittis magna quis, tempus libero. Praesent posuere leo dignissim dolor tristique fermentum. Suspendisse hendrerit ac purus id auctor.",
-            listOf(
-                "producto1.1", "producto1.2"
-        )),
-        Proveedor("prov2", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris accumsan, metus sed imperdiet euismod, neque ipsum accumsan diam, eget blandit elit velit et metus. Vestibulum sit amet mi a nulla ultricies auctor et sed neque. Proin felis sem, lobortis eu nunc non, eleifend placerat arcu. Suspendisse vel lectus lacus. Vestibulum et massa dapibus, sagittis magna quis, tempus libero. Praesent posuere leo dignissim dolor tristique fermentum. Suspendisse hendrerit ac purus id auctor.",
-            listOf(
-                "producto2.1", "producto2.2"
-        )),
-        Proveedor("prov3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris accumsan, metus sed imperdiet euismod, neque ipsum accumsan diam, eget blandit elit velit et metus. Vestibulum sit amet mi a nulla ultricies auctor et sed neque. Proin felis sem, lobortis eu nunc non, eleifend placerat arcu. Suspendisse vel lectus lacus. Vestibulum et massa dapibus, sagittis magna quis, tempus libero. Praesent posuere leo dignissim dolor tristique fermentum. Suspendisse hendrerit ac purus id auctor.",
-            listOf(
-                "producto3.1", "producto3.2"
-        )),
-    )
 
     //Variables
     var colorOriginal: Drawable? = null
@@ -45,6 +32,9 @@ class Proveedores : AppCompatActivity() {
 
         //Crea el menu
         MenuNav.Crear(this)
+
+        //Consige el json
+        var proveedores: List<Proveedor> = JSON.Get(this, R.raw.proveedores)
 
         //Crear el list View
         val listView = findViewById<ListView>(R.id.lista)
@@ -75,7 +65,7 @@ class Proveedores : AppCompatActivity() {
 
 //Adaptador del proveedor
 
-class ProveedorAdapter(private val context: Context, private val proveedores: List<Proveedor>) : BaseAdapter() {
+class ProveedorAdapter(private val context: Context, private val proveedores: List<Proveedor1>) : BaseAdapter() {
 
     override fun getCount(): Int = proveedores.size
 
@@ -96,11 +86,9 @@ class ProveedorAdapter(private val context: Context, private val proveedores: Li
             viewHolder = view.tag as ViewHolder
         }
 
-        val proveedor = getItem(position) as Proveedor
+        val proveedor = getItem(position) as Proveedor1
 
         viewHolder.providerName.text = proveedor.nombre
-        // Aquí debes cargar la imagen del proveedor en viewHolder.providerImage
-        // Por ejemplo: viewHolder.providerImage.setImageResource(R.drawable.proveedor1_image)
 
         return view
     }

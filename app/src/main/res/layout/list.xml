@@ -3,17 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     android:orientation="horizontal"
-    android:padding="8dp"
-    android:background="@color/white">
+    android:padding="6dp">
 
 
     <TextView
         android:id="@+id/provider_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Provider Name"
-        android:textSize="18dp"
+        android:layout_width="145dp"
+        android:layout_height="20dp"
+        android:textAlignment="center"
+        android:textSize="11dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/provider_image"
         app:layout_constraintHorizontal_bias="0.067"
@@ -22,9 +22,9 @@
 
     <ImageView
         android:id="@+id/provider_image"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="24dp"
+        android:layout_width="15dp"
+        android:layout_height="18dp"
+        android:layout_marginEnd="16dp"
         android:src="@drawable/info"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

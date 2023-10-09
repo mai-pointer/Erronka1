@@ -6,88 +6,79 @@
     android:layout_height="match_parent"
     tools:context=".Proveedores">
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapa"
-        android:layout_width="171dp"
-        android:layout_height="277dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="47dp"
-        android:contentDescription="@string/descripcionMapa"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toStartOf="@+id/_dynamic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="UnknownId" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="41dp"
-        app:layout_constraintBottom_toTopOf="@+id/navMenu"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="350dp"
+        android:layout_height="257dp"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapa">
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="138dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/captura_de_pantalla_2023_10_06_105639" />
+
+        <ListView
+            android:id="@+id/lista"
+            android:layout_width="167dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="343dp"
+        android:layout_height="316dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="54dp"
+        android:background="@drawable/rounded"
+        android:padding="25dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/navMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/nombreProvTxt"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="17dp"
-            android:layout_marginBottom="13dp"
-            android:textSize="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/desProvTxt"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/colorAccent"
+            android:textSize="24dp" />
 
         <TextView
             android:id="@+id/desProvTxt"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="19dp"
-            android:layout_marginEnd="13dp"
-            android:layout_marginBottom="36dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/listaProvTxt"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nombreProvTxt" />
+            android:layout_width="291dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="16dp"
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/listaProvTxt"
-            android:layout_width="129dp"
-            android:layout_height="164dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="36dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/desProvTxt" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_width="290dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="2dp"
+            android:textAlignment="textStart"
+            android:textSize="14dp" />
 
-    <ListView
-        android:id="@+id/lista"
-        android:layout_width="171dp"
-        android:layout_height="275dp"
-        android:layout_marginEnd="28dp"
-        app:layout_constraintBottom_toBottomOf="@+id/mapa"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.98"
-        app:layout_constraintStart_toEndOf="@+id/mapa"
-        app:layout_constraintTop_toTopOf="@+id/mapa"
-        app:layout_constraintVertical_bias="0.0" />
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:background="@drawable/roundednav"
         android:id="@+id/navMenu"
         android:layout_width="0dp"
         android:layout_height="75dp"
+        android:background="@drawable/roundednav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintStart_toStartOf="parent" >
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

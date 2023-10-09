@@ -28,8 +28,8 @@ class Usuario : AppCompatActivity() {
         findViewById<Button>(R.id.cerrarBtn).setOnClickListener{
             mAuth.signOut()
 
-            MenuNav.Seleccionar(1)
-            val intent = Intent(this, Proveedores::class.java)
+            MenuNav.Seleccionar(0)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }

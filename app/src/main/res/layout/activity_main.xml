@@ -8,8 +8,8 @@
 
     <Button
         android:id="@+id/prueba3Btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="178dp"
+        android:layout_height="54dp"
         android:layout_marginTop="270dp"
         android:layout_marginBottom="337dp"
         android:text="PROV"
@@ -20,14 +20,15 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navMenu"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="1dp"
+        android:layout_width="410dp"
+        android:layout_height="75dp"
         android:background="@drawable/roundednav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prueba3Btn" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        tools:ignore="UnknownIdInLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
