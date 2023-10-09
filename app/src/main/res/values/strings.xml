@@ -8,4 +8,11 @@
     <string name="o3">option3</string>
     <string name="o2">option2</string>
     <string name="o1">option1</string>
+    <string name="zure_pausuak">Zure pausuak</string>
+    <string name="editicon">editIcon</string>
+    <string name="aldatu_pasahitza">Aldatu pasahitza</string>
+    <string name="zure_pazahitza">Zure pazahitza</string>
+    <string name="pasahitz_berria">Pasahitz berria</string>
+    <string name="oldPassword">Idatzi zure pasahitza</string>
+    <string name="newPassword">Idatzi pasahitz berria</string>
 </resources>
