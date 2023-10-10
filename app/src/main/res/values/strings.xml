@@ -37,6 +37,19 @@
     <string name="cerrar">Cerrar sesion</string>
 
     <!-- Profile -->
-    <string name="editicon"></string>
+
+    <string name="zure_pausuak">Zure pausuak</string>
+    <string name="editicon">editIcon</string>
+    <string name="aldatu_pasahitza">Aldatu pasahitza</string>
+    <string name="zure_pazahitza">Zure pazahitza</string>
+    <string name="pasahitz_berria">Pasahitz berria</string>
+    <string name="oldPassword">Idatzi zure pasahitza</string>
+    <string name="newPassword">Idatzi pasahitz berria</string>
+
+    <!-- main -->
+    <string name="seasonButtonMainMenu">seasonButtonMainMenu</string>
+    <string name="menuicon">menuIcon</string>
+    <string name="loginicon">loginIcon</string>
+    <string name="farmericon">farmericon</string>
 
 </resources>

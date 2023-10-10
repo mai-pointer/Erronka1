@@ -5,9 +5,18 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class MenuNav : AppCompatActivity() {
     companion object {
+        val mAuth = FirebaseAuth.getInstance()
+
+        val clases2 = mapOf(
+            R.id.inicio to MainActivity::class.java,
+            R.id.usuario to UserProfileActivity::class.java,
+            R.id.pedidos to MainActivity::class.java,
+            R.id.comprar to MainActivity::class.java
+        )
 
         //Declara la que clase redirege cada boton del menu
         val clases = mapOf(
@@ -29,15 +38,29 @@ class MenuNav : AppCompatActivity() {
             navMenu.selectedItemId = seleccionado
 
             //Acciones de los botones
-            navMenu.setOnItemSelectedListener { menuItem ->
-                val activityClass = clases[menuItem.itemId]
 
-                if (clases != null) {
-                    context.startActivity(Intent(context, activityClass))
-                    seleccionado = menuItem.itemId
-                    true
-                } else false
+            if(mAuth != null){
+                navMenu.setOnItemSelectedListener { menuItem ->
+                    val activityClass = clases2[menuItem.itemId]
+                    if (clases2 != null) {
+                        context.startActivity(Intent(context, activityClass))
+                        seleccionado = menuItem.itemId
+                        true
+                    } else false
+                }
+            } else {
+                navMenu.setOnItemSelectedListener { menuItem ->
+                    val activityClass = clases[menuItem.itemId]
+                    if (clases != null) {
+                        context.startActivity(Intent(context, activityClass))
+                        seleccionado = menuItem.itemId
+                        true
+                    } else false
+                }
             }
+
+
+
         }
 
         //Selecciona a que clase te vas a dirigir
