@@ -1,18 +1,39 @@
 <resources>
+    <!-- Apicaccion -->
     <string name="app_name">erronka1</string>
-    <string name="seasonButtonMainMenu">seasonButtonMainMenu</string>
-    <string name="menuicon">menuIcon</string>
-    <string name="loginicon">loginIcon</string>
-    <string name="farmericon">farmericon</string>
-    <string name="o4">option4</string>
-    <string name="o3">option3</string>
-    <string name="o2">option2</string>
-    <string name="o1">option1</string>
-    <string name="zure_pausuak">Zure pausuak</string>
-    <string name="editicon">editIcon</string>
-    <string name="aldatu_pasahitza">Aldatu pasahitza</string>
-    <string name="zure_pazahitza">Zure pazahitza</string>
-    <string name="pasahitz_berria">Pasahitz berria</string>
-    <string name="oldPassword">Idatzi zure pasahitza</string>
-    <string name="newPassword">Idatzi pasahitz berria</string>
+    <string name="Tag">Error-TX</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <!-- Login  -->
+    <string name="registrar">Regitrar</string>
+    <string name="acceder">Acceder</string>
+    <string name="email">Email</string>
+    <string name="pass">Contraseña</string>
+    <string name="salir">Cerrar Sesion</string>
+    <string name="pantalla">Pantalla</string>
+    <string name="google">Google</string>
+    <string name="recordar">Recuerdame</string>
+
+    <!-- Errores -->
+    <string name="error1">"Uno de los campos estan vacios"</string>
+    <string name="title_activity_base">BaseActivity</string>
+
+    <!-- Menu -->
+    <string name="o1">Inicio</string>
+    <string name="o2">Usuario</string>
+    <string name="o3">Pedidos</string>
+    <string name="o4">Compras</string>
+
+    <!-- Otros -->
+    <string name="descripcionMapa">Esto es un mapa</string>
+    <string name="descripcionLayout">Esto es un Layout</string>
+
+    <!-- Otros -->
+    <string name="cerrar">Cerrar sesion</string>
+
 </resources>
