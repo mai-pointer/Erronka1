@@ -29,7 +29,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="197dp"
+                android:layout_height="215dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/rounded_button"
                 android:gravity="center_vertical"
@@ -47,20 +47,21 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Título 1"
+                        android:text="Ensalada cesar con nueces"
                         android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="113dp"
-                        android:text="Informacion Informacion Informacion Informacion"
-                        android:textColor="@color/colorPrimary" />
+                        android:text="-La conocida por todos ensalada cesar con un toque especial de la casa"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp" />/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="43dp"
-                        android:text="Precio: $100"
+                        android:text="Precio: $8,95"
                         android:textColor="@color/colorPrimary" />
 
                 </LinearLayout>
@@ -75,12 +76,12 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="127dp"
-                        android:src="@drawable/prueba1" />
+                        android:src="@drawable/ensalada" />
 
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Botón 1"
+                        android:text="Añadir"
                         android:textColor="#FFFFFF" />
 
                 </LinearLayout>
@@ -106,21 +107,22 @@
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Título 1"
+                        android:layout_height="37dp"
+                        android:text="Tortelini con salsa de queso trufado"
                         android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="113dp"
-                        android:text="Informacion Informacion Informacion Informacion"
-                        android:textColor="@color/colorPrimary" />
+                        android:text="-Traido desde Italia un plato tipico hecho con productos locales, rellenos de carne con salsa de queso de cabrales y trufas  "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="43dp"
-                        android:text="Precio: $100"
+                        android:text="Precio: $12,95"
                         android:textColor="@color/colorPrimary" />
 
                 </LinearLayout>
@@ -135,13 +137,13 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="127dp"
-                        android:src="@drawable/prueba1" />
+                        android:src="@drawable/tortelini" />
 
 
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Botón 1"
+                        android:text="Añadir"
                         android:textColor="#FFFFFF" />
 
 

@@ -48,20 +48,20 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Título 1"
+                        android:text="Compra del 12/09/2023"
                         android:textColor="@color/colorAccent"
                         android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="113dp"
-                        android:text="Informacion Informacion Informacion Informacion"
+                        android:text=" -Ensalada cesar con nueces.\n -Tortelini con salsa de queso trufado.\n -Gastos de envio."
                         android:textColor="@color/colorPrimary" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="43dp"
-                        android:text="Precio: $100"
+                        android:text="Precio: $24,90"
                         android:textColor="@color/colorPrimary" />
 
                 </LinearLayout>
@@ -90,20 +90,20 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Título 1"
+                        android:text="Compra del 09/09/2023"
                         android:textColor="@color/colorAccent"
                         android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="113dp"
-                        android:text="Informacion Informacion Informacion Informacion"
+                        android:text="-Ensalada cesar con nueces. \n-Gastos de envio."
                         android:textColor="@color/colorPrimary" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="43dp"
-                        android:text="Precio: $100"
+                        android:text="Precio: $11,95"
                         android:textColor="@color/colorPrimary" />
 
                 </LinearLayout>
