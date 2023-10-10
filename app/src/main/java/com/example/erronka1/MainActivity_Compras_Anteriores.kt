@@ -2,12 +2,13 @@ package com.example.erronka1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity_Compras_Anteriores : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_compras_anteriores)
-
-        MenuNav.Crear(this)
+        val user = FirebaseAuth.getInstance().currentUser
+        MenuNav.Crear(this, user)
     }
 }

@@ -68,6 +68,16 @@
             android:layout_width="match_parent"
             android:layout_height="96dp" />
 
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="196dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button_green"
+            android:minHeight="48dp"
+            android:text="@string/irten"
+            android:textColor="@color/white"
+            tools:ignore="TextContrastCheck" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -131,5 +141,13 @@
             android:textColor="@color/white"
             tools:ignore="TextContrastCheck" />
     </LinearLayout>
-
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navMenu"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:background="@drawable/roundednav"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="VisualLintBottomNav" />
 </androidx.constraintlayout.widget.ConstraintLayout>

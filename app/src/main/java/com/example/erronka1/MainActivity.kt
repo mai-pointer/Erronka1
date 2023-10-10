@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.example.erronka1.R.*
+import com.google.firebase.auth.FirebaseAuth
+import java.util.Calendar
+import java.util.Date
 
 class MainActivity : AppCompatActivity() {
     private lateinit var menu: LinearLayout
@@ -15,15 +18,38 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_main)
-        MenuNav.Crear(this)
+
         menu = findViewById(id.btnCarta)
         delivery = findViewById(id.btnDelivery)
         providers = findViewById(id.btnProviders)
         zeroWaste = findViewById(id.btnZeroWaste)
 
+        val user = FirebaseAuth.getInstance().currentUser
+        MenuNav.Crear(this, user)
 
         menu.setOnClickListener {
 
+            when (obtenerFechaActual()) {
+
+                1, 2, 3 -> {
+                    val intent = Intent(this, PantallaInvierno::class.java)
+                    startActivity(intent)
+                }
+
+                4, 5, 6 -> {
+                    val intent = Intent(this, PantallaPrimavera::class.java)
+                    startActivity(intent)
+                }
+
+                7, 8, 9 -> {
+                    val intent = Intent(this, PantallaVerano::class.java)
+                    startActivity(intent)
+                }
+                else -> {
+                    val intent = Intent(this, PantallaInvierno::class.java)
+                    startActivity(intent)
+                }
+            }
         }
 
         delivery.setOnClickListener {
@@ -40,5 +66,11 @@ class MainActivity : AppCompatActivity() {
             /*val intent = Intent(this, ZeroWasteActivity::class.java)
             startActivity(intent)*/
         }
+    }
+
+    fun obtenerFechaActual(): Int {
+        val calendario = Calendar.getInstance()
+        val mes = calendario.get(Calendar.MONTH)
+        return mes
     }
 }

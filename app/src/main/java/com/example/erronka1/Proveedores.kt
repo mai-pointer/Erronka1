@@ -15,6 +15,7 @@ import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import com.example.erronka1.Proveedor
+import com.google.firebase.auth.FirebaseAuth
 import com.example.erronka1.Proveedor as Proveedor1
 
 
@@ -30,7 +31,8 @@ class Proveedores : AppCompatActivity() {
         setContentView(R.layout.activity_proveedores)
 
         //Crea el menu
-        MenuNav.Crear(this)
+        val user = FirebaseAuth.getInstance().currentUser
+        MenuNav.Crear(this, user)
 
         //Consige el json
         var proveedores: List<Proveedor> = JSON.Get(this, R.raw.proveedores)

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class MenuNav : AppCompatActivity() {
     companion object {
@@ -28,7 +29,7 @@ class MenuNav : AppCompatActivity() {
         //Guarda clase en la que esta actualmente
         var seleccionado : Int = 0
 
-        fun Crear(context: Context) {
+        fun Crear(context: Context, user: FirebaseUser?) {
 
             //Crea el menu
             val navMenu = (context as AppCompatActivity).findViewById<BottomNavigationView>(R.id.navMenu)
@@ -39,7 +40,7 @@ class MenuNav : AppCompatActivity() {
 
             //Acciones de los botones
 
-            if(mAuth != null){
+            if(user != null){
                 navMenu.setOnItemSelectedListener { menuItem ->
                     val activityClass = clases2[menuItem.itemId]
                     if (clases2 != null) {

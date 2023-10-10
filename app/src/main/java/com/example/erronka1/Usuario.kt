@@ -22,7 +22,8 @@ class Usuario : AppCompatActivity() {
         usuTxt.text = mAuth.currentUser?.email.toString()
 
         //Crea el menu
-        MenuNav.Crear(this)
+        val user = FirebaseAuth.getInstance().currentUser
+        MenuNav.Crear(this, user)
 
         //Btn de cerrar sesion
         findViewById<Button>(R.id.cerrarBtn).setOnClickListener{
