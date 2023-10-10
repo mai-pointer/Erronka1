@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val intent = Intent(this, MainActivity_Pagina_Tienda::class.java)
+        val intent = Intent(this, MainActivity_Compras_Anteriores::class.java)
         startActivity(intent)
 
     }
