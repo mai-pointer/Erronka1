@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
-    tools:context=".MainActivity4">
+    tools:context=".PantallaInvierno">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -21,7 +21,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="242dp"
-            android:layout_height="190dp">
+            android:layout_height="190dp"
+            android:background="@color/white">
 
             <TextView
                 android:id="@+id/textView2"
@@ -38,7 +39,7 @@
                 android:id="@+id/textView"
                 android:layout_width="224dp"
                 android:layout_height="46dp"
-                android:text="VERANO"
+                android:text="INVIERNO"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -58,13 +59,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/verano" />
+                app:srcCompat="@drawable/invierno" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/invierno"
+        android:id="@+id/primavera"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -73,7 +74,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.85"
-        app:srcCompat="@drawable/invi" />
+        app:srcCompat="@drawable/prim" />
 
     <ImageView
         android:id="@+id/otoño"
@@ -88,7 +89,7 @@
         app:srcCompat="@drawable/oto" />
 
     <ImageView
-        android:id="@+id/primavera"
+        android:id="@+id/verano"
         android:layout_width="102dp"
         android:layout_height="102dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -97,6 +98,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.848"
-        app:srcCompat="@drawable/prim" />
+        app:srcCompat="@drawable/vera" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

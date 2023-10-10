@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 
-class MainActivity4 : AppCompatActivity() {
+class PantallaPrimavera : AppCompatActivity() {
 
     private lateinit var invierno: ImageView
     private lateinit var otoño: ImageView
@@ -17,26 +17,26 @@ class MainActivity4 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main4)
+        setContentView(R.layout.primavera)
 
         invierno = findViewById(R.id.invierno)
         otoño = findViewById(R.id.otoño)
-        verano = findViewById(R.id.imageView4)
-        primavera = findViewById(R.id.primavera)
+        verano = findViewById(R.id.verano)
+        primavera = findViewById(R.id.imageView4)
         titulo = findViewById(R.id.textView)
         val nuevoTamañoTexto = 40f
         titulo.textSize = nuevoTamañoTexto
 
         otoño.setOnClickListener{
-            val Intent: Intent = Intent(this, MainActivity::class.java)
+            val Intent: Intent = Intent(this, PantallaOtoño::class.java)
             startActivity(Intent)
         }
         invierno.setOnClickListener{
-            val Intent: Intent = Intent(this, MainActivity2::class.java)
+            val Intent: Intent = Intent(this, PantallaInvierno::class.java)
             startActivity(Intent)
         }
-        primavera.setOnClickListener{
-            val Intent: Intent = Intent(this, MainActivity3::class.java)
+        verano.setOnClickListener{
+            val Intent: Intent = Intent(this, PantallaVerano::class.java)
             startActivity(Intent)
         }
     }

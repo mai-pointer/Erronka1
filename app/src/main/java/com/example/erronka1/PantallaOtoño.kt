@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 
-class MainActivity2 : AppCompatActivity() {
+class PantallaOtoño : AppCompatActivity() {
 
     private lateinit var invierno: ImageView
     private lateinit var otoño: ImageView
@@ -16,30 +16,33 @@ class MainActivity2 : AppCompatActivity() {
     private lateinit var titulo: TextView
 
 
+
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main2)
+        setContentView(R.layout.otono)
 
-        invierno = findViewById(R.id.imageView4)
-        otoño = findViewById(R.id.otoño)
+        invierno = findViewById(R.id.invierno)
+        otoño = findViewById(R.id.imageView4)
         verano = findViewById(R.id.verano)
         primavera = findViewById(R.id.primavera)
         titulo = findViewById(R.id.textView)
         val nuevoTamañoTexto = 40f
         titulo.textSize = nuevoTamañoTexto
 
-        otoño.setOnClickListener{
-            val Intent: Intent = Intent(this, MainActivity::class.java)
-            startActivity(Intent)
-        }
-        primavera.setOnClickListener{
-            val Intent: Intent = Intent(this, MainActivity3::class.java)
+        invierno.setOnClickListener{
+            val Intent: Intent = Intent(this, PantallaInvierno::class.java)
             startActivity(Intent)
         }
         verano.setOnClickListener{
-            val Intent: Intent = Intent(this, MainActivity4::class.java)
+            val Intent: Intent = Intent(this, PantallaVerano::class.java)
             startActivity(Intent)
         }
+        primavera.setOnClickListener{
+            val Intent: Intent = Intent(this, PantallaPrimavera::class.java)
+            startActivity(Intent)
+        }
+
     }
 }
