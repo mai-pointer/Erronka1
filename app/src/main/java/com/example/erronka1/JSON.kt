@@ -1,7 +1,6 @@
 package com.example.erronka1
 
 import android.content.Context
-import android.util.Log
 import com.google.common.reflect.TypeToken
 import com.google.gson.Gson
 import java.lang.reflect.Type

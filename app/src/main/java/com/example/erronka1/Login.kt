@@ -24,7 +24,7 @@ class Login : AppCompatActivity() {
         //Redirige a la pantalla de usuario
         if( mAuth.currentUser != null){
             MenuNav.Seleccionar(1)
-            val intent = Intent(this, Usuario::class.java)
+            val intent = Intent(this, UserProfileActivity::class.java)
             startActivity(intent)
         }
 

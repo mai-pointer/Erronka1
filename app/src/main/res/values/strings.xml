@@ -36,4 +36,7 @@
     <!-- Otros -->
     <string name="cerrar">Cerrar sesion</string>
 
+    <!-- Profile -->
+    <string name="editicon"></string>
+
 </resources>

@@ -13,7 +13,7 @@ import com.google.firebase.auth.UserProfileChangeRequest
 
 class UserProfileActivity : AppCompatActivity() {
     private lateinit var mail: EditText
-    private lateinit var name: EditText
+    private lateinit var userName: EditText
     private lateinit var changePassword: Button
     private lateinit var changeMail: Button
     private lateinit var changeUsername: Button
@@ -24,7 +24,7 @@ class UserProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_profile)
 
         mail = findViewById(R.id.txtMail)
-        name = findViewById(R.id.txtName)
+        userName = findViewById(R.id.txtName)
         changePassword = findViewById(R.id.btnChangePassword)
         changeMail = findViewById(R.id.btnEditMail)
         changeUsername = findViewById(R.id.btnEditName)
@@ -47,7 +47,7 @@ class UserProfileActivity : AppCompatActivity() {
 
         UpdateData(user)
 
-        name.isEnabled = false
+        userName.isEnabled = false
         mail.isEnabled = false
 
         changePassword.setOnClickListener(){
@@ -103,10 +103,10 @@ class UserProfileActivity : AppCompatActivity() {
         }
 
         changeUsername.setOnClickListener(){
-            if(name.isEnabled){
+            if(userName.isEnabled){
                 if (user != null) {
                     val profileUpdates = UserProfileChangeRequest.Builder()
-                        .setDisplayName(name.text.toString())
+                        .setDisplayName(userName.text.toString())
                         .build()
 
                     user.updateProfile(profileUpdates)
@@ -116,7 +116,7 @@ class UserProfileActivity : AppCompatActivity() {
                                 usernameChanged.setGravity(Gravity.LEFT, 200, 200)
                                 usernameChanged.show()
                                 UpdateData(user)
-                                name.isEnabled=false
+                                userName.isEnabled=false
 
                             } else {
                                 val usernameNotChanged = Toast.makeText(this, "No se pudo cambiar el nombre de usuario", Toast.LENGTH_SHORT)
@@ -131,7 +131,7 @@ class UserProfileActivity : AppCompatActivity() {
 
     fun UpdateData(user: FirebaseUser?){
         if (user != null) {
-            name.setText(user.uid)
+            userName.setText(user.uid)
             mail.setText(user.email)
         } else {
 

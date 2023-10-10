@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         providers.setOnClickListener {
-            val intent = Intent(this, MapsActivity::class.java)
+            val intent = Intent(this, Proveedores::class.java)
             startActivity(intent)
         }
 

@@ -22,17 +22,16 @@
             android:name=".Proveedores"
             android:exported="false" />
         <activity
-            android:name=".Login"
             android:name=".UserProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
             android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="" />
 
-        <activity
-            android:name=".MapsActivity"
-            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
