@@ -22,9 +22,9 @@
             android:name=".MainActivity_Cesta"
             android:exported="false" />
         <activity
-            android:name=".MainActivity_Pagina_Tienda"
-            android:exported="false"
-            android:label="@string/title_activity_main_pagina_tienda" />
+        android:name=".MainActivity_Pagina_Tienda"
+        android:exported="false"/>
+        <activity
             android:name=".Usuario"
             android:exported="false" />
         <activity

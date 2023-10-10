@@ -42,7 +42,8 @@
                     android:layout_height="178dp"
                     android:layout_marginStart="16dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    tools:ignore="ExtraText">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -81,6 +82,7 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:minHeight="48dp"
                         android:text="Añadir"
                         android:textColor="#FFFFFF" />
 
@@ -115,7 +117,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="113dp"
-                        android:text="-Traido desde Italia un plato tipico hecho con productos locales, rellenos de carne con salsa de queso de cabrales y trufas  "
+                        android:text="-Traido desde Italia un plato tipico hecho con productos locales, rellenos de carne con salsa de queso de cabrales y trufas "
                         android:textColor="@color/colorPrimary"
                         android:textSize="12sp"/>
 
@@ -143,6 +145,7 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:minHeight="48dp"
                         android:text="Añadir"
                         android:textColor="#FFFFFF" />
 
@@ -161,9 +164,22 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="41dp"
         android:layout_marginBottom="16dp"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navMenu"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:background="@drawable/roundednav"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="VisualLintBottomNav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

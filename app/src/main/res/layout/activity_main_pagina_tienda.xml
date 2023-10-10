@@ -147,6 +147,7 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:minHeight="48dp"
                         android:text="Botón 1"
                         android:textColor="#FFFFFF" />
 
@@ -207,6 +208,7 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:minHeight="48dp"
                         android:text="Botón 1"
                         android:textColor="#FFFFFF" />
 
@@ -218,5 +220,14 @@
 
     </ScrollView>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navMenu"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:background="@drawable/roundednav"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="VisualLintBottomNav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,5 +7,7 @@ class MainActivity_Compras_Anteriores : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_compras_anteriores)
+
+        MenuNav.Crear(this)
     }
 }

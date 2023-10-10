@@ -14,16 +14,16 @@ class MenuNav : AppCompatActivity() {
         val clases2 = mapOf(
             R.id.inicio to MainActivity::class.java,
             R.id.usuario to UserProfileActivity::class.java,
-            R.id.pedidos to MainActivity::class.java,
-            R.id.comprar to MainActivity::class.java
+            R.id.pedidos to MainActivity_Compras_Anteriores::class.java,
+            R.id.comprar to MainActivity_Cesta::class.java
         )
 
         //Declara la que clase redirege cada boton del menu
         val clases = mapOf(
             R.id.inicio to MainActivity::class.java,
             R.id.usuario to Login::class.java,
-            R.id.pedidos to MainActivity::class.java,
-            R.id.comprar to MainActivity::class.java
+            R.id.pedidos to MainActivity_Compras_Anteriores::class.java,
+            R.id.comprar to MainActivity_Cesta::class.java
         )
         //Guarda clase en la que esta actualmente
         var seleccionado : Int = 0

@@ -23,13 +23,12 @@ class MainActivity : AppCompatActivity() {
 
 
         menu.setOnClickListener {
-            /*val intent = Intent(this, MenuActivity::class.java)
-            startActivity(intent)*/
+
         }
 
         delivery.setOnClickListener {
-            /*val intent = Intent(this, DeliveryActivity::class.java)
-            startActivity(intent)*/
+            val intent = Intent(this, MainActivity_Pagina_Tienda::class.java)
+            startActivity(intent)
         }
 
         providers.setOnClickListener {
