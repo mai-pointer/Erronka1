@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@color/colorgreyDark"
     tools:context=".MainActivity_Compras_Anteriores">
 
 
@@ -47,6 +47,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/catamaran_black"
                         android:text="Compra del 12/09/2023"
                         android:textColor="@color/colorAccent"
                         android:textSize="18sp" />
@@ -60,11 +61,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="43dp"
+                        android:fontFamily="@font/catamaran_black"
                         android:text="Precio: $24,90"
                         android:textColor="@color/colorPrimary" />
 
                 </LinearLayout>
-
 
 
             </LinearLayout>
@@ -89,6 +90,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/catamaran_black"
                         android:text="Compra del 09/09/2023"
                         android:textColor="@color/colorAccent"
                         android:textSize="18sp" />
@@ -102,6 +104,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="43dp"
+                        android:fontFamily="@font/catamaran_black"
                         android:text="Precio: $11,95"
                         android:textColor="@color/colorPrimary" />
 

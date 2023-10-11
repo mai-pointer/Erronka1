@@ -61,6 +61,14 @@
     <string name="btn_tienda_3">Entrantes</string>
     <string name="btn_tienda_4">Gose sorpresa</string>
     <string name="irten">Irten</string>
+    <string name="denak_zure_gertu">Denak zure gertu</string>
+    <string name="gure_ornitzileak">Gure ornitzileak</string>
+    <string name="logo">logo</string>
+    <string name="sasoikoa">Sasoikoa</string>
+    <string name="ikusi_zer_daukagun_menuan">Ikusi zer daukagun menuan</string>
+    <string name="eskatu_etxera">Eskatu etxera</string>
+    <string name="guk_eramango_dizugu">Guk eramango dizugu</string>
+    <string name="janaria_ez_doa_zaborrera">Janaria ez doa zaborrera</string>
 
 
 </resources>

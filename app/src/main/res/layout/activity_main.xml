@@ -11,23 +11,44 @@
         android:id="@+id/topNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal"
-        android:paddingStart="50dp"
-        android:paddingEnd="50dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp">
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Space
+            android:layout_width="81dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="97dp"
-            android:layout_height="60dp"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/logo"
             app:srcCompat="@drawable/logo" />
 
+        <Space
+            android:layout_width="38dp"
+            android:layout_height="30dp"
+            android:layout_weight="1" />
+
         <SearchView
-            android:layout_width="211dp"
+            android:layout_width="234dp"
+            android:layout_height="49dp"
+            android:background="@drawable/rounded_button"
+            android:scaleType="fitCenter">
+
+        </SearchView>
+
+        <Space
+            android:layout_width="77dp"
             android:layout_height="match_parent"
-            android:background="@drawable/rounded_button" />
+            android:layout_weight="1" />
+
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,15 +82,20 @@
             app:layout_constraintWidth_percent="0.9">
 
             <ImageView
-                android:layout_width="86dp"
+                android:layout_width="72dp"
                 android:layout_height="75dp"
                 android:contentDescription="@string/menuicon"
                 android:src="@drawable/menu" />
 
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1" />
+
             <LinearLayout
-                android:layout_width="188dp"
+                android:layout_width="187dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="0dp"
                 android:gravity="start"
                 android:orientation="vertical">
 
@@ -80,7 +106,7 @@
                     android:layout_marginTop="0dp"
                     android:fontFamily="@font/catamaran_black"
                     android:includeFontPadding="false"
-                    android:text="Sasoikoa"
+                    android:text="@string/sasoikoa"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorAccent"
                     android:textSize="24sp" />
@@ -90,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="Ikusi zer daukagun menuan"
+                    android:text="@string/ikusi_zer_daukagun_menuan"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
@@ -114,9 +140,9 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="172dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="0dp"
                 android:gravity="start"
                 android:orientation="vertical"
                 tools:ignore="TextSizeCheck">
@@ -128,7 +154,7 @@
                     android:layout_marginTop="0dp"
                     android:fontFamily="@font/catamaran_black"
                     android:includeFontPadding="false"
-                    android:text="Eskatu etxera"
+                    android:text="@string/eskatu_etxera"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorAccent"
                     android:textSize="24sp" />
@@ -138,11 +164,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="Guk eramango dizugu"
+                    android:text="@string/guk_eramango_dizugu"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
             </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1" />
 
             <ImageView
                 android:layout_width="85dp"
@@ -153,10 +184,71 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/btnZeroWaste"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_button"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnProviders"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.9">
+
+
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:gravity="start"
+                android:orientation="vertical"
+                tools:ignore="TextSizeCheck">
+
+                <TextView
+                    android:id="@+id/zeroWasteTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:fontFamily="@font/catamaran_black"
+                    android:includeFontPadding="false"
+                    android:text="Zero waste"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/zeroWasteDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/catamaran"
+                    android:text="@string/janaria_ez_doa_zaborrera"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="78dp"
+                android:layout_height="70dp"
+                android:contentDescription="@string/menuicon"
+                android:src="@drawable/savetheplanet" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/btnProviders"
             android:layout_width="0dp"
             android:layout_height="100dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/rounded_button"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -173,10 +265,15 @@
                 android:contentDescription="@string/farmericon"
                 android:src="@drawable/farmer" />
 
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
             <LinearLayout
                 android:layout_width="188dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="0dp"
                 android:gravity="start"
                 android:orientation="vertical"
                 tools:ignore="TextSizeCheck">
@@ -188,7 +285,7 @@
                     android:layout_marginTop="0dp"
                     android:fontFamily="@font/catamaran_black"
                     android:includeFontPadding="false"
-                    android:text="Gure ornitzileak"
+                    android:text="@string/gure_ornitzileak"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorAccent"
                     android:textSize="24sp" />
@@ -198,67 +295,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="Denak zure gertu"
+                    android:text="@string/denak_zure_gertu"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/btnZeroWaste"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/rounded_button"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnProviders"
-            app:layout_constraintVertical_weight="1"
-            app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.9">
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:gravity="start"
-                android:orientation="vertical"
-                tools:ignore="TextSizeCheck">
-
-                <TextView
-                    android:id="@+id/zeroWasteTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
-                    android:fontFamily="@font/catamaran_black"
-                    android:includeFontPadding="false"
-                    android:text="Zero waste"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/zeroWasteDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/catamaran"
-                    android:text="Janaria ez doa zaborrera"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="78dp"
-                android:layout_height="70dp"
-                android:contentDescription="@string/menuicon"
-                android:src="@drawable/savetheplanet" />
-
-        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

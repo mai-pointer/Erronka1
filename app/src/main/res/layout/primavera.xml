@@ -47,7 +47,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="387dp"
         android:layout_height="187dp"
-        android:background="@color/white"
+        android:background="@drawable/rounded_button"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,9 +66,10 @@
                 android:text="En esta época acostumbramos a ofrecer a nuestros clientes los siguientes alimentos "
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.028"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintVertical_bias="0.729" />
 
             <TextView
                 android:id="@+id/textView"
@@ -77,9 +78,10 @@
                 android:text="PRIMAVERA"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.111"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.115" />
+                app:layout_constraintVertical_bias="0.111" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout

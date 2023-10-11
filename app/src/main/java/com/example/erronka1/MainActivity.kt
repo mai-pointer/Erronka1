@@ -9,6 +9,7 @@ import com.example.erronka1.R.*
 import com.google.firebase.auth.FirebaseAuth
 import java.util.Calendar
 import java.util.Date
+import android.widget.SearchView;
 
 class MainActivity : AppCompatActivity() {
     private lateinit var menu: LinearLayout
