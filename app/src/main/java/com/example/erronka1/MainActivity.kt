@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 else -> {
-                    val intent = Intent(this, PantallaInvierno::class.java)
+                    val intent = Intent(this, PantallaOtoño::class.java)
                     startActivity(intent)
                 }
             }
@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
 
     fun obtenerFechaActual(): Int {
         val calendario = Calendar.getInstance()
-        val mes = calendario.get(Calendar.MONTH)
+        val mes = calendario.get(Calendar.MONTH) + 1
         return mes
     }
 }
