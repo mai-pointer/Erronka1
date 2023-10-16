@@ -12,6 +12,9 @@
         android:id="@+id/horizontalScrollView2"
         android:layout_width="410dp"
         android:layout_height="64dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +27,7 @@
             android:id="@+id/button_container"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@color/colorgrey"
+            android:background="@drawable/rounded_button"
             android:orientation="horizontal">
 
 
@@ -33,18 +36,17 @@
                 android:layout_width="195dp"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                android:fontFamily="@font/catamaran_black"
                 android:text="@string/btn_tienda_1"
                 tools:layout_editor_absoluteX="330dp"
+                tools:layout_editor_absoluteY="1000dp"
 
-                tools:layout_editor_absoluteY="1000dp" />
+                />
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                android:fontFamily="@font/catamaran_black"
                 android:text="@string/btn_tienda_2"
                 tools:layout_editor_absoluteX="33dp"
                 tools:layout_editor_absoluteY="1000dp" />
@@ -55,7 +57,6 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                android:fontFamily="@font/catamaran_black"
                 android:text="@string/btn_tienda_3"
                 tools:layout_editor_absoluteX="33dp"
                 tools:layout_editor_absoluteY="1000dp" />
@@ -65,7 +66,6 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                android:fontFamily="@font/catamaran_black"
                 android:text="@string/btn_tienda_4"
                 tools:layout_editor_absoluteX="33dp"
                 tools:layout_editor_absoluteY="1000dp" />
@@ -96,7 +96,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="197dp"
+                android:layout_height="215dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/rounded_button"
                 android:gravity="center_vertical"
@@ -114,21 +114,21 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/catamaran_black"
-                        android:text="Título 1"
+                        android:text="Ensalada cesar con nueces"
                         android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="113dp"
-                        android:text="Informacion Informacion Informacion Informacion"
-                        android:textColor="@color/colorPrimary" />
+                        android:text="-La conocida por todos ensalada cesar con un toque especial de la casa"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp" />/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="43dp"
-                        android:text="Precio: $100"
+                        android:text="Precio: $8,95"
                         android:textColor="@color/colorPrimary" />
 
                 </LinearLayout>
@@ -143,13 +143,12 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="127dp"
-                        android:src="@drawable/prueba1" />
+                        android:src="@drawable/ensalada" />
 
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:minHeight="48dp"
-                        android:text="Botón 1"
+                        android:text="Añadir"
                         android:textColor="#FFFFFF" />
 
                 </LinearLayout>
@@ -158,7 +157,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="197dp"
+                android:layout_height="207dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/rounded_button"
                 android:gravity="center_vertical"
@@ -175,22 +174,22 @@
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/catamaran_black"
-                        android:text="Título 1"
+                        android:layout_height="37dp"
+                        android:text="Tortelini con salsa de queso trufado"
                         android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="113dp"
-                        android:text="Informacion Informacion Informacion Informacion"
-                        android:textColor="@color/colorPrimary" />
+                        android:text="-Traido desde Italia un plato tipico hecho con productos locales, rellenos de carne con salsa de queso de cabrales y trufas  "
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="43dp"
-                        android:text="Precio: $100"
+                        android:text="Precio: $12,95"
                         android:textColor="@color/colorPrimary" />
 
                 </LinearLayout>
@@ -205,14 +204,15 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="127dp"
-                        android:src="@drawable/prueba1" />
+                        android:src="@drawable/tortelini" />
+
 
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:minHeight="48dp"
-                        android:text="Botón 1"
+                        android:text="Añadir"
                         android:textColor="#FFFFFF" />
+
 
                 </LinearLayout>
 
@@ -222,14 +222,5 @@
 
     </ScrollView>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navMenu"
-        android:layout_width="0dp"
-        android:layout_height="75dp"
-        android:background="@drawable/roundednav"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="VisualLintBottomNav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
