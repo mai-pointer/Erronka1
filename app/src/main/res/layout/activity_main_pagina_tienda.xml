@@ -10,12 +10,8 @@
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView2"
-        android:layout_width="410dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
+        android:layout_width="416dp"
+        android:layout_height="61dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -28,10 +24,8 @@
             android:id="@+id/button_container"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@drawable/rounded_button"
+            android:background="@color/colorgrey"
             android:orientation="horizontal">
-
-
 
 
             <Button
@@ -39,12 +33,12 @@
                 android:layout_width="195dp"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
+                android:fontFamily="@font/catamaran_black"
                 android:text="@string/btn_tienda_1"
                 tools:layout_editor_absoluteX="330dp"
-                tools:layout_editor_absoluteY="1000dp"
 
 
-                />
+                tools:layout_editor_absoluteY="1000dp" />
 
 
             <Button
@@ -52,38 +46,33 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
+                android:fontFamily="@font/catamaran_black"
                 android:text="@string/btn_tienda_2"
                 tools:layout_editor_absoluteX="33dp"
                 tools:layout_editor_absoluteY="1000dp" />
-
-
-
 
             <Button
                 android:id="@+id/button3"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
+                android:fontFamily="@font/catamaran_black"
                 android:text="@string/btn_tienda_3"
                 tools:layout_editor_absoluteX="33dp"
                 tools:layout_editor_absoluteY="1000dp" />
-
 
             <Button
                 android:id="@+id/button4"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
+                android:fontFamily="@font/catamaran_black"
                 android:text="@string/btn_tienda_4"
                 tools:layout_editor_absoluteX="33dp"
                 tools:layout_editor_absoluteY="1000dp" />
 
 
-
-
         </LinearLayout>
-
-
 
 
     </HorizontalScrollView>
@@ -91,11 +80,11 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="403dp"
-        android:layout_height="668dp"
+        android:layout_width="413dp"
+        android:layout_height="459dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.875"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2"
         app:layout_constraintVertical_bias="0.0">
@@ -108,8 +97,6 @@
             android:padding="16dp">
 
 
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="215dp"
@@ -118,8 +105,6 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="16dp">
-
-
 
 
                 <LinearLayout
@@ -134,6 +119,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/catamaran_black"
                         android:text="Ensalada cesar con nueces"
                         android:textColor="@color/colorAccent"
                         android:textSize="16sp" />
@@ -141,8 +127,8 @@
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="113dp"
-                        android:text="-La conocida por todos ensalada cesar con un toque especial de la casa"
+                        android:layout_height="81dp"
+                        android:text="La clásica ensalada cesar con un toque especial de la casa"
                         android:textColor="@color/colorPrimary"
                         android:textSize="12sp" />/>
 
@@ -150,7 +136,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="43dp"
-                        android:text="Precio: $8,95"
+                        android:text="Prezioa: 9 €"
                         android:textColor="@color/colorPrimary" />
 
 
@@ -170,10 +156,10 @@
                         android:layout_height="127dp"
                         android:src="@drawable/ensalada" />
 
-
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_button_green"
                         android:minHeight="48dp"
                         android:text="Añadir"
                         android:textColor="#FFFFFF" />
@@ -195,8 +181,6 @@
                 android:padding="16dp">
 
 
-
-
                 <LinearLayout
                     android:layout_width="165dp"
                     android:layout_height="178dp"
@@ -207,7 +191,8 @@
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="37dp"
+                        android:layout_height="56dp"
+                        android:fontFamily="@font/catamaran_black"
                         android:text="Tortelini con salsa de queso trufado"
                         android:textColor="@color/colorAccent"
                         android:textSize="16sp" />
@@ -215,8 +200,8 @@
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="113dp"
-                        android:text="-Traido desde Italia un plato tipico hecho con productos locales, rellenos de carne con salsa de queso de cabrales y trufas  "
+                        android:layout_height="89dp"
+                        android:text="Plato tipico hecho con productos locales, rellenos de carne con salsa de queso y trufas"
                         android:textColor="@color/colorPrimary"
                         android:textSize="12sp" />
 
@@ -224,7 +209,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="43dp"
-                        android:text="Precio: $12,95"
+                        android:text="Prezioa: 13 €"
                         android:textColor="@color/colorPrimary" />
 
 
@@ -241,18 +226,21 @@
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="127dp"
+                        android:layout_height="118dp"
                         android:src="@drawable/tortelini" />
 
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="11dp" />
 
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_button_green"
                         android:minHeight="48dp"
                         android:text="Añadir"
                         android:textColor="#FFFFFF" />
-
-
 
 
                 </LinearLayout>
@@ -265,7 +253,6 @@
 
 
     </ScrollView>
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navMenu"
