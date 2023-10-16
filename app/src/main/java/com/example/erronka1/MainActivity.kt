@@ -9,6 +9,7 @@ import com.example.erronka1.R.*
 import com.google.firebase.auth.FirebaseAuth
 import java.util.Calendar
 import java.util.Date
+import android.widget.SearchView;
 
 class MainActivity : AppCompatActivity() {
     private lateinit var menu: LinearLayout
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 else -> {
-                    val intent = Intent(this, PantallaInvierno::class.java)
+                    val intent = Intent(this, PantallaOtoño::class.java)
                     startActivity(intent)
                 }
             }
@@ -70,7 +71,7 @@ class MainActivity : AppCompatActivity() {
 
     fun obtenerFechaActual(): Int {
         val calendario = Calendar.getInstance()
-        val mes = calendario.get(Calendar.MONTH)
+        val mes = calendario.get(Calendar.MONTH) + 1
         return mes
     }
 }
