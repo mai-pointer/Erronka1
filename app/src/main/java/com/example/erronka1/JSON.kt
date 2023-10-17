@@ -8,9 +8,14 @@ import java.lang.reflect.Type
 class JSON {
     companion object {
         inline fun <reified T> Get(context: Context, archivo: Int): List<T> {
-            val jsonStr = context.resources.openRawResource(archivo).bufferedReader().use { it.readText() }
-            val tipo: Type = object : TypeToken<List<T>>() {}.type
-            return Gson().fromJson(jsonStr, tipo)
+            try {
+                val jsonStr = context.resources.openRawResource(archivo).bufferedReader().use { it.readText() }
+                val tipo: Type = object : TypeToken<List<T>>() {}.type
+                return Gson().fromJson(jsonStr, tipo)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                return emptyList()
+            }
         }
     }
 }

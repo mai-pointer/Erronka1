@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,51 +16,47 @@ import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity_Pagina_Tienda : AppCompatActivity() {
-
-    ///ELIMINAR******************************************
     // Objetos GSorpresa
-    val sorpresa1 = GSorpresa(
-        id = 1,
-        title = "Regalo Sorpresa 1",
-        desc = "Un regalo sorpresa emocionante",
-        price = 9.99,
-        pic = "sorpresa1.jpg"
+    val sorpresa = listOf<GSorpresa>(
+//        GSorpresa(
+//            id = 1,
+//            title = "Caja Misteriosa Individual",
+//            desc = "Contiene comida aleatoria para que una persona pueda comer",
+//            price = 4.99,
+//        ),
+//        GSorpresa(
+//            id = 2,
+//            title = "Caja Misteriosa Familiar",
+//            desc = "Contiene comida aleatoria para que cuatro personas puedan comer",
+//            price = 14.99,
+//        )
     )
-
-    val sorpresa2 = GSorpresa(
-        id = 2,
-        title = "Caja Misteriosa",
-        desc = "¡Nunca sabrás lo que hay dentro!",
-        price = 14.99,
-        pic = "misterio.jpg"
-    )
-
     // Objetos Food
     val comida = listOf<Food>(
-        Food(
-            id = 101,
-            title = "Pizza Margarita",
-            desc = "Una deliciosa pizza con tomate, mozzarella y albahaca",
-            price = 10.99,
-            pic = "pizza.jpg",
-            category = Food.Category.MAIN,
-            season = Food.Seasons.SUMMER
-        ),
-        Food(
-            id = 102,
-            title = "Helado de Fresa",
-            desc = "Un postre refrescante perfecto para el verano",
-            price = 4.99,
-            pic = "helado.jpg",
-            category = Food.Category.STARTER,
-            season = Food.Seasons.SUMMER
-        )
+//        Food(
+//            id = 101,
+//            title = "Pizza Margarita",
+//            desc = "Una deliciosa pizza con tomate, mozzarella y albahaca",
+//            price = 10.99,
+//            pic = "pizza.jpg",
+//            category = Food.Category.MAIN,
+//            season = Food.Seasons.SUMMER
+//        ),
+//        Food(
+//            id = 102,
+//            title = "Helado de Fresa",
+//            desc = "Un postre refrescante perfecto para el verano",
+//            price = 4.99,
+//            pic = "helado.jpg",
+//            category = Food.Category.STARTER,
+//            season = Food.Seasons.SUMMER
+//        )
     )
-    ///ELIMINAR******************************************
 
     val user = FirebaseAuth.getInstance().currentUser
+    val cantidadRecomendaciones = 5;
     val botones = listOf(
-        BotonesInfo(R.id.primeros_platos, Food.Category.STARTER),
+        BotonesInfo(R.id.primeros_platos, Food.Category.MAIN),
         BotonesInfo(R.id.entrantes_platos, Food.Category.STARTER)
     )
 
@@ -70,83 +67,39 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
 
         MenuNav.Crear(this, user)
 
+        //Boton de recomendaciones
+        Recomendar()
+        findViewById<Button>(R.id.recomendaciones_platos).setOnClickListener{
+            Recomendar()
+        }
+
+        //ListView de cada categoria de platos platos
         for (boton in botones){
             findViewById<Button>(boton.boton).setOnClickListener{
-                cargarList(boton.categoria)
+                val comidaFiltrada = comida.filter { it.category == boton.categoria }
+
+                val adapter = FoodAdapter(this, comidaFiltrada)
+                findViewById<ListView>(R.id.lista_platos).adapter = adapter
             }
         }
+
+        //Boton de GSorpresa
+        findViewById<Button>(R.id.gose_platos).setOnClickListener{
+            val adapter = GSorpresaAdapter(this, sorpresa)
+            findViewById<ListView>(R.id.lista_platos).adapter = adapter
+        }
+
     }
 
-    fun cargarList(categoria : Food.Category){
-        val comidaFiltrada = comida.filter { it.category == categoria }
-
+    fun Recomendar(){
+        val comidaFiltrada = comida.shuffled().take(if (comida.size >= cantidadRecomendaciones) cantidadRecomendaciones else comida.size)
         val adapter = FoodAdapter(this, comidaFiltrada)
         findViewById<ListView>(R.id.lista_platos).adapter = adapter
     }
+
+    data class BotonesInfo(
+        var boton: Int,
+        var categoria: Food.Category
+    )
 }
 
-class FoodAdapter(private val context: Context, private val foodList: List<Food>) : BaseAdapter() {
-    //Funciones del adaptador
-    override fun getCount(): Int {
-        return foodList.size
-    }
-    override fun getItem(position: Int): Any {
-        return foodList[position]
-    }
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
-
-    //Edita la view
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-
-        //Declara la view y el alamcen de los datos
-        val view: View
-        val elementos: Elementos
-
-        if (convertView == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.platos_tienda, parent, false)
-            elementos = Elementos() // declara la clase
-
-            // Obtener las vistas del diseño
-            elementos.textTitle = view.findViewById(R.id.titulo_platos)
-            elementos.textDescription = view.findViewById(R.id.descripcion_platos)
-            elementos.textPrice = view.findViewById(R.id.precio_platos)
-            elementos.imageFood = view.findViewById(R.id.imagen_platos)
-            elementos.buttonAdd = view.findViewById(R.id.boton_platos)
-
-            view.tag = elementos
-        } else {
-            view = convertView
-            elementos = view.tag as Elementos
-        }
-
-        // Obtener el objeto Food en esta posición
-        val food = foodList[position]
-
-        // Establecer los valores en las vistas
-        elementos.textTitle.text = food.title
-        elementos.textDescription.text = food.desc
-        elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
-        // *** Aquí debes cargar la imagen en holder.imageFood ***
-        elementos.buttonAdd.setOnClickListener {
-            // *** Agregar lógica para manejar el botón "Añadir" ***
-        }
-
-        return view
-    }
-
-    //Clase para guardar los elementos de la view
-    private class Elementos {
-        lateinit var textTitle: TextView
-        lateinit var textDescription: TextView
-        lateinit var textPrice: TextView
-        lateinit var imageFood: ImageView
-        lateinit var buttonAdd: Button
-    }
-}
-
-data class BotonesInfo(
-    var boton: Int,
-    var categoria: Food.Category
-)

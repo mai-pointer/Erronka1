@@ -11,7 +11,6 @@ interface Product {
     val title: String
     val desc: String
     val price: Double
-    val pic: String
 }
 
 data class GSorpresa(
@@ -19,7 +18,6 @@ data class GSorpresa(
     override val title: String,
     override val desc: String,
     override val price: Double,
-    override val pic: String
 ) : Product
 
 data class Food(
@@ -27,8 +25,8 @@ data class Food(
     override val title: String,
     override val desc: String,
     override val price: Double,
-    override val pic: String,
 
+    val pic: String,
     val category: Category,
     val season: Seasons
 ) : Product {

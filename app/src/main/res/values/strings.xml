@@ -73,6 +73,9 @@
     <!-- platos -->
     <string name="precio">Precio</string>
 
+    <!-- Adaptadores -->
+    <string name="quitar">Quitar</string>
+    <string name="añadir">Añadir</string>
 
 
 </resources>
