@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.annotation.SuppressLint
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,11 +22,8 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 
 class MainActivity_Pagina_Tienda : AppCompatActivity() {
-    private lateinit var db: TextView
 
-    ///ELIMINAR******************************************
-    // Objetos GSorpresa
-    val sorpresa1 = GSorpresa(
+    /*val sorpresa1 = GSorpresa(
         id = 1,
         title = "Regalo Sorpresa 1",
         desc = "Un regalo sorpresa emocionante",
@@ -42,34 +37,14 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
         desc = "¡Nunca sabrás lo que hay dentro!",
         price = 14.99,
         pic = "misterio.jpg"
-    )
+    )*/
 
     // Objetos Food
-    val comida = listOf<Food>(
-        Food(
-            id = 101,
-            title = "Pizza Margarita",
-            desc = "Una deliciosa pizza con tomate, mozzarella y albahaca",
-            price = 10.99,
-            pic = "pizza.jpg",
-            category = Food.Category.MAIN,
-            season = Food.Seasons.SUMMER
-        ),
-        Food(
-            id = 102,
-            title = "Helado de Fresa",
-            desc = "Un postre refrescante perfecto para el verano",
-            price = 4.99,
-            pic = "helado.jpg",
-            category = Food.Category.STARTER,
-            season = Food.Seasons.SUMMER
-        )
-    )
-    ///ELIMINAR******************************************
+    val comida = mutableListOf<Food>()
 
     val user = FirebaseAuth.getInstance().currentUser
     val botones = listOf(
-        BotonesInfo(R.id.primeros_platos, Food.Category.STARTER),
+        BotonesInfo(R.id.primeros_platos, Food.Category.MAIN),
         BotonesInfo(R.id.entrantes_platos, Food.Category.STARTER)
     )
 
@@ -77,8 +52,6 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_pagina_tienda)
-
-        db = findViewById(R.id.textView3)
 
         val user = FirebaseAuth.getInstance().currentUser
         MenuNav.Crear(this, user)
@@ -93,9 +66,25 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
                     val foodCategory = foodSnapshot.child("food_category").getValue(String::class.java)
                     val foodDesc = foodSnapshot.child("food_desc").getValue(String::class.java)
                     val foodPic = foodSnapshot.child("food_pic").getValue(String::class.java)
-                    val foodPrice = foodSnapshot.child("food_price").getValue(Int::class.java)
+                    val foodPrice = foodSnapshot.child("food_price").getValue(Double::class.java)
                     val foodSeason = foodSnapshot.child("food_season").getValue(String::class.java)
                     val foodTitle = foodSnapshot.child("food_title").getValue(String::class.java)
+
+                    Log.d(TAG, "Food ID: $foodId")
+                    Log.d(TAG, "Food Category: $foodCategory")
+                    Log.d(TAG, "Food Description: $foodDesc")
+                    Log.d(TAG, "Food Picture: $foodPic")
+                    Log.d(TAG, "Food Price: $foodPrice")
+                    Log.d(TAG, "Food Season: $foodSeason")
+                    Log.d(TAG, "Food Title: $foodTitle")
+
+                    val food = Food(foodId.toString(), foodTitle.toString(), foodDesc.toString(), foodPrice, foodPic.toString(), Food.Category.valueOf(foodCategory.toString()), Food.Seasons.valueOf(foodSeason.toString()))
+                    comida.add(food)
+                }
+                for (boton in botones){
+                    findViewById<Button>(boton.boton).setOnClickListener{
+                        cargarList(boton.categoria)
+                    }
                 }
             }
 
@@ -104,13 +93,6 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
                 println("Error al leer desde la base de datos: ${databaseError.message}")
             }
         })
-        MenuNav.Crear(this, user)
-
-        for (boton in botones){
-            findViewById<Button>(boton.boton).setOnClickListener{
-                cargarList(boton.categoria)
-            }
-        }
     }
 
     fun cargarList(categoria : Food.Category){
@@ -135,7 +117,6 @@ class FoodAdapter(private val context: Context, private val foodList: List<Food>
 
     //Edita la view
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-
         //Declara la view y el alamcen de los datos
         val view: View
         val elementos: Elementos

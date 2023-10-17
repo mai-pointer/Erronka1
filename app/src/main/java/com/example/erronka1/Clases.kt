@@ -7,36 +7,36 @@ data class Proveedor(
 )
 
 interface Product {
-    val id: Int
+    val id: String
     val title: String
     val desc: String
-    val price: Double
+    val price: Double?
     val pic: String
 }
 
 data class GSorpresa(
-    override val id: Int,
+    override val id: String,
     override val title: String,
     override val desc: String,
-    override val price: Double,
+    override val price: Double?,
     override val pic: String
 ) : Product
 
 data class Food(
-    override val id: Int,
+    override val id: String,
     override val title: String,
     override val desc: String,
-    override val price: Double,
+    override val price: Double?,
     override val pic: String,
 
     val category: Category,
     val season: Seasons
 ) : Product {
     enum class Seasons(private val displayName: String) {
-        SPRING("Primavera"),
-        SUMMER("Verano"),
-        AUTUMN("Otoño"),
-        WINTER("Invierno");
+        SPRING("spring"),
+        SUMMER("summer"),
+        AUTUMN("fall"),
+        WINTER("winter");
 
         override fun toString(): String {
             return displayName
@@ -44,9 +44,9 @@ data class Food(
     }
 
     enum class Category(private val displayName: String) {
-        STARTER("Entrante"),
-//        DESSERT("Postre"),
-        MAIN("Plato principal");
+        STARTER("starter"),
+        DESSERT("dessert"),
+        MAIN("main");
 
         override fun toString(): String {
             return displayName
