@@ -22,7 +22,7 @@ import com.example.erronka1.Proveedor as Proveedor1
 class Proveedores : AppCompatActivity() {
 
     //Variables
-    var colorOriginal: Drawable? = null
+//    var colorOriginal: Drawable? = null
     var seleccionado = -1
 
     @SuppressLint("MissingInflatedId")
@@ -45,13 +45,13 @@ class Proveedores : AppCompatActivity() {
         // Agregar un OnItemClickListener al ListView
         listView.setOnItemClickListener { _, _, cont, _ ->
 
-            if (colorOriginal == null){
-                colorOriginal = listView.getChildAt(cont).background
-                Log.i("Error-TX", colorOriginal.toString() + "----" + listView.getChildAt(cont).background)
-            }
+//            if (colorOriginal == null){
+//                colorOriginal = listView.getChildAt(cont).background
+//                Log.i("Error-TX", colorOriginal.toString() + "----" + listView.getChildAt(cont).background)
+//            }
+//            if(seleccionado >= 0) listView.getChildAt(seleccionado).background = colorOriginal
+//            listView.getChildAt(cont).background = ColorDrawable(getColor(R.color.colorgrey))
 
-            if(seleccionado >= 0) listView.getChildAt(seleccionado).background = colorOriginal
-            listView.getChildAt(cont).background = ColorDrawable(getColor(R.color.colorgrey))
             seleccionado = cont
 
             //Cambia la tarjeta
@@ -60,42 +60,5 @@ class Proveedores : AppCompatActivity() {
             findViewById<TextView>(R.id.listaProvTxt).text = " - ${proveedores[cont].productos.joinToString(separator = "\n - ")}"
         }
 
-    }
-}
-
-
-//Adaptador del proveedor
-
-class ProveedorAdapter(private val context: Context, private val proveedores: List<Proveedor1>) : BaseAdapter() {
-
-    override fun getCount(): Int = proveedores.size
-
-    override fun getItem(position: Int): Any = proveedores[position]
-
-    override fun getItemId(position: Int): Long = position.toLong()
-
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view: View
-        val viewHolder: ViewHolder
-
-        if (convertView == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.list, parent, false)
-            viewHolder = ViewHolder(view)
-            view.tag = viewHolder
-        } else {
-            view = convertView
-            viewHolder = view.tag as ViewHolder
-        }
-
-        val proveedor = getItem(position) as Proveedor1
-
-        viewHolder.providerName.text = proveedor.nombre
-
-        return view
-    }
-
-    private class ViewHolder(view: View) {
-        val providerImage: ImageView = view.findViewById(R.id.provider_image)
-        val providerName: TextView = view.findViewById(R.id.provider_name)
     }
 }
