@@ -76,6 +76,6 @@
     <!-- Adaptadores -->
     <string name="quitar">Quitar</string>
     <string name="añadir">Añadir</string>
-
+    <string name="pedido_titulo">Compra del </string>
 
 </resources>

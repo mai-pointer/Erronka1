@@ -63,7 +63,7 @@
 
             <Button
                 android:id="@+id/gose_platos"
-                android:layout_width="200dp"
+                android:layout_width="235dp"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/catamaran_black"

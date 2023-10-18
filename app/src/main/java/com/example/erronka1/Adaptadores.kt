@@ -10,6 +10,64 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 
+class OrderAdapter(private val context: Context, private val lista: List<Order>, private val tipo: Int = 0) : BaseAdapter() {
+    //Funciones del adaptador
+    override fun getCount(): Int {
+        return lista.size
+    }
+    override fun getItem(position: Int): Any {
+        return lista[position]
+    }
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+
+    //Edita la view
+    @SuppressLint("ResourceType")
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+
+        //Declara la view y la clase del layout
+        val view: View
+        val layout: ViewLayot
+
+        //En caso de que no tenga un layout
+        if (convertView == null) {
+            view = LayoutInflater.from(context).inflate(R.layout.platos_tienda, parent, false) //Asigna la view del layot creado anteriormente
+            layout = ViewLayot() // Le asigna una nueva clase
+
+            // Obtener los elementos del layout
+            layout.tituloTxt = view.findViewById(R.id.precio_pedidos)
+            layout.descripcionTxt = view.findViewById(R.id.lista_pedidos)
+            layout.precioTxt = view.findViewById(R.id.precio_pedidos)
+
+            //Le asigna el layot a la view
+            view.tag = layout
+        }
+        //En caso de que tenga el layot
+        else {
+            view = convertView
+            layout = view.tag as ViewLayot
+        }
+
+        // Obtener el objeto Food en esta posición
+        val elemento = lista[position]
+
+        // Establecer los valores en las vistas
+        layout.tituloTxt.text = "${context.getString(R.string.pedido_titulo)}: ${elemento.data} €"
+        layout.descripcionTxt.text = elemento.desc
+        layout.precioTxt.text = "${context.getString(R.string.precio)}: ${elemento.price} €"
+
+        return view
+    }
+
+    //Almacena los elementos del Layout de la View
+    private class ViewLayot {
+        lateinit var tituloTxt: TextView
+        lateinit var descripcionTxt: TextView
+        lateinit var precioTxt: TextView
+    }
+}
+
 class FoodAdapter(private val context: Context, private val foodList: List<Food>, private val tipo: Int = 0) : BaseAdapter() {
     //Funciones del adaptador
     override fun getCount(): Int {
