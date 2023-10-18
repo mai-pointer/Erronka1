@@ -57,9 +57,16 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
         MenuNav.Crear(this, user)
 
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()
-        val myRef: DatabaseReference = database.getReference("food_db")
+        val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db")
 
-        myRef.addValueEventListener(object : ValueEventListener {
+        /*myRef.child("food_01").child("food_id").get().addOnSuccessListener {
+            Log.i("firebase", "Got value ${it.value}")
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }*/
+
+
+        myRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (foodSnapshot in dataSnapshot.children) {
                     val foodId = foodSnapshot.child("food_id").getValue(String::class.java)
@@ -78,9 +85,11 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
                     Log.d(TAG, "Food Season: $foodSeason")
                     Log.d(TAG, "Food Title: $foodTitle")
 
-                    val food = Food(foodId.toString(), foodTitle.toString(), foodDesc.toString(), foodPrice, foodPic.toString(), Food.Category.valueOf(foodCategory.toString()), Food.Seasons.valueOf(foodSeason.toString()))
+                    val food = Food(foodId, foodTitle, foodDesc, foodPrice, foodPic, Food.Category.from(foodCategory.toString()), Food.Seasons.from(foodSeason.toString()))
                     comida.add(food)
                 }
+
+
                 for (boton in botones){
                     findViewById<Button>(boton.boton).setOnClickListener{
                         cargarList(boton.categoria)
@@ -88,9 +97,8 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
                 }
             }
 
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Manejo de errores
-                println("Error al leer desde la base de datos: ${databaseError.message}")
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("firebase", "Error getting data", error.toException())
             }
         })
     }
