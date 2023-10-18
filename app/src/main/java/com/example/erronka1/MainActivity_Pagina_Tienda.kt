@@ -5,15 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.annotation.SuppressLint
-import android.content.Context
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.BaseAdapter
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.ListView
-import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -43,7 +36,7 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
     val comida = mutableListOf<Food>()
 
     val user = FirebaseAuth.getInstance().currentUser
-    val cantidadRecomendaciones = 5;
+    val cantidadRecomendaciones = 2;
     val botones = listOf(
         BotonesInfo(R.id.primeros_platos, Food.Category.MAIN),
         BotonesInfo(R.id.entrantes_platos, Food.Category.STARTER)
@@ -60,13 +53,7 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()
         val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db")
 
-        /*myRef.child("food_01").child("food_id").get().addOnSuccessListener {
-            Log.i("firebase", "Got value ${it.value}")
-        }.addOnFailureListener{
-            Log.e("firebase", "Error getting data", it)
-        }*/
-
-
+        //Boton comidas
         myRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (foodSnapshot in dataSnapshot.children) {
@@ -78,14 +65,6 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
                     val foodSeason = foodSnapshot.child("food_season").getValue(String::class.java)
                     val foodTitle = foodSnapshot.child("food_title").getValue(String::class.java)
 
-                    Log.d(TAG, "Food ID: $foodId")
-                    Log.d(TAG, "Food Category: $foodCategory")
-                    Log.d(TAG, "Food Description: $foodDesc")
-                    Log.d(TAG, "Food Picture: $foodPic")
-                    Log.d(TAG, "Food Price: $foodPrice")
-                    Log.d(TAG, "Food Season: $foodSeason")
-                    Log.d(TAG, "Food Title: $foodTitle")
-
                     val food = Food(foodId, foodTitle, foodDesc, foodPrice, foodPic, Food.Category.from(foodCategory.toString()), Food.Seasons.from(foodSeason.toString()))
                     comida.add(food)
                 }
@@ -93,9 +72,10 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
 
                 for (boton in botones){
                     findViewById<Button>(boton.boton).setOnClickListener{
-                        cargarList(boton.categoria)
+                        CargarLista(boton.categoria)
                     }
                 }
+                Recomendar()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -103,29 +83,26 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
             }
         })
         //Boton de recomendaciones
-        Recomendar()
         findViewById<Button>(R.id.recomendaciones_platos).setOnClickListener{
             Recomendar()
         }
 
-        //ListView de cada categoria de platos platos
-        for (boton in botones){
-            findViewById<Button>(boton.boton).setOnClickListener{
-                val comidaFiltrada = comida.filter { it.category == boton.categoria }
-
-                val adapter = FoodAdapter(this, comidaFiltrada)
-                findViewById<ListView>(R.id.lista_platos).adapter = adapter
-            }
-        }
-
         //Boton de GSorpresa
         findViewById<Button>(R.id.gose_platos).setOnClickListener{
-            val adapter = GSorpresaAdapter(this, sorpresa)
-            findViewById<ListView>(R.id.lista_platos).adapter = adapter
+//            val adapter = GSorpresaAdapter(this, sorpresa)
+//            findViewById<ListView>(R.id.lista_platos).adapter = adapter
         }
 
     }
 
+    fun CargarLista(categoria: Food.Category){
+        val comidaFiltrada = comida.filter { it.category == categoria }
+
+        val adapter = FoodAdapter(this, comidaFiltrada)
+        findViewById<ListView>(R.id.lista_platos).adapter = adapter
+    }
+
+    //Boton de Recomendados
     fun Recomendar(){
         val comidaFiltrada = comida.shuffled().take(if (comida.size >= cantidadRecomendaciones) cantidadRecomendaciones else comida.size)
         val adapter = FoodAdapter(this, comidaFiltrada)
