@@ -1,6 +1,6 @@
 package com.example.erronka1
 
-import java.time.LocalDate
+import java.util.Date
 
 data class Proveedor(
     var nombre: String,
@@ -17,10 +17,10 @@ interface Product {
 }
 
 data class Order(
-    val id: Int,
-    val desc: String,
-    val price: Double,
-    val data: LocalDate
+    val id: String?,
+    val desc: String?,
+    val price: Double?,
+    val data: Date?
 )
 
 data class GSorpresa(
