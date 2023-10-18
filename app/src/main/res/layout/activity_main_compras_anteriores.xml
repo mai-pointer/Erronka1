@@ -8,114 +8,13 @@
     tools:context=".MainActivity_Compras_Anteriores">
 
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="366dp"
-        android:layout_height="642dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginBottom="28dp"
+    <ListView
+        android:layout_width="390dp"
+        android:layout_height="659dp"
+        app:layout_constraintBottom_toTopOf="@+id/navMenu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.355"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="197dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/rounded_button"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-
-                <LinearLayout
-                    android:layout_width="165dp"
-                    android:layout_height="178dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/catamaran_black"
-                        android:text="Compra del 12/09/2023"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="113dp"
-                        android:text=" -Ensalada cesar con nueces.\n -Tortelini con salsa de queso trufado.\n -Gastos de envio."
-                        android:textColor="@color/colorPrimary" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="43dp"
-                        android:fontFamily="@font/catamaran_black"
-                        android:text="Precio: $24,90"
-                        android:textColor="@color/colorPrimary" />
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="197dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/rounded_button"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-
-                <LinearLayout
-                    android:layout_width="165dp"
-                    android:layout_height="178dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/catamaran_black"
-                        android:text="Compra del 09/09/2023"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="113dp"
-                        android:text="-Ensalada cesar con nueces. \n-Gastos de envio."
-                        android:textColor="@color/colorPrimary" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="43dp"
-                        android:fontFamily="@font/catamaran_black"
-                        android:text="Precio: $11,95"
-                        android:textColor="@color/colorPrimary" />
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navMenu"

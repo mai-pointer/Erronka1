@@ -43,6 +43,7 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
     val comida = mutableListOf<Food>()
 
     val user = FirebaseAuth.getInstance().currentUser
+    val cantidadRecomendaciones = 5;
     val botones = listOf(
         BotonesInfo(R.id.primeros_platos, Food.Category.MAIN),
         BotonesInfo(R.id.entrantes_platos, Food.Category.STARTER)
@@ -101,77 +102,39 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
                 Log.e("firebase", "Error getting data", error.toException())
             }
         })
+        //Boton de recomendaciones
+        Recomendar()
+        findViewById<Button>(R.id.recomendaciones_platos).setOnClickListener{
+            Recomendar()
+        }
+
+        //ListView de cada categoria de platos platos
+        for (boton in botones){
+            findViewById<Button>(boton.boton).setOnClickListener{
+                val comidaFiltrada = comida.filter { it.category == boton.categoria }
+
+                val adapter = FoodAdapter(this, comidaFiltrada)
+                findViewById<ListView>(R.id.lista_platos).adapter = adapter
+            }
+        }
+
+        //Boton de GSorpresa
+        findViewById<Button>(R.id.gose_platos).setOnClickListener{
+            val adapter = GSorpresaAdapter(this, sorpresa)
+            findViewById<ListView>(R.id.lista_platos).adapter = adapter
+        }
+
     }
 
-    fun cargarList(categoria : Food.Category){
-        val comidaFiltrada = comida.filter { it.category == categoria }
-
+    fun Recomendar(){
+        val comidaFiltrada = comida.shuffled().take(if (comida.size >= cantidadRecomendaciones) cantidadRecomendaciones else comida.size)
         val adapter = FoodAdapter(this, comidaFiltrada)
         findViewById<ListView>(R.id.lista_platos).adapter = adapter
     }
+
+    data class BotonesInfo(
+        var boton: Int,
+        var categoria: Food.Category
+    )
 }
 
-class FoodAdapter(private val context: Context, private val foodList: List<Food>) : BaseAdapter() {
-    //Funciones del adaptador
-    override fun getCount(): Int {
-        return foodList.size
-    }
-    override fun getItem(position: Int): Any {
-        return foodList[position]
-    }
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
-
-    //Edita la view
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        //Declara la view y el alamcen de los datos
-        val view: View
-        val elementos: Elementos
-
-        if (convertView == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.platos_tienda, parent, false)
-            elementos = Elementos() // declara la clase
-
-            // Obtener las vistas del diseño
-            elementos.textTitle = view.findViewById(R.id.titulo_platos)
-            elementos.textDescription = view.findViewById(R.id.descripcion_platos)
-            elementos.textPrice = view.findViewById(R.id.precio_platos)
-            elementos.imageFood = view.findViewById(R.id.imagen_platos)
-            elementos.buttonAdd = view.findViewById(R.id.boton_platos)
-
-            view.tag = elementos
-        } else {
-            view = convertView
-            elementos = view.tag as Elementos
-        }
-
-        // Obtener el objeto Food en esta posición
-        val food = foodList[position]
-
-        // Establecer los valores en las vistas
-        elementos.textTitle.text = food.title
-        elementos.textDescription.text = food.desc
-        elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
-        // *** Aquí debes cargar la imagen en holder.imageFood ***
-        elementos.buttonAdd.setOnClickListener {
-            // *** Agregar lógica para manejar el botón "Añadir" ***
-        }
-
-        return view
-    }
-
-    //Clase para guardar los elementos de la view
-    private class Elementos {
-        lateinit var textTitle: TextView
-        lateinit var textDescription: TextView
-        lateinit var textPrice: TextView
-        lateinit var imageFood: ImageView
-        lateinit var buttonAdd: Button
-    }
-}
-
-data class BotonesInfo(
-    var boton: Int,
-    var categoria: Food.Category
-)
