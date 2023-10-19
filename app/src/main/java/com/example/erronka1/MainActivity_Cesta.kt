@@ -9,9 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity_Cesta : AppCompatActivity() {
 
-    val comida = listOf<Food>(
-    )
-
+    val comida = listOf<Food>()
     val user = FirebaseAuth.getInstance().currentUser
 
     @SuppressLint("MissingInflatedId")

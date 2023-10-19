@@ -2,6 +2,7 @@ package com.example.erronka1
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 
-class OrderAdapter(private val context: Context, private val lista: List<Order>, private val tipo: Int = 0) : BaseAdapter() {
+class OrderAdapter(private val context: Context, private val lista: List<Order>) : BaseAdapter() {
     //Funciones del adaptador
     override fun getCount(): Int {
         return lista.size
@@ -32,11 +33,15 @@ class OrderAdapter(private val context: Context, private val lista: List<Order>,
 
         //En caso de que no tenga un layout
         if (convertView == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.platos_tienda, parent, false) //Asigna la view del layot creado anteriormente
+            view = LayoutInflater.from(context).inflate(
+                R.layout.pedidos,
+                parent,
+                false
+            ) //Asigna la view del layot creado anteriormente
             layout = ViewLayot() // Le asigna una nueva clase
 
             // Obtener los elementos del layout
-            layout.tituloTxt = view.findViewById(R.id.precio_pedidos)
+            layout.tituloTxt = view.findViewById(R.id.titulo_pedidos)
             layout.descripcionTxt = view.findViewById(R.id.lista_pedidos)
             layout.precioTxt = view.findViewById(R.id.precio_pedidos)
 
@@ -53,8 +58,8 @@ class OrderAdapter(private val context: Context, private val lista: List<Order>,
         val elemento = lista[position]
 
         // Establecer los valores en las vistas
-        layout.tituloTxt.text = "${context.getString(R.string.pedido_titulo)}: ${elemento.data} €"
-        layout.descripcionTxt.text = elemento.desc
+        layout.tituloTxt.text = "${context.getString(R.string.pedido_titulo)}: ${elemento.data}"
+        layout.descripcionTxt.text = elemento.list
         layout.precioTxt.text = "${context.getString(R.string.precio)}: ${elemento.price} €"
 
         return view
