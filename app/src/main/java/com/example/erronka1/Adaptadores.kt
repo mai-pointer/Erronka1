@@ -41,7 +41,7 @@ class OrderAdapter(private val context: Context, private val lista: List<Order>)
             layout = ViewLayot() // Le asigna una nueva clase
 
             // Obtener los elementos del layout
-            layout.tituloTxt = view.findViewById(R.id.precio_pedidos)
+            layout.tituloTxt = view.findViewById(R.id.titulo_pedidos)
             layout.descripcionTxt = view.findViewById(R.id.lista_pedidos)
             layout.precioTxt = view.findViewById(R.id.precio_pedidos)
 
@@ -58,9 +58,9 @@ class OrderAdapter(private val context: Context, private val lista: List<Order>)
         val elemento = lista[position]
 
         // Establecer los valores en las vistas
-//        layout.tituloTxt.text = "${context.getString(R.string.pedido_titulo)}: ${elemento.data} €"
-//        layout.descripcionTxt.text = elemento.desc
-//        layout.precioTxt.text = "${context.getString(R.string.precio)}: ${elemento.price} €"
+        layout.tituloTxt.text = "${context.getString(R.string.pedido_titulo)}: ${elemento.data}"
+        layout.descripcionTxt.text = elemento.list
+        layout.precioTxt.text = "${context.getString(R.string.precio)}: ${elemento.price} €"
 
         return view
     }
