@@ -2,6 +2,7 @@ package com.example.erronka1
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Bitmap
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -119,16 +120,7 @@ class FoodAdapter(private val context: Context, private val foodList: List<Food>
         elementos.textTitle.text = food.title
         elementos.textDescription.text = food.desc
         elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
-
-        Food.downloadImageFromCloudStorage(context, food.pic ?: "", object : OnImageDownloadListener {
-            override fun onImageDownloaded(bitmap: Bitmap) {
-                elementos.imageFood.setImageBitmap(bitmap)
-            }
-            override fun onDownloadFailed() {
-                // Manejar el caso en que la descarga falla, por ejemplo, establecer una imagen de placeholder
-            }
-        })
-        //elementos.imageFood.setImageBitmap(food.downloadImageFromCloudStorage(context).)
+        elementos.imageFood.setImageBitmap(food.downloadImageFromCloudStorage(context))
 
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()
         val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db")

@@ -68,8 +68,10 @@ data class Food(
         WINTER("winter");
 
         companion object {
-            fun from(findValue: String): Seasons = values().first {it.displayName.equals(findValue, true)}
+            fun from(findValue: String): Seasons =
+                values().first { it.displayName.equals(findValue, true) }
         }
+
         override fun toString(): String {
             return displayName
         }
@@ -81,57 +83,51 @@ data class Food(
         MAIN("main");
 
         companion object {
-            fun from(findValue: String): Category = values().first { it.displayName.equals(findValue, true) }
+            fun from(findValue: String): Category =
+                values().first { it.displayName.equals(findValue, true) }
         }
+
         override fun toString(): String {
             return displayName
         }
     }
 
-    companion object {
-        // La función downloadImageFromCloudStorage toma un contexto y un listener
-        fun downloadImageFromCloudStorage(context: Context,pic: String?, listener: OnImageDownloadListener) {
-            val localFile = File.createTempFile("images", ".jpg")
+    fun downloadImageFromCloudStorage(context: Context): Bitmap? {
+        val localFile = File.createTempFile("images", ".jpg")
+        var bitmap: Bitmap? = null
 
-            // Verificar permisos de acceso al almacenamiento
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
-                ContextCompat.checkSelfPermission(
-                    context,
-                    Manifest.permission.READ_EXTERNAL_STORAGE
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                // No tienes permisos, solicitar permisos aquí si es necesario
-                ActivityCompat.requestPermissions(
-                    context as Activity,
-                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                    1
-                )
-            } else {
-                pic?.let { imageUrl ->
-                    val storage = FirebaseStorage.getInstance()
-                    val storageRef = storage.reference
-                    val imageRef = storageRef.child(imageUrl)
 
-                    imageRef.getFile(localFile)
-                        .addOnSuccessListener {
-                            if (localFile.exists()) {
-                                val bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-                                if (bitmap != null) {
-                                    listener.onImageDownloaded(bitmap)
-                                } else {
-                                    listener.onDownloadFailed()
-                                }
-                            }
+        // Verificar permisos de almacenamiento
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            // Tienes permisos de almacenamiento
+            pic?.let { imageUrl ->
+                val storage = FirebaseStorage.getInstance()
+                val storageRef = storage.reference
+                val imageRef = storageRef.child(imageUrl)
+                imageRef.getFile(localFile)
+                    .addOnSuccessListener {
+                        // La imagen se ha descargado exitosamente y se guarda en localFile
+                        // Puedes realizar cualquier acción adicional aquí
+
+                        if (localFile.exists()) {
+                            bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
+                            // Hacer algo con el bitmap aquí
                         }
-                        .addOnFailureListener { exception ->
-                            // Manejo de errores de Firebase
-                            Log.e("FirebaseError", "Error al descargar la imagen: ${exception.message}")
-                            listener.onDownloadFailed()
-                        }
-                }
+                    }
+                    .addOnFailureListener { exception ->
+                        // Manejo de errores de Firebase
+                        Log.e("FirebaseError", "Error al descargar la imagen: ${exception.message}")
+                    }
             }
+        } else {
+            // No tienes permisos de almacenamiento, solicitar permisos aquí si es necesario
+            // ActivityCompat.requestPermissions(...)
+            Log.e("PermissionError", "Permisos de almacenamiento no otorgados")
         }
+
+        return bitmap
     }
+
 
 
 }
