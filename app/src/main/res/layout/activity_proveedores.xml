@@ -25,10 +25,11 @@
             app:srcCompat="@drawable/captura_de_pantalla_2023_10_06_105639" />-->
 
         <fragment
-            android:layout_width="match_parent"
+            android:layout_width="138dp"
             android:layout_height="match_parent"
             android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"/>
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            tools:layout="@layout/activity_proveedores" />
 
         <ListView
             android:id="@+id/lista"
