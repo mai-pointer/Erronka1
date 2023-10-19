@@ -34,20 +34,24 @@ class MainActivity : AppCompatActivity() {
 
                 1, 2, 3 -> {
                     val intent = Intent(this, PantallaInvierno::class.java)
+                    intent.putExtra("season", getString(R.string.I))
                     startActivity(intent)
                 }
 
                 4, 5, 6 -> {
-                    val intent = Intent(this, PantallaPrimavera::class.java)
+                    val intent = Intent(this, PantallaInvierno::class.java)
+                    intent.putExtra("season", getString(R.string.P))
                     startActivity(intent)
                 }
 
                 7, 8, 9 -> {
-                    val intent = Intent(this, PantallaVerano::class.java)
+                    val intent = Intent(this, PantallaInvierno::class.java)
+                    intent.putExtra("season", getString(R.string.V))
                     startActivity(intent)
                 }
                 else -> {
-                    val intent = Intent(this, PantallaOtoño::class.java)
+                    val intent = Intent(this, PantallaInvierno::class.java)
+                    intent.putExtra("season", getString(R.string.O))
                     startActivity(intent)
                 }
             }

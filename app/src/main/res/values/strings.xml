@@ -70,12 +70,10 @@
     <string name="guk_eramango_dizugu">Guk eramango dizugu</string>
     <string name="janaria_ez_doa_zaborrera">Janaria ez doa zaborrera</string>
 
-    <!-- platos -->
-    <string name="precio">Precio</string>
-
-    <!-- Adaptadores -->
-    <string name="quitar">Quitar</string>
-    <string name="añadir">Añadir</string>
-    <string name="pedido_titulo">Compra del </string>
+    <!-- sasoiak -->
+    <string name="I">NEGUA</string>
+    <string name="P">UDABERRIA</string>
+    <string name="O">UDAZKENA</string>
+    <string name="V">UDA</string>
 
 </resources>
