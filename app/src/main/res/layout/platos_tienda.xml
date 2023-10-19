@@ -70,8 +70,7 @@
                 android:id="@+id/imagen_platos"
                 android:layout_width="match_parent"
                 android:layout_height="127dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/ensalada" />
+                android:layout_margin="10dp" />
 
             <Button
                 android:id="@+id/boton_platos"

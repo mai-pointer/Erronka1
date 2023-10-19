@@ -2,6 +2,8 @@ package com.example.erronka1
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Bitmap
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +11,8 @@ import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class OrderAdapter(private val context: Context, private val lista: List<Order>, private val tipo: Int = 0) : BaseAdapter() {
     //Funciones del adaptador
@@ -112,19 +116,49 @@ class FoodAdapter(private val context: Context, private val foodList: List<Food>
         elementos.textTitle.text = food.title
         elementos.textDescription.text = food.desc
         elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
-        // *** Aquí debes cargar la imagen en holder.imageFood ***
 
-        when (tipo) {
-            0 -> {
+        Food.downloadImageFromCloudStorage(context, food.pic ?: "", object : OnImageDownloadListener {
+            override fun onImageDownloaded(bitmap: Bitmap) {
+                elementos.imageFood.setImageBitmap(bitmap)
+            }
+            override fun onDownloadFailed() {
+                // Manejar el caso en que la descarga falla, por ejemplo, establecer una imagen de placeholder
+            }
+        })
+        //elementos.imageFood.setImageBitmap(food.downloadImageFromCloudStorage(context).)
+
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db")
+        when (food.foodSelected) {
+            false -> {
             elementos.buttonAdd.text = context.getString(R.string.añadir)
             elementos.buttonAdd.setOnClickListener {
                 // Lógica para el botón "AÑADIR"
-            } }
-            1 -> {
+                    food.foodSelected = true
+                    myRef.child(food.id.toString()).child("food_selected").setValue(true)
+                        .addOnSuccessListener {
+                            Log.d("firebase", "Value updated successfully for food ID: ${food.id}")
+                        }
+                        .addOnFailureListener {
+                            Log.e("firebase", "Error updating value for food ID: ${food.id}", it)
+                        }
+            }
+
+            }
+            true -> {
             elementos.buttonAdd.text = context.getString(R.string.quitar)
             elementos.buttonAdd.setOnClickListener {
-                // Lógica para el botón "QUITAR"
+                food.foodSelected = false
+                myRef.child(food.id.toString()).child("food_selected").setValue(false)
+                    .addOnSuccessListener {
+                        Log.d("firebase", "Value updated successfully for food ID: ${food.id}")
+                    }
+                    .addOnFailureListener {
+                        Log.e("firebase", "Error updating value for food ID: ${food.id}", it)
+                    }
             } }
+
+            else -> {}
         }
 
         return view

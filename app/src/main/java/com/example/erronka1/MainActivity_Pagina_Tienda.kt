@@ -1,6 +1,5 @@
 package com.example.erronka1
 
-import android.content.ContentValues.TAG
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -41,6 +40,7 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
         BotonesInfo(R.id.primeros_platos, Food.Category.MAIN),
         BotonesInfo(R.id.entrantes_platos, Food.Category.STARTER)
     )
+    var myCurrentCategory: Food.Category? = null
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +53,7 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()
         val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db")
 
-        //Boton comidas
+        //Cargar de la base de datos
         myRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (foodSnapshot in dataSnapshot.children) {
@@ -63,9 +63,10 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
                     val foodPic = foodSnapshot.child("food_pic").getValue(String::class.java)
                     val foodPrice = foodSnapshot.child("food_price").getValue(Double::class.java)
                     val foodSeason = foodSnapshot.child("food_season").getValue(String::class.java)
+                    val foodSelected = foodSnapshot.child("food_selected").getValue(Boolean::class.java)
                     val foodTitle = foodSnapshot.child("food_title").getValue(String::class.java)
 
-                    val food = Food(foodId, foodTitle, foodDesc, foodPrice, foodPic, Food.Category.from(foodCategory.toString()), Food.Seasons.from(foodSeason.toString()))
+                    val food = Food(foodId, foodTitle, foodDesc, foodPrice, foodPic, foodSelected, Food.Category.from(foodCategory.toString()), Food.Seasons.from(foodSeason.toString()))
                     comida.add(food)
                 }
 
@@ -73,9 +74,15 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
                 for (boton in botones){
                     findViewById<Button>(boton.boton).setOnClickListener{
                         CargarLista(boton.categoria)
+                        myCurrentCategory = boton.categoria
                     }
                 }
-                Recomendar()
+                if (myCurrentCategory != null){
+                    CargarLista(myCurrentCategory!!)
+                } else {
+                    Recomendar()
+                }
+
             }
 
             override fun onCancelled(error: DatabaseError) {
