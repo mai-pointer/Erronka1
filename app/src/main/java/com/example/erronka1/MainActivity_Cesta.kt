@@ -16,7 +16,6 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 
 class MainActivity_Cesta : AppCompatActivity() {
-    val comida = mutableListOf<Food>()
     val user = FirebaseAuth.getInstance().currentUser
 
     @SuppressLint("MissingInflatedId")
@@ -34,37 +33,13 @@ class MainActivity_Cesta : AppCompatActivity() {
         val storageRef = storage.reference
 
         //Cargar de la base de datos
-        myRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for (foodSnapshot in dataSnapshot.children) {
-                    if ((foodSnapshot.child("food_selected").getValue(Boolean::class.java)) == true)
-                    {
-                        val foodId = foodSnapshot.child("food_id").getValue(String::class.java)
-                        val foodCategory = foodSnapshot.child("food_category").getValue(String::class.java)
-                        val foodDesc = foodSnapshot.child("food_desc").getValue(String::class.java)
-                        val foodPic = foodSnapshot.child("food_pic").getValue(String::class.java)
-                        val foodPrice = foodSnapshot.child("food_price").getValue(Double::class.java)
-                        val foodSeason = foodSnapshot.child("food_season").getValue(String::class.java)
-                        val foodSelected = foodSnapshot.child("food_selected").getValue(Boolean::class.java)
-                        val foodTitle = foodSnapshot.child("food_title").getValue(String::class.java)
+        BD.GetFood {foods->
+            //Adaptador
+            val adapter = FoodAdapter(this, foods, 1)
+            findViewById<ListView>(R.id.lista_compras).adapter = adapter
+            //Precio
+            findViewById<TextView>(R.id.total).text = "${foods.sumOf { it.price!! }}€"
+        }
 
-                        val food = Food(foodId, foodTitle, foodDesc, foodPrice, foodPic, foodSelected, Food.Category.from(foodCategory.toString()), Food.Seasons.from(foodSeason.toString()))
-                        comida.add(food)
-                    }
-                }
-                CargarLista()
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.e("firebase", "Error getting data", error.toException())
-            }
-        })
-
-    }
-    fun CargarLista(){
-        val adapter = FoodAdapter(this, comida, 1)
-        findViewById<ListView>(R.id.lista_compras).adapter = adapter
-
-        findViewById<TextView>(R.id.total).text = "${comida.sumOf { it.price!! }}€"
     }
 }

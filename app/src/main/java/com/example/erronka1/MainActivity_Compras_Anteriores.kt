@@ -61,10 +61,10 @@ class MainActivity_Compras_Anteriores : AppCompatActivity() {
                         //Variables de order
                         var order: Order
                         val userId = orderSnapshot.child("user_id").getValue(String::class.java)
-                        val orderStatus = orderSnapshot.child("order_status").getValue(String::class.java)
+//                        val orderStatus = orderSnapshot.child("order_status").getValue(String::class.java)  *** PENDIENTE ***
 
                         //Comprueba que los pedidos sean del usuario y que ya los a pedido
-                        if(userId == user.uid && orderStatus == "delivered"){
+                        if(userId == user.uid){
 
                             val orderId = orderSnapshot.child("order_id").getValue(String::class.java)
                             val orderDateString = orderSnapshot.child("order_date").getValue(String::class.java)
