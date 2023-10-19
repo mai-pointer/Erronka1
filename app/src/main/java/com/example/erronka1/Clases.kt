@@ -17,7 +17,10 @@ import java.time.LocalDate
 data class Proveedor(
     var nombre: String,
     var descripcion: String,
-    var productos: List<String>
+    var productos: List<String>,
+    var latitud: Double,
+    var longitud: Double
+
 )
 
 interface Product {
@@ -29,11 +32,12 @@ interface Product {
 }
 
 data class Order(
-    val id: Int,
-    val desc: String,
-    val price: Double,
-    val data: LocalDate
-)
+    val id: String?,
+    val data: String
+){
+    var list: String? = null
+    var price: Double? = null
+}
 
 data class GSorpresa(
     override val id: String?,

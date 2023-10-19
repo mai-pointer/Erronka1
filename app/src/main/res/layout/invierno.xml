@@ -37,10 +37,11 @@
                 app:layout_constraintVertical_bias="0.729" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/textview"
                 android:layout_width="224dp"
                 android:layout_height="46dp"
-                android:text="INVIERNO"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,40 +67,53 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/primavera"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:id="@+id/veranoo"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.962"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.851"
+        app:srcCompat="@drawable/vera" />
+
+    <ImageView
+        android:id="@+id/otoñoo"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.662"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.85"
+        app:srcCompat="@drawable/oto" />
+
+    <ImageView
+        android:id="@+id/primaveraa"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.349"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.85"
         app:srcCompat="@drawable/prim" />
 
     <ImageView
-        android:id="@+id/otoño"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:id="@+id/inviernoo"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.849"
-        app:srcCompat="@drawable/oto" />
+        app:layout_constraintVertical_bias="0.85"
+        app:srcCompat="@drawable/invi" />
 
-    <ImageView
-        android:id="@+id/verano"
-        android:layout_width="102dp"
-        android:layout_height="102dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.909"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.848"
-        app:srcCompat="@drawable/vera" />
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navMenu"
         android:layout_width="0dp"
@@ -109,4 +123,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="VisualLintBottomNav" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

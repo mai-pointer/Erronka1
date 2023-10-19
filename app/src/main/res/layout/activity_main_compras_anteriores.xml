@@ -9,6 +9,7 @@
 
 
     <ListView
+        android:id="@+id/lista_pedidos"
         android:layout_width="390dp"
         android:layout_height="659dp"
         app:layout_constraintBottom_toTopOf="@+id/navMenu"

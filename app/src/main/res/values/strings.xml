@@ -78,4 +78,10 @@
     <string name="añadir">Añadir</string>
     <string name="pedido_titulo">Compra del </string>
 
+    <!-- sasoiak -->
+    <string name="I">NEGUA</string>
+    <string name="P">UDABERRIA</string>
+    <string name="O">UDAZKENA</string>
+    <string name="V">UDA</string>
+
 </resources>
