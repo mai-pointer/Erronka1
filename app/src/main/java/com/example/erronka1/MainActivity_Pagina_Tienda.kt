@@ -32,8 +32,25 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
         pic = "misterio.jpg"
     )*/
 
+   /* var Gsorpresa = mutableListOf(
+        GSorpresa(
+            id = "1",
+            title = "Regalo Sorpresa 1",
+            desc = "Un regalo sorpresa emocionante",
+            price = 9.99,
+            pic = "sorpresa1.jpg"
+        ),
+        GSorpresa(
+            id = "2",
+            title = "Caja Misteriosa",
+            desc = "¡Nunca sabrás lo que hay dentro!",
+            price = 14.99,
+            pic = "misterio.jpg"
+        ))*/
+
     // Objetos Food
     val comida = mutableListOf<Food>()
+    val GoseS =mutableListOf<GSorpresa>()
 
     val user = FirebaseAuth.getInstance().currentUser
     val cantidadRecomendaciones = 2;
@@ -52,7 +69,7 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
 
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()
         val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db")
-
+        val myRef2: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/goseS_db")
         //Boton comidas
         myRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -82,6 +99,28 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
                 Log.e("firebase", "Error getting data", error.toException())
             }
         })
+
+        myRef2.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                for (goseSSnapshot in dataSnapshot.children) {
+                    val goseSId = goseSSnapshot.child("goseS_id").getValue(String::class.java)
+                    val goseSDesc = goseSSnapshot.child("goseS_desc").getValue(String::class.java)
+                    val goseSPic = goseSSnapshot.child("goseS_pic").getValue(String::class.java)
+                    val goseSPrice = goseSSnapshot.child("goseS_price").getValue(Double::class.java)
+                    val goseSTitle = goseSSnapshot.child("goseS_title").getValue(String::class.java)
+
+                    val goseS = GSorpresa(goseSId, goseSTitle, goseSDesc, goseSPrice, goseSPic)
+                    GoseS.add(goseS)
+                }
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Maneja errores, si es necesario.
+            }
+        })
+
         //Boton de recomendaciones
         findViewById<Button>(R.id.recomendaciones_platos).setOnClickListener{
             Recomendar()
@@ -89,8 +128,9 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
 
         //Boton de GSorpresa
         findViewById<Button>(R.id.gose_platos).setOnClickListener{
-//            val adapter = GSorpresaAdapter(this, sorpresa)
+//            val adapter = GSorpresaAdapter(this, Gsorpresa)
 //            findViewById<ListView>(R.id.lista_platos).adapter = adapter
+            Gose_Sorpresa()
         }
 
     }
@@ -103,6 +143,12 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
     }
 
     //Boton de Recomendados
+    fun Gose_Sorpresa(){
+
+        val adapter = GSorpresaAdapter(this, GoseS)
+        findViewById<ListView>(R.id.lista_platos).adapter = adapter
+    }
+
     fun Recomendar(){
         val comidaFiltrada = comida.shuffled().take(if (comida.size >= cantidadRecomendaciones) cantidadRecomendaciones else comida.size)
         val adapter = FoodAdapter(this, comidaFiltrada)
