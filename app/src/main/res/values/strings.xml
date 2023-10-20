@@ -84,4 +84,42 @@
     <string name="O">UDAZKENA</string>
     <string name="V">UDA</string>
 
+    <!-- JANARIAK -->
+
+    <!-- negukoak -->
+    <string name="food_01">Bieira “carpaccio”-a zitrikoekin</string>
+    <string name="food_02">Lapikoko oilo kroketak</string>
+    <string name="food_03">Mailoa laban piper eta azalore pistoarekin</string>
+    <string name="food_04">Iberiar sekretua barazkiekin ardo saltsan</string>
+    <string name="food_05">Txokolate soufflea</string>
+
+    <!-- udaberrikoak -->
+    <string name="food_06">“Piquillo”-ko piperrak antxoekin modena eran</string>
+    <string name="food_07">Gamba gorrien “risotto”-a</string>
+    <string name="food_08">Atun “tataki”-a brasan baratxuri zuri kremarekin</string>
+    <string name="food_09">Bildotza laban panadera era patatekin</string>
+    <string name="food_10">Yogurt mousse-a kiwi eta papaia infusioarekin</string>
+
+    <!-- udakoak -->
+    <string name="food_11">Tomate y espárragos con vinagreta</string>
+    <string name="food_12">“Fettuccini” almejekin</string>
+    <string name="food_13">Legatza tipula karamelizatuarekin</string>
+    <string name="food_14">“Roast Beef”-a Gernikako piperrekin</string>
+    <string name="food_15">Gazta tarta melokotoizko marmeladarekin</string>
+
+    <!-- udazkenakoak -->
+    <string name="food_16">Patata parmentierra, onddo, arrautz eta trufarekin</string>
+    <string name="food_17">Porru eta txistor kaneloiak</string>
+    <string name="food_18">Olagarroa kalabaza kremarekin</string>
+    <string name="food_19">Ahatea udare saltsarekin</string>
+    <string name="food_20">Sagar “crumble”-a mandarina izozkiarekin</string>
+
+
+
+
+
+
+
+
+
 </resources>
