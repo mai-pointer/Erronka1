@@ -31,6 +31,12 @@ interface Product {
     val pic: String?
 }
 
+data class Cart(
+    var id: String?,
+    var food: String?,
+    var user: String?
+)
+
 data class Order(
     val id: String?,
     val data: String
