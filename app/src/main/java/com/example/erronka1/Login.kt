@@ -9,6 +9,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.CoroutineScope
@@ -26,6 +28,7 @@ class Login : AppCompatActivity(), CoroutineScope by MainScope() {
     lateinit var emailTxt: EditText
     lateinit var passTxt: EditText
     lateinit var progressBar: ProgressBar
+    lateinit var gbtn: Button
 
     val mAuth = FirebaseAuth.getInstance()
     val user:FirebaseUser? = mAuth.currentUser
@@ -34,7 +37,6 @@ class Login : AppCompatActivity(), CoroutineScope by MainScope() {
         super.onDestroy()
         cancel()
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +49,7 @@ class Login : AppCompatActivity(), CoroutineScope by MainScope() {
         emailTxt = findViewById(R.id.emailTxt)
         passTxt = findViewById(R.id.passTxt)
         progressBar = findViewById(R.id.progressBar)
+        gbtn = findViewById(R.id.googleBtn)
 
         //Btn registro
         findViewById<Button>(R.id.registrarBtn).setOnClickListener {

@@ -75,4 +75,34 @@
     <string name="P">PRIMAVERA</string>
     <string name="O">OTOÑO</string>
     <string name="V">VERANO</string>
+
+    <!-- JANARIAK -->
+
+    <!-- negukoak -->
+    <string name="food_01">Vieira "carpaccio" con cítricos</string>
+    <string name="food_02">Croquetas de pollo cocidas</string>
+    <string name="food_03">Lomo de bacalao con pimientos y pisto de laurel</string>
+    <string name="food_04">Secreto ibérico en salsa de verduras</string>
+    <string name="food_05">Soufflé de chocolate</string>
+
+    <!-- udaberrikoak -->
+    <string name="food_06">Pimientos "piquillo" rellenos de anchoas a la moda de Módena</string>
+    <string name="food_07">Risotto de gambas rojas</string>
+    <string name="food_08">Atún "tataki" con brasa y crema de puerros blancos</string>
+    <string name="food_09">Solomillo con salsa de panadero y patatas</string>
+    <string name="food_10">Mousse de yogur con infusión de kiwi y papaya</string>
+
+    <!-- udakoak -->
+    <string name="food_11">"Tartar" de tomate y mozzarella con vinagreta</string>
+    <string name="food_12">"Fettuccini" con almejas</string>
+    <string name="food_13">Merluza con cebolla caramelizada</string>
+    <string name="food_14">"Roast Beef" con pimientos de Gernika</string>
+    <string name="food_15">Tarta de queso con mermelada de melocotón</string>
+
+    <!-- udazkenakoak -->
+    <string name="food_16">Patatas parmentier, champiñones, huevos y trufas</string>
+    <string name="food_17">Canelones de puerro y chorizo</string>
+    <string name="food_18">Pulpo con crema de calabaza</string>
+    <string name="food_19">Ahatea udare saltsarekin</string>
+    <string name="food_20">Manzana “crumble” con helado de mandarina</string>
 </resources>
