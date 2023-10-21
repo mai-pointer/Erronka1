@@ -12,7 +12,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
-import java.time.LocalDate
 
 data class Proveedor(
     var nombre: String,
@@ -91,11 +90,27 @@ data class Food(
             return displayName
         }
     }
+    companion object {
+        const val STORAGE_PERMISSION_CODE = 1
+    }
+    fun requestStoragePermission(context: Context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val activity = context as? Activity
+            activity?.let {
+            ActivityCompat.requestPermissions(
+                it,
+                arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), STORAGE_PERMISSION_CODE
+            )
+            }
+        }
+    }
 
-    fun downloadImageFromCloudStorage(context: Context): Bitmap? {
+
+    fun downloadImageFromCloudStorage(context: Context, callback: (Bitmap?) -> Unit) {
         val localFile = File.createTempFile("images", ".jpg")
         var bitmap: Bitmap? = null
 
+        requestStoragePermission(context)
 
         // Verificar permisos de almacenamiento
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
@@ -111,21 +126,20 @@ data class Food(
 
                         if (localFile.exists()) {
                             bitmap = BitmapFactory.decodeFile(localFile.absolutePath)
-                            // Hacer algo con el bitmap aquí
+                            callback(bitmap)
                         }
                     }
                     .addOnFailureListener { exception ->
                         // Manejo de errores de Firebase
                         Log.e("FirebaseError", "Error al descargar la imagen: ${exception.message}")
+                        callback(null)
                     }
             }
         } else {
-            // No tienes permisos de almacenamiento, solicitar permisos aquí si es necesario
-            // ActivityCompat.requestPermissions(...)
+            requestStoragePermission(context)
             Log.e("PermissionError", "Permisos de almacenamiento no otorgados")
+            callback(null)
         }
-
-        return bitmap
     }
 
 

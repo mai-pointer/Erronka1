@@ -1,8 +1,10 @@
 package com.example.erronka1
 
+
+import androidx.appcompat.app.AppCompatActivity
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,7 @@ import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -120,7 +123,13 @@ class FoodAdapter(private val context: Context, private val foodList: List<Food>
         elementos.textTitle.text = food.title
         elementos.textDescription.text = food.desc
         elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
-        elementos.imageFood.setImageBitmap(food.downloadImageFromCloudStorage(context))
+
+        val imageAddress = "@drawable/comprarlogo.png"
+        val resourceId = context.resources.getIdentifier(imageAddress, null, context.packageName)
+        val bitmap = BitmapFactory.decodeResource(context.resources, resourceId)
+        elementos.imageFood.setImageBitmap(bitmap)
+
+
 
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()
         val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db")
