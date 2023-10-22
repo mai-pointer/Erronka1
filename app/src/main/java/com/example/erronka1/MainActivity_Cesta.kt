@@ -16,6 +16,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 
 class MainActivity_Cesta : AppCompatActivity() {
+    private lateinit var selectedFoodList: SelectedFood
     val user = FirebaseAuth.getInstance().currentUser
 
     @SuppressLint("MissingInflatedId")
@@ -25,21 +26,35 @@ class MainActivity_Cesta : AppCompatActivity() {
 
         MenuNav.Crear(this, user)
 
-        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
-        val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db")
-
-        // Crear una referencia al Cloud Storage utilizando la instancia de Firebase
-        val storage = FirebaseStorage.getInstance()
-        val storageRef = storage.reference
-
-        //Cargar de la base de datos
-        BD.GetFood {foods->
-            //Adaptador
-            val adapter = FoodAdapter(this, foods, 1)
-            findViewById<ListView>(R.id.lista_compras).adapter = adapter
-            //Precio
-            findViewById<TextView>(R.id.total).text = "${foods.sumOf { it.price!! }}€"
+        selectedFoodList = SelectedFood.getInstance()
+        if (selectedFoodList.eventHandlers == null) {
+            selectedFoodList.eventHandlers = mutableListOf()
+        }
+        selectedFoodList.eventHandlers?.add {list ->
+            ChangeData(list)
         }
 
+        //Cargar de la base de datos
+        /*BD.GetFood {foods->
+            ChangeData(foods)
+        }*/
+        ChangeData(selectedFoodList.selectedFoodList)
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        selectedFoodList = SelectedFood.getInstance()
+        selectedFoodList.eventHandlers?.remove{list ->
+            ChangeData(list)
+        }
+    }
+    fun ChangeData (newList: MutableList<Food>) {
+        val adapter = FoodAdapter(this, newList, selectedFoodList)
+        findViewById<ListView>(R.id.lista_compras).adapter = adapter
+        //Precio
+        findViewById<TextView>(R.id.total).text = "${newList.sumOf { it.price!! }}€"
+    }
+
 }
+
+

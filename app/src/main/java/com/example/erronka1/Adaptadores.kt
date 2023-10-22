@@ -81,7 +81,7 @@ class OrderAdapter(private val context: Context, private val lista: List<Order>)
     }
 }
 
-class FoodAdapter(private val context: Context, private val foodList: List<Food>, private val tipo: Int = 0) : BaseAdapter() {
+class FoodAdapter(private val context: Context, private val foodList: List<Food>,  private val selectedFood: SelectedFood) : BaseAdapter() {
     //Funciones del adaptador
     override fun getCount(): Int {
         return foodList.size
@@ -133,41 +133,34 @@ class FoodAdapter(private val context: Context, private val foodList: List<Food>
             }
         }
 
-
-
-
-        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
-        val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db")
-        when (food.foodSelected) {
+        when (selectedFood.checkFood(food)) {
             false -> {
-            elementos.buttonAdd.text = context.getString(R.string.añadir)
-            elementos.buttonAdd.setOnClickListener {
-                // Lógica para el botón "AÑADIR"
-                    food.foodSelected = true
-                    myRef.child(food.id.toString()).child("food_selected").setValue(true)
-                        .addOnSuccessListener {
-                            Log.d("firebase", "Value updated successfully for food ID: ${food.id}")
-                        }
-                        .addOnFailureListener {
-                            Log.e("firebase", "Error updating value for food ID: ${food.id}", it)
-                        }
-            }
-
+                elementos.buttonAdd.text = context.getString(R.string.añadir)
+                elementos.buttonAdd.setOnClickListener {
+                    selectedFood.addFood(food)
+                }
             }
             true -> {
+                elementos.buttonAdd.text = context.getString(R.string.quitar)
+                elementos.buttonAdd.setOnClickListener {
+                    selectedFood.deleteFood(food)
+                }
+
+            }
+            else -> {}
+        }
+
+        fun setItems0(){
+            elementos.buttonAdd.text = context.getString(R.string.añadir)
+            elementos.buttonAdd.setOnClickListener {
+                selectedFood.addFood(food)
+            }
+        }
+        fun setItems1(){
             elementos.buttonAdd.text = context.getString(R.string.quitar)
             elementos.buttonAdd.setOnClickListener {
-                food.foodSelected = false
-                myRef.child(food.id.toString()).child("food_selected").setValue(false)
-                    .addOnSuccessListener {
-                        Log.d("firebase", "Value updated successfully for food ID: ${food.id}")
-                    }
-                    .addOnFailureListener {
-                        Log.e("firebase", "Error updating value for food ID: ${food.id}", it)
-                    }
-            } }
-
-            else -> {}
+                selectedFood.addFood(food)
+            }
         }
 
         return view

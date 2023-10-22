@@ -53,7 +53,6 @@ data class Food(
     override val price: Double?,
     override val pic: String?,
 
-    var foodSelected: Boolean?,
     val category: Category?,
     val season: Seasons?
 ) : Product {
@@ -87,9 +86,6 @@ data class Food(
             return displayName
         }
     }
-    companion object {
-        const val STORAGE_PERMISSION_CODE = 1
-    }
 
     fun downloadImageFromCloudStorage(completion: (Bitmap?) -> Unit) {
         val localFile = File.createTempFile("images", "jpg")
@@ -110,8 +106,38 @@ data class Food(
             }
         } ?: completion(null)
     }
+}
 
+typealias MyEventHandler = (MutableList<Food>) -> Unit
+class SelectedFood private constructor(
+    val selectedFoodList: MutableList<Food> = mutableListOf<Food>()
+){
+    var eventHandlers: MutableList<MyEventHandler>? = null
 
+    fun setEventHandler(handlers: MutableList<MyEventHandler>?) {
+        eventHandlers = handlers
+    }
+    companion object{
+        @Volatile
+        private var INSTANCE: SelectedFood? = null
 
+        fun getInstance(): SelectedFood{
+            return INSTANCE ?: synchronized(this){
+                INSTANCE ?: SelectedFood().also {INSTANCE = it}
+            }
+        }
+    }
+    public fun addFood(newFood: Food){
+        selectedFoodList.add(newFood)
+        eventHandlers?.forEach { it(selectedFoodList) }
+    }
 
+    public fun deleteFood(foodToDelete: Food){
+        selectedFoodList.remove(foodToDelete)
+        eventHandlers?.forEach { it.invoke(selectedFoodList) }
+    }
+
+    public fun checkFood(foodToCheck: Food):Boolean{
+        return selectedFoodList.contains(foodToCheck)
+    }
 }
