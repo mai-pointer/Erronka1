@@ -13,6 +13,7 @@ import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -123,11 +124,14 @@ class FoodAdapter(private val context: Context, private val foodList: List<Food>
         elementos.textTitle.text = food.title
         elementos.textDescription.text = food.desc
         elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
+        food.downloadImageFromCloudStorage { bitmap ->
+            if (bitmap != null) {
+                elementos.imageFood.setImageBitmap(bitmap)
+            } else {
+                Toast.makeText(context, "Failed to retrieve image", Toast.LENGTH_SHORT).show()
+            }
+        }
 
-        val imageAddress = "@drawable/comprarlogo.png"
-        val resourceId = context.resources.getIdentifier(imageAddress, null, context.packageName)
-        val bitmap = BitmapFactory.decodeResource(context.resources, resourceId)
-        elementos.imageFood.setImageBitmap(bitmap)
 
 
 

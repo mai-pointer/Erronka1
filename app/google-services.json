@@ -13,15 +13,25 @@
           "package_name": "com.example.erronka1"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "627887047778-ptus1poom5qnb91filia8ghtc6o664ta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyAFtBvVHymK4HutNT6J1oejIBqtmcI5B-o"
+          "current_key": "951C210B-ABE9-4418-8D73-726A353D5E8E"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627887047778-ptus1poom5qnb91filia8ghtc6o664ta.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
