@@ -1,8 +1,11 @@
 package com.example.erronka1
 
+
+import androidx.appcompat.app.AppCompatActivity
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +14,8 @@ import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -120,16 +125,16 @@ class FoodAdapter(private val context: Context, private val foodList: List<Food>
         elementos.textTitle.text = food.title
         elementos.textDescription.text = food.desc
         elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
-
-        Food.downloadImageFromCloudStorage(context, food.pic ?: "", object : OnImageDownloadListener {
-            override fun onImageDownloaded(bitmap: Bitmap) {
+        food.downloadImageFromCloudStorage { bitmap ->
+            if (bitmap != null) {
                 elementos.imageFood.setImageBitmap(bitmap)
+            } else {
+                Toast.makeText(context, "Failed to retrieve image", Toast.LENGTH_SHORT).show()
             }
-            override fun onDownloadFailed() {
-                // Manejar el caso en que la descarga falla, por ejemplo, establecer una imagen de placeholder
-            }
-        })
-        //elementos.imageFood.setImageBitmap(food.downloadImageFromCloudStorage(context).)
+        }
+
+
+
 
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()
         val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db")

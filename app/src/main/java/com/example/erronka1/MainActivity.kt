@@ -4,12 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
-import android.widget.Toast
 import com.example.erronka1.R.*
 import com.google.firebase.auth.FirebaseAuth
 import java.util.Calendar
-import java.util.Date
-import android.widget.SearchView;
+import com.google.firebase.FirebaseApp
+import com.google.firebase.appcheck.FirebaseAppCheck
+import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory
 
 class MainActivity : AppCompatActivity() {
     private lateinit var menu: LinearLayout
@@ -19,6 +19,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_main)
+
+        /*FirebaseApp.initializeApp(this)
+        FirebaseAppCheck.getInstance().installAppCheckProviderFactory(
+            PlayIntegrityAppCheckProviderFactory.getInstance()
+        )*/
 
         menu = findViewById(id.btnCarta)
         delivery = findViewById(id.btnDelivery)
@@ -34,24 +39,24 @@ class MainActivity : AppCompatActivity() {
 
                 1, 2, 3 -> {
                     val intent = Intent(this, PantallaInvierno::class.java)
-                    intent.putExtra("season", getString(R.string.I))
+                    intent.putExtra("season", getString(string.I))
                     startActivity(intent)
                 }
 
                 4, 5, 6 -> {
                     val intent = Intent(this, PantallaInvierno::class.java)
-                    intent.putExtra("season", getString(R.string.P))
+                    intent.putExtra("season", getString(string.P))
                     startActivity(intent)
                 }
 
                 7, 8, 9 -> {
                     val intent = Intent(this, PantallaInvierno::class.java)
-                    intent.putExtra("season", getString(R.string.V))
+                    intent.putExtra("season", getString(string.V))
                     startActivity(intent)
                 }
                 else -> {
                     val intent = Intent(this, PantallaInvierno::class.java)
-                    intent.putExtra("season", getString(R.string.O))
+                    intent.putExtra("season", getString(string.O))
                     startActivity(intent)
                 }
             }
