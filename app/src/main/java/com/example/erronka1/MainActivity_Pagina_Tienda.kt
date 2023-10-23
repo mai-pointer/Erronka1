@@ -81,9 +81,11 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
         })
 
         //Boton de GSorpresa
-        findViewById<Button>(R.id.gose_platos).setOnClickListener{
-//            val adapter = GSorpresaAdapter(this, sorpresa)
-//            findViewById<ListView>(R.id.lista_platos).adapter = adapter
+        BD.GetGose {gose ->
+            findViewById<Button>(R.id.gose_platos).setOnClickListener{
+                val adapter = GSorpresaAdapter(this, gose)
+                findViewById<ListView>(R.id.lista_platos).adapter = adapter
+            }
         }
 
     }
