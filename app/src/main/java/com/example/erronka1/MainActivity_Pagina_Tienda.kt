@@ -110,6 +110,13 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
         }
 
     }
+    override fun onDestroy() {
+        super.onDestroy()
+        selectedFoodList = SelectedFood.getInstance()
+        selectedFoodList.eventHandlers?.remove{
+            CargarLista(myCurrentCategory!!)
+        }
+    }
 
     fun CargarLista(categoria: Food.Category){
         val comidaFiltrada = comida.filter { it.category == categoria }

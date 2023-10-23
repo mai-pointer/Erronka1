@@ -19,7 +19,6 @@ class BD {
                     foodSnapshot.child("food_desc").getValue(String::class.java),
                     foodSnapshot.child("food_price").getValue(Double::class.java),
                     foodSnapshot.child("food_pic").getValue(String::class.java),
-                    foodSnapshot.child("food_selected").getValue(Boolean::class.java),
                     Food.Category.from(foodSnapshot.child("food_category").getValue(String::class.java) ?: ""),
                     Food.Seasons.from(foodSnapshot.child("food_season").getValue(String::class.java) ?: "")
                 )
