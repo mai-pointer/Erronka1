@@ -15,22 +15,7 @@ import com.google.firebase.database.ValueEventListener
 
 class MainActivity_Pagina_Tienda : AppCompatActivity() {
 
-    /*val sorpresa1 = GSorpresa(
-        id = 1,
-        title = "Regalo Sorpresa 1",
-        desc = "Un regalo sorpresa emocionante",
-        price = 9.99,
-        pic = "sorpresa1.jpg"
-    )
-
-    val sorpresa2 = GSorpresa(
-        id = 2,
-        title = "Caja Misteriosa",
-        desc = "¡Nunca sabrás lo que hay dentro!",
-        price = 14.99,
-        pic = "misterio.jpg"
-    )*/
-
+    private lateinit var selectedFoodList: SelectedFood
     // Objetos Food
     var comida = mutableListOf<Food>()
 
@@ -50,8 +35,16 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
         val user = FirebaseAuth.getInstance().currentUser
         MenuNav.Crear(this, user)
 
-        /*val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
         val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db")
+
+        selectedFoodList = SelectedFood.getInstance()
+        if (selectedFoodList.eventHandlers == null) {
+            selectedFoodList.eventHandlers = mutableListOf()
+        }
+        selectedFoodList.eventHandlers?.add {
+            CargarLista(myCurrentCategory!!)
+        }
 
         //Cargar de la base de datos
         myRef.addValueEventListener(object : ValueEventListener{
@@ -72,8 +65,8 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
 
                 for (boton in botones){
                     findViewById<Button>(boton.boton).setOnClickListener{
-                        CargarLista(boton.categoria)
                         myCurrentCategory = boton.categoria
+                        CargarLista(myCurrentCategory!!)
                     }
                 }
                 if (myCurrentCategory != null){
@@ -87,9 +80,9 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
                 Log.e("firebase", "Error getting data", error.toException())
             }
-        })*/
+        })
 
-        BD.GetFood {foods->
+        /*BD.GetFood {foods->
             comida = foods
         }
 
@@ -103,7 +96,7 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
             CargarLista(myCurrentCategory!!)
         } else {
             Recomendar()
-        }
+        }*/
 
         //Boton de recomendaciones
         findViewById<Button>(R.id.recomendaciones_platos).setOnClickListener{
