@@ -71,6 +71,10 @@
     <string name="janaria_ez_doa_zaborrera">Food should not be wasted</string>
 
     <!-- Seasons -->
+    <string name="precio">Price</string>
+    <string name="quitar">Quit</string>
+    <string name="añadir">Add</string>
+    <string name="pedido_titulo">Buy of</string>
     <string name="I">WINTER</string>
     <string name="P">SPRING</string>
     <string name="O">AUTUMN</string>

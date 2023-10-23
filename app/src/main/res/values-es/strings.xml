@@ -71,6 +71,10 @@
     <string name="janaria_ez_doa_zaborrera">La comida no se tira</string>
 
     <!-- Estaciones -->
+    <string name="precio">Precio</string>
+    <string name="quitar">Quitar</string>
+    <string name="añadir">Añadir</string>
+    <string name="pedido_titulo">"Compra del "</string>
     <string name="I">INVIERNO</string>
     <string name="P">PRIMAVERA</string>
     <string name="O">OTOÑO</string>
