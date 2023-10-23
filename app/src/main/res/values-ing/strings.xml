@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Application -->
+    <string name="app_name">Challenge 1</string>
+    <string name="Tag">Error-TX</string>
+
+    <!-- Strings used in fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <!-- Login -->
+    <string name="registrar">Register</string>
+    <string name="acceder">Log In</string>
+    <string name="email">Email</string>
+    <string name="pass">Password</string>
+    <string name="salir">Logout</string>
+    <string name="pantalla">Screen</string>
+    <string name="google">Google</string>
+    <string name="recordar">Remember me</string>
+
+    <!-- Errors -->
+    <string name="error1">One of the fields is empty</string>
+    <string name="title_activity_base">Base Activity</string>
+
+    <!-- Menu -->
+    <string name="o1">Home</string>
+    <string name="o2">User</string>
+    <string name="o3">Orders</string>
+    <string name="o4">Purchases</string>
+
+    <!-- Others -->
+    <string name="descripcionMapa">This is a map</string>
+    <string name="descripcionLayout">This is a layout</string>
+
+    <!-- Others -->
+    <string name="cerrar">Logout</string>
+
+    <!-- Profile -->
+    <string name="zure_pausuak">Your Preferences</string>
+    <string name="editicon">Edit Icon</string>
+    <string name="aldatu_pasahitza">Change Password</string>
+    <string name="zure_pazahitza">Your Current Password</string>
+    <string name="pasahitz_berria">New Password</string>
+    <string name="oldPassword">Enter your current password</string>
+    <string name="newPassword">Enter the new password</string>
+
+    <!-- Main -->
+    <string name="seasonButtonMainMenu">Season Button</string>
+    <string name="menuicon">Menu Icon</string>
+    <string name="loginicon">Login Icon</string>
+    <string name="farmericon">Farmer Icon</string>
+    <string name="title_activity_main_pagina_tienda">Main Activity_Store Page</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="btn_tienda_1">Recommendations</string>
+    <string name="btn_tienda_2">First Courses</string>
+    <string name="btn_tienda_3">Appetizers</string>
+    <string name="btn_tienda_4">Chef s Surprise</string>
+    <string name="irten">Exit</string>
+    <string name="denak_zure_gertu">Everything near you</string>
+    <string name="gure_ornitzileak">Our Suppliers</string>
+    <string name="logo">Logo</string>
+    <string name="sasoikoa">Season</string>
+    <string name="ikusi_zer_daukagun_menuan">See what we have on the menu</string>
+    <string name="eskatu_etxera">Order for delivery</string>
+    <string name="guk_eramango_dizugu">We ll deliver it to you</string>
+    <string name="janaria_ez_doa_zaborrera">Food should not be wasted</string>
+
+    <!-- Seasons -->
+    <string name="I">WINTER</string>
+    <string name="P">SPRING</string>
+    <string name="O">AUTUMN</string>
+    <string name="V">SUMMER</string>
+
+    <!-- FOOD -->
+
+    <!-- Winter -->
+    <string name="food_01">Scallop "carpaccio" with citrus</string>
+    <string name="food_02">Cooked chicken croquettes</string>
+    <string name="food_03">Cod loin with peppers and bay laurel ratatouille</string>
+    <string name="food_04">Iberian pork secreto with vegetable sauce</string>
+    <string name="food_05">Chocolate soufflé</string>
+
+    <!-- Spring -->
+    <string name="food_06">"Piquillo" peppers stuffed with anchovies in the style of Modena</string>
+    <string name="food_07">Red shrimp risotto</string>
+    <string name="food_08">Tuna "tataki" with ember-grilled leek cream</string>
+    <string name="food_09">Sirloin with baker s sauce and potatoes</string>
+    <string name="food_10">Yogurt mousse with kiwi and papaya infusion</string>
+
+    <!-- Summer -->
+    <string name="food_11">Tomato and mozzarella "tartar" with vinaigrette</string>
+    <string name="food_12">"Fettuccini" with clams</string>
+    <string name="food_13">Hake with caramelized onion</string>
+    <string name="food_14">"Roast Beef" with Gernika peppers</string>
+    <string name="food_15">Cheesecake with peach jam</string>
+
+    <!-- Autumn -->
+    <string name="food_16">Parmentier potatoes, mushrooms, eggs, and truffles</string>
+    <string name="food_17">Leek and chorizo cannelloni</string>
+    <string name="food_18">Octopus with pumpkin cream</string>
+    <string name="food_19">Duck with cherry sauce</string>
+    <string name="food_20">Apple "crumble" with mandarin ice cream</string>
+</resources>
