@@ -37,6 +37,15 @@ class BD {
             }
             bd.Get (callback)
         }
+
+        //Añadir nuevos datos
+        fun <T> Añadir(bd: String, producto: T){
+            val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+            val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/"+bd.trim())
+
+            myRef.push().setValue(producto)
+        }
+
     }
 
 

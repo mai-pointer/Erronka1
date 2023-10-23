@@ -171,6 +171,11 @@ class FoodAdapter(private val context: Context, private val foodList: List<Food>
                 elementos.buttonAdd.text = context.getString(R.string.añadir)
                 elementos.buttonAdd.setOnClickListener {
                     //*** Añade un nuevo shopping_cart a la bd
+                    BD.Añadir("shopping_cart", Cart(
+                        "aaa",
+                        "aaa",
+                        "aaa"
+                    ))
                 }
             }
             1 -> {
