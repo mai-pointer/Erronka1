@@ -26,6 +26,19 @@ class BD {
             }
             bd.Get (callback)
         }
+        //Carro de la compra
+        fun GetGose(callback: (list: List<GSorpresa>) -> Unit) {
+            val bd = Create("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/goseS_db"){Snapshot ->
+                GSorpresa(
+                    Snapshot.child("goseS_id").getValue(String::class.java),
+                    Snapshot.child("goseS_title").getValue(String::class.java),
+                    Snapshot.child("goseS_desc").getValue(String::class.java),
+                    Snapshot.child("goseS_price").getValue(Double::class.java),
+                    Snapshot.child("goseS_pic").getValue(String::class.java),
+                )
+            }
+            bd.Get (callback)
+        }
 
         //Añadir nuevos datos
         fun <T> Añadir(bd: String, producto: T){
