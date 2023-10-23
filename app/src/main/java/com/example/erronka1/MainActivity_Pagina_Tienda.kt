@@ -6,7 +6,6 @@ import android.util.Log
 import android.annotation.SuppressLint
 import android.widget.Button
 import android.widget.ListView
-import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -32,13 +31,16 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
         pic = "misterio.jpg"
     )*/
 
+    // Objetos Food
+    val comida = mutableListOf<Food>()
+
     val user = FirebaseAuth.getInstance().currentUser
     val cantidadRecomendaciones = 2;
-    var myCurrentCategory: Food.Category? = null
     val botones = listOf(
         BotonesInfo(R.id.primeros_platos, Food.Category.MAIN),
         BotonesInfo(R.id.entrantes_platos, Food.Category.STARTER)
     )
+    var myCurrentCategory: Food.Category? = null
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,24 +50,48 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
         val user = FirebaseAuth.getInstance().currentUser
         MenuNav.Crear(this, user)
 
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db")
 
-        BD.GetFood {foods->
-            for (boton in botones){
-                findViewById<Button>(boton.boton).setOnClickListener{
-                    CargarLista(boton.categoria, foods)
-                    myCurrentCategory = boton.categoria
+        //Cargar de la base de datos
+        myRef.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (foodSnapshot in dataSnapshot.children) {
+                    val foodId = foodSnapshot.child("food_id").getValue(String::class.java)
+                    val foodCategory = foodSnapshot.child("food_category").getValue(String::class.java)
+                    val foodDesc = foodSnapshot.child("food_desc").getValue(String::class.java)
+                    val foodPic = foodSnapshot.child("food_pic").getValue(String::class.java)
+                    val foodPrice = foodSnapshot.child("food_price").getValue(Double::class.java)
+                    val foodSeason = foodSnapshot.child("food_season").getValue(String::class.java)
+                    val foodSelected = foodSnapshot.child("food_selected").getValue(Boolean::class.java)
+                    val foodTitle = foodSnapshot.child("food_title").getValue(String::class.java)
+
+                    val food = Food(foodId, foodTitle, foodDesc, foodPrice, foodPic, foodSelected, Food.Category.from(foodCategory.toString()), Food.Seasons.from(foodSeason.toString()))
+                    comida.add(food)
                 }
-            }
-            if (myCurrentCategory != null){
-                CargarLista(myCurrentCategory!!, foods)
-            } else {
-                Recomendar(foods)
+
+
+                for (boton in botones){
+                    findViewById<Button>(boton.boton).setOnClickListener{
+                        CargarLista(boton.categoria)
+                        myCurrentCategory = boton.categoria
+                    }
+                }
+                if (myCurrentCategory != null){
+                    CargarLista(myCurrentCategory!!)
+                } else {
+                    Recomendar()
+                }
+
             }
 
-            //Boton de recomendaciones
-            findViewById<Button>(R.id.recomendaciones_platos).setOnClickListener{
-                Recomendar(foods)
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("firebase", "Error getting data", error.toException())
             }
+        })
+        //Boton de recomendaciones
+        findViewById<Button>(R.id.recomendaciones_platos).setOnClickListener{
+            Recomendar()
         }
 
         //Boton de GSorpresa
@@ -76,16 +102,16 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
 
     }
 
-    fun CargarLista(categoria: Food.Category, food: List<Food>){
-        val comidaFiltrada = food.filter { it.category == categoria }
+    fun CargarLista(categoria: Food.Category){
+        val comidaFiltrada = comida.filter { it.category == categoria }
 
         val adapter = FoodAdapter(this, comidaFiltrada)
         findViewById<ListView>(R.id.lista_platos).adapter = adapter
     }
 
     //Boton de Recomendados
-    fun Recomendar(food: List<Food>){
-        val comidaFiltrada = food.shuffled().take(if (food.size >= cantidadRecomendaciones) cantidadRecomendaciones else food.size)
+    fun Recomendar(){
+        val comidaFiltrada = comida.shuffled().take(if (comida.size >= cantidadRecomendaciones) cantidadRecomendaciones else comida.size)
         val adapter = FoodAdapter(this, comidaFiltrada)
         findViewById<ListView>(R.id.lista_platos).adapter = adapter
     }

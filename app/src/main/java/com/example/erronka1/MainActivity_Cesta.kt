@@ -25,30 +25,20 @@ class MainActivity_Cesta : AppCompatActivity() {
 
         MenuNav.Crear(this, user)
 
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db")
+
+        // Crear una referencia al Cloud Storage utilizando la instancia de Firebase
+        val storage = FirebaseStorage.getInstance()
+        val storageRef = storage.reference
+
         //Cargar de la base de datos
-        if (user != null){
-            BD.GetFood {foods->
-                BD.GetCart {carts ->
-
-                    var listFiltrada = mutableListOf<Food>()
-                    for (cart in carts){
-                        if(cart.user == user.uid){
-                            foods.find { it.id == cart.food }?.let {
-                                listFiltrada.add(
-                                    it
-                                )
-                            }
-                        }
-                    }
-
-                    //Adaptador
-                    val adapter = FoodAdapter(this, listFiltrada, 1)
-                    findViewById<ListView>(R.id.lista_compras).adapter = adapter
-                    //Precio
-                    findViewById<TextView>(R.id.total).text = "${listFiltrada.sumOf { it.price!! }}€"
-
-                }
-            }
+        BD.GetFood {foods->
+            //Adaptador
+            val adapter = FoodAdapter(this, foods, 1)
+            findViewById<ListView>(R.id.lista_compras).adapter = adapter
+            //Precio
+            findViewById<TextView>(R.id.total).text = "${foods.sumOf { it.price!! }}€"
         }
 
     }
