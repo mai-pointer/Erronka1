@@ -71,6 +71,10 @@
     <string name="janaria_ez_doa_zaborrera">Janaria ez da zaborretzen</string>
 
     <!-- Denboraldiak -->
+    <string name="precio">Prezioa</string>
+    <string name="quitar">Kendu</string>
+    <string name="añadir">Gehitu</string>
+    <string name="pedido_titulo">"Eroksetaren "</string>
     <string name="I">NEGUA</string>
     <string name="P">UDABERRIA</string>
     <string name="O">UDAZKENA</string>
