@@ -121,48 +121,70 @@ class FoodAdapter(private val context: Context, private val foodList: List<Food>
         elementos.textDescription.text = food.desc
         elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
 
-        Food.downloadImageFromCloudStorage(context, food.pic ?: "", object : OnImageDownloadListener {
-            override fun onImageDownloaded(bitmap: Bitmap) {
-                elementos.imageFood.setImageBitmap(bitmap)
-            }
-            override fun onDownloadFailed() {
-                // Manejar el caso en que la descarga falla, por ejemplo, establecer una imagen de placeholder
-            }
-        })
-        //elementos.imageFood.setImageBitmap(food.downloadImageFromCloudStorage(context).)
+//        Food.downloadImageFromCloudStorage(context, food.pic ?: "", object : OnImageDownloadListener {
+//            override fun onImageDownloaded(bitmap: Bitmap) {
+//                elementos.imageFood.setImageBitmap(bitmap)
+//            }
+//            override fun onDownloadFailed() {
+//                // Manejar el caso en que la descarga falla, por ejemplo, establecer una imagen de placeholder
+//            }
+//        })
+//        elementos.imageFood.setImageBitmap(food.downloadImageFromCloudStorage(context).)
+//
+//        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+//        val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db")
+//        when (food.foodSelected) {
+//            false -> {
+//            elementos.buttonAdd.text = context.getString(R.string.añadir)
+//            elementos.buttonAdd.setOnClickListener {
+//                // Lógica para el botón "AÑADIR"
+//                    food.foodSelected = true
+//                    myRef.child(food.id.toString()).child("food_selected").setValue(true)
+//                        .addOnSuccessListener {
+//                            Log.d("firebase", "Value updated successfully for food ID: ${food.id}")
+//                        }
+//                        .addOnFailureListener {
+//                            Log.e("firebase", "Error updating value for food ID: ${food.id}", it)
+//                        }
+//            }
+//
+//            }
+//            true -> {
+//            elementos.buttonAdd.text = context.getString(R.string.quitar)
+//            elementos.buttonAdd.setOnClickListener {
+//                food.foodSelected = false
+//                myRef.child(food.id.toString()).child("food_selected").setValue(false)
+//                    .addOnSuccessListener {
+//                        Log.d("firebase", "Value updated successfully for food ID: ${food.id}")
+//                    }
+//                    .addOnFailureListener {
+//                        Log.e("firebase", "Error updating value for food ID: ${food.id}", it)
+//                    }
+//            } }
+//
+//            else -> {}
+//        }
 
-        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
-        val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db")
-        when (food.foodSelected) {
-            false -> {
-            elementos.buttonAdd.text = context.getString(R.string.añadir)
-            elementos.buttonAdd.setOnClickListener {
-                // Lógica para el botón "AÑADIR"
-                    food.foodSelected = true
-                    myRef.child(food.id.toString()).child("food_selected").setValue(true)
-                        .addOnSuccessListener {
-                            Log.d("firebase", "Value updated successfully for food ID: ${food.id}")
-                        }
-                        .addOnFailureListener {
-                            Log.e("firebase", "Error updating value for food ID: ${food.id}", it)
-                        }
+        when (tipo){
+            0 -> {
+                //AÑADIR
+                elementos.buttonAdd.text = context.getString(R.string.añadir)
+                elementos.buttonAdd.setOnClickListener {
+                    //*** Añade un nuevo shopping_cart a la bd
+                    BD.Añadir("shopping_cart", Cart(
+                        "aaa",
+                        "aaa",
+                        "aaa"
+                    ))
+                }
             }
-
+            1 -> {
+                //QUITAR
+                elementos.buttonAdd.text = context.getString(R.string.quitar)
+                elementos.buttonAdd.setOnClickListener {
+                    ///*** Elimina el shoping cart a la bd
+                }
             }
-            true -> {
-            elementos.buttonAdd.text = context.getString(R.string.quitar)
-            elementos.buttonAdd.setOnClickListener {
-                food.foodSelected = false
-                myRef.child(food.id.toString()).child("food_selected").setValue(false)
-                    .addOnSuccessListener {
-                        Log.d("firebase", "Value updated successfully for food ID: ${food.id}")
-                    }
-                    .addOnFailureListener {
-                        Log.e("firebase", "Error updating value for food ID: ${food.id}", it)
-                    }
-            } }
-
-            else -> {}
         }
 
         return view
