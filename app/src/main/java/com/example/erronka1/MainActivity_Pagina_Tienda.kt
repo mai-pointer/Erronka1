@@ -20,12 +20,12 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
     var comida = mutableListOf<Food>()
 
     val user = FirebaseAuth.getInstance().currentUser
-    val cantidadRecomendaciones = 2;
     val botones = listOf(
-        BotonesInfo(R.id.primeros_platos, Food.Category.MAIN),
-        BotonesInfo(R.id.entrantes_platos, Food.Category.STARTER)
+        BotonesInfo(R.id.entrantes_platos, Food.Category.STARTER),
+        BotonesInfo(R.id.principal_platos, Food.Category.MAIN)
+
     )
-    var myCurrentCategory: Food.Category? = null
+    var myCurrentCategory: Food.Category? = Food.Category.STARTER
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,11 +69,9 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
                         CargarLista(myCurrentCategory!!)
                     }
                 }
-                if (myCurrentCategory != null){
-                    CargarLista(myCurrentCategory!!)
-                } else {
-                    Recomendar()
-                }
+
+                CargarLista(myCurrentCategory!!)
+
 
             }
 
@@ -81,27 +79,6 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
                 Log.e("firebase", "Error getting data", error.toException())
             }
         })
-
-        /*BD.GetFood {foods->
-            comida = foods
-        }
-
-        for (boton in botones){
-            findViewById<Button>(boton.boton).setOnClickListener{
-                CargarLista(boton.categoria)
-                myCurrentCategory = boton.categoria
-            }
-        }
-        if (myCurrentCategory != null){
-            CargarLista(myCurrentCategory!!)
-        } else {
-            Recomendar()
-        }*/
-
-        //Boton de recomendaciones
-        findViewById<Button>(R.id.recomendaciones_platos).setOnClickListener{
-            Recomendar()
-        }
 
         //Boton de GSorpresa
         findViewById<Button>(R.id.gose_platos).setOnClickListener{
@@ -120,16 +97,6 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
 
     fun CargarLista(categoria: Food.Category){
         val comidaFiltrada = comida.filter { it.category == categoria }
-
-        val selectedFoodList = SelectedFood.getInstance()
-
-        val adapter = FoodAdapter(this, comidaFiltrada, selectedFoodList)
-        findViewById<ListView>(R.id.lista_platos).adapter = adapter
-    }
-
-    //Boton de Recomendados
-    fun Recomendar(){
-        val comidaFiltrada = comida.shuffled().take(if (comida.size >= cantidadRecomendaciones) cantidadRecomendaciones else comida.size)
 
         val selectedFoodList = SelectedFood.getInstance()
 

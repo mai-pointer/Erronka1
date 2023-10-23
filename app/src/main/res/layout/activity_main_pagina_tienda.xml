@@ -29,20 +29,7 @@
 
 
             <Button
-                android:id="@+id/recomendaciones_platos"
-                android:layout_width="195dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:fontFamily="@font/catamaran_black"
-                android:text="@string/btn_tienda_1"
-                tools:layout_editor_absoluteX="330dp"
-
-
-                tools:layout_editor_absoluteY="1000dp" />
-
-
-            <Button
-                android:id="@+id/primeros_platos"
+                android:id="@+id/entrantes_platos"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
@@ -52,7 +39,7 @@
                 tools:layout_editor_absoluteY="1000dp" />
 
             <Button
-                android:id="@+id/entrantes_platos"
+                android:id="@+id/principal_platos"
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
