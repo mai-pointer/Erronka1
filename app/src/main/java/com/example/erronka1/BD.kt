@@ -6,6 +6,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.util.Date
 
 class BD {
     //OBJETOS INDIVIDUALES PARA COGER DATOS DE CADA BD
@@ -33,6 +34,20 @@ class BD {
                     Snapshot.child("goseS_price").getValue(Double::class.java),
                     Snapshot.child("goseS_pic").getValue(String::class.java),
                 )
+            }
+            bd.Get (callback)
+        }
+        fun GetOrders(callback: (orders: List<Order>) -> Unit){
+            val bd = Create("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/order_db"){orderSnapshot ->
+                Order(
+                    orderSnapshot.child("order_id").getValue(String::class.java),
+                    orderSnapshot.child("order_date").getValue(Date::class.java),
+                    orderSnapshot.child("food_id").getValue(String::class.java)?.split(","),
+                    orderSnapshot.child("user_id").getValue(String::class.java),
+                    orderSnapshot.child("order_price").getValue(Double::class.java),
+                    Order.Status.from(orderSnapshot.child("order_status").getValue(String::class.java)?: "")
+                )
+
             }
             bd.Get (callback)
         }
