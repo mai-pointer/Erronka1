@@ -33,12 +33,18 @@ class MainActivity_Cesta : AppCompatActivity() {
         selectedFoodList.eventHandlers?.add {list ->
             ChangeData(list)
         }
-
-        //Cargar de la base de datos
-        /*BD.GetFood {foods->
-            ChangeData(foods)
-        }*/
         ChangeData(selectedFoodList.selectedFoodList)
+
+        findViewById<Button>(R.id.btnPay).setOnClickListener{
+            val orderNumber = BD.GetOrders{orders -> orders.count()}
+            val orderid = "order_" + orderNumber+1
+            val myFoods:MutableList<String>? = null
+            selectedFoodList.selectedFoodList.forEach{food ->
+                myFoods?.add(food.id.toString())
+            }
+            val newOrder: Order(orderid, LocalDate.now(), myFoods, user, )
+
+        }
     }
 
     override fun onDestroy() {
