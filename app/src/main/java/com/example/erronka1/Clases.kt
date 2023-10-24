@@ -22,7 +22,6 @@ data class Proveedor(
 interface Product {
     val id: String?
     val title: String?
-    val desc: String?
     val price: Double?
     val pic: String?
 }
@@ -38,7 +37,6 @@ data class Order(
 data class GSorpresa(
     override val id: String?,
     override val title: String?,
-    override val desc: String?,
     override val price: Double?,
     override val pic: String?
 ) : Product
@@ -49,7 +47,6 @@ interface OnImageDownloadListener {
 data class Food(
     override val id: String?,
     override val title: String?,
-    override val desc: String?,
     override val price: Double?,
     override val pic: String?,
 

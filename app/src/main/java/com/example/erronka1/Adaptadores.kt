@@ -107,7 +107,7 @@ class FoodAdapter(private val context: Context, private val foodList: List<Food>
 
             // Obtener las vistas del diseño
             elementos.textTitle = view.findViewById(R.id.titulo_platos)
-            elementos.textDescription = view.findViewById(R.id.descripcion_platos)
+
             elementos.textPrice = view.findViewById(R.id.precio_platos)
             elementos.imageFood = view.findViewById(R.id.imagen_platos)
             elementos.buttonAdd = view.findViewById(R.id.boton_platos)
@@ -123,7 +123,6 @@ class FoodAdapter(private val context: Context, private val foodList: List<Food>
 
         // Establecer los valores en las vistas
         elementos.textTitle.text = food.title
-        elementos.textDescription.text = food.desc
         elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
         food.downloadImageFromCloudStorage { bitmap ->
             if (bitmap != null) {
@@ -169,7 +168,6 @@ class FoodAdapter(private val context: Context, private val foodList: List<Food>
     //Clase para guardar los elementos de la view
     private class Elementos {
         lateinit var textTitle: TextView
-        lateinit var textDescription: TextView
         lateinit var textPrice: TextView
         lateinit var imageFood: ImageView
         lateinit var buttonAdd: Button
@@ -201,7 +199,6 @@ class GSorpresaAdapter(private val context: Context, private val goseList: List<
 
             // Obtener las vistas del diseño
             elementos.textTitle = view.findViewById(R.id.titulo_platos)
-            elementos.textDescription = view.findViewById(R.id.descripcion_platos)
             elementos.textPrice = view.findViewById(R.id.precio_platos)
             elementos.buttonAdd = view.findViewById(R.id.boton_platos)
 
@@ -216,7 +213,6 @@ class GSorpresaAdapter(private val context: Context, private val goseList: List<
 
         // Establecer los valores en las vistas
         elementos.textTitle.text = food.title
-        elementos.textDescription.text = food.desc
         elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
         elementos.buttonAdd.setOnClickListener {
             // *** Agregar lógica para manejar el botón "Añadir" ***
@@ -228,7 +224,6 @@ class GSorpresaAdapter(private val context: Context, private val goseList: List<
     //Clase para guardar los elementos de la view
     private class Elementos {
         lateinit var textTitle: TextView
-        lateinit var textDescription: TextView
         lateinit var textPrice: TextView
         lateinit var buttonAdd: Button
     }

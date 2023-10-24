@@ -35,21 +35,17 @@
             <TextView
                 android:id="@+id/titulo_platos"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="122dp"
                 android:fontFamily="@font/catamaran_black"
                 android:text="Ensalada cesar con nueces"
                 android:textColor="@color/colorAccent"
-                android:textSize="16sp" />
+                android:textSize="16sp" /><![CDATA[
 
 
-            <TextView
-                android:id="@+id/descripcion_platos"
-                android:layout_width="match_parent"
-                android:layout_height="92dp"
-                android:text="La clásica ensalada cesar con un toque especial de la casa"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp" />/>
+            />
 
+
+            ]]>
 
             <TextView
                 android:id="@+id/precio_platos"

@@ -16,7 +16,6 @@ class BD {
                 Food(
                     foodSnapshot.child("food_id").getValue(String::class.java),
                     foodSnapshot.child("food_title").getValue(String::class.java),
-                    foodSnapshot.child("food_desc").getValue(String::class.java),
                     foodSnapshot.child("food_price").getValue(Double::class.java),
                     foodSnapshot.child("food_pic").getValue(String::class.java),
                     Food.Category.from(foodSnapshot.child("food_category").getValue(String::class.java) ?: ""),
@@ -31,7 +30,6 @@ class BD {
                 GSorpresa(
                     Snapshot.child("goseS_id").getValue(String::class.java),
                     Snapshot.child("goseS_title").getValue(String::class.java),
-                    Snapshot.child("goseS_desc").getValue(String::class.java),
                     Snapshot.child("goseS_price").getValue(Double::class.java),
                     Snapshot.child("goseS_pic").getValue(String::class.java),
                 )
@@ -89,13 +87,12 @@ class BD {
                     for (foodSnapshot in dataSnapshot.children) {
                         val foodId = foodSnapshot.child("food_id").getValue(String::class.java)
                         val foodCategory = foodSnapshot.child("food_category").getValue(String::class.java)
-                        val foodDesc = foodSnapshot.child("food_desc").getValue(String::class.java)
                         val foodPic = foodSnapshot.child("food_pic").getValue(String::class.java)
                         val foodPrice = foodSnapshot.child("food_price").getValue(Double::class.java)
                         val foodSeason = foodSnapshot.child("food_season").getValue(String::class.java)
                         val foodTitle = foodSnapshot.child("food_title").getValue(String::class.java)
 
-                        val food = Food(foodId, foodTitle, foodDesc, foodPrice, foodPic, Food.Category.from(foodCategory.toString()), Food.Seasons.from(foodSeason.toString()))
+                        val food = Food(foodId, foodTitle, foodPrice, foodPic, Food.Category.from(foodCategory.toString()), Food.Seasons.from(foodSeason.toString()))
 
                         if (selectedFood.checkFood(food)){
                             foods.add(food)
