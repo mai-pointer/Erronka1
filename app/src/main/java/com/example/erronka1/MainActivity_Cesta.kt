@@ -1,24 +1,21 @@
 package com.example.erronka1
 
 import android.annotation.SuppressLint
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.storage.FirebaseStorage
+import java.time.LocalDate
 
 class MainActivity_Cesta : AppCompatActivity() {
     private lateinit var selectedFoodList: SelectedFood
     val user = FirebaseAuth.getInstance().currentUser
 
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,14 +33,27 @@ class MainActivity_Cesta : AppCompatActivity() {
         ChangeData(selectedFoodList.selectedFoodList)
 
         findViewById<Button>(R.id.btnPay).setOnClickListener{
-            val orderNumber = BD.GetOrders{orders -> orders.count()}
-            val orderid = "order_" + orderNumber+1
-            val myFoods:MutableList<String>? = null
-            selectedFoodList.selectedFoodList.forEach{food ->
-                myFoods?.add(food.id.toString())
-            }
-            val newOrder: Order(orderid, LocalDate.now(), myFoods, user, )
+            var orderNumber: Int? = null
+            BD.GetOrdersNoUpdate{orders ->
+                orderNumber = orders?.count()?.plus(1)
 
+
+                val orderId = "order_$orderNumber"
+                var myFoods: String = ""
+                var totalPrice :Double = 0.0
+                selectedFoodList.selectedFoodList.forEach{food ->
+                    myFoods += "${food.id},"
+                    totalPrice += food.price!!
+                }
+
+                if (myFoods.isNotEmpty()) {
+                    myFoods = myFoods.removeSuffix(",")
+                }
+
+                val newOrder = Order(orderId, LocalDate.now().toString(), myFoods, user?.providerId.toString(), totalPrice, Order.Status.from("ordered"))
+
+                BD.SetOrder(newOrder)
+            }
         }
     }
 

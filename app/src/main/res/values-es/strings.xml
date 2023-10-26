@@ -74,11 +74,15 @@
     <string name="precio">Precio</string>
     <string name="quitar">Quitar</string>
     <string name="añadir">Añadir</string>
-    <string name="pedido_titulo">"Compra del "</string>
+    <string name="pedido_titulo">"Compra del"</string>
     <string name="I">INVIERNO</string>
     <string name="P">PRIMAVERA</string>
     <string name="O">OTOÑO</string>
     <string name="V">VERANO</string>
+
+    <!-- Pedidos -->
+    <string name="confirmarEntrega">Confirmar entrega</string>
+    <string name="entregado">Entregado</string>
 
     <!-- JANARIAK -->
 

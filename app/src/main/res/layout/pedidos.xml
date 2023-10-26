@@ -8,10 +8,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout5"
-        android:layout_width="362dp"
-        android:layout_height="294dp"
+        android:layout_width="366dp"
+        android:layout_height="213dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_button"
         android:gravity="center_vertical"
@@ -24,7 +24,7 @@
 
         <LinearLayout
             android:layout_width="304dp"
-            android:layout_height="265dp"
+            android:layout_height="183dp"
             android:layout_marginStart="0dp"
             android:layout_weight="1"
             android:orientation="vertical">
@@ -34,23 +34,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/catamaran_black"
-                android:text="Compra del 12/09/2023"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/lista_pedidos"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:text=" -Ensalada cesar con nueces.\n -Tortelini con salsa de queso trufado.\n -Gastos de envio."
-                android:textColor="@color/colorPrimary" />
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/lista_pedidos"
+                    android:layout_width="160dp"
+                    android:layout_height="36dp"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorPrimary" />
+
+                <Button
+                    android:id="@+id/btnConfirmOrder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_button_green"
+                    android:minHeight="48dp"
+                    android:text="Button"
+                    android:textColor="@color/colorgrey" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/precio_pedidos"
                 android:layout_width="match_parent"
                 android:layout_height="59dp"
                 android:fontFamily="@font/catamaran_black"
-                android:text="Precio: $24,90"
                 android:textColor="@color/colorPrimary" />
 
         </LinearLayout>

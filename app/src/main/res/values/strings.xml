@@ -73,11 +73,15 @@
     <string name="precio">Prezioa</string>
     <string name="quitar">Kendu</string>
     <string name="añadir">Gehitu</string>
-    <string name="pedido_titulo">"Eroksetaren "</string>
+    <string name="pedido_titulo">"Erokseta data"</string>
     <string name="I">NEGUA</string>
     <string name="P">UDABERRIA</string>
     <string name="O">UDAZKENA</string>
     <string name="V">UDAZKOA</string>
+
+    <!-- Pedidos -->
+    <string name="confirmarEntrega">Entrega baieztatu</string>
+    <string name="entregado">Entregatuta</string>
 
     <!-- JANARIAK -->
 

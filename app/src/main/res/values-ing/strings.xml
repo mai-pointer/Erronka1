@@ -74,11 +74,15 @@
     <string name="precio">Price</string>
     <string name="quitar">Quit</string>
     <string name="añadir">Add</string>
-    <string name="pedido_titulo">Buy of</string>
+    <string name="pedido_titulo">Purchase date</string>
     <string name="I">WINTER</string>
     <string name="P">SPRING</string>
     <string name="O">AUTUMN</string>
     <string name="V">SUMMER</string>
+
+    <!-- Orders -->
+    <string name="confirmarEntrega">Confirm delivery</string>
+    <string name="entregado">Delivered</string>
 
     <!-- FOOD -->
 

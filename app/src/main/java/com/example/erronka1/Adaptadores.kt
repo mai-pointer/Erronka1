@@ -6,6 +6,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.provider.Settings.Global.getString
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -52,6 +53,7 @@ class OrderAdapter(private val context: Context, private val lista: List<Order>)
             layout.tituloTxt = view.findViewById(R.id.titulo_pedidos)
             layout.descripcionTxt = view.findViewById(R.id.lista_pedidos)
             layout.precioTxt = view.findViewById(R.id.precio_pedidos)
+            layout.orderConfirm = view.findViewById(R.id.btnConfirmOrder)
 
             //Le asigna el layot a la view
             view.tag = layout
@@ -66,9 +68,35 @@ class OrderAdapter(private val context: Context, private val lista: List<Order>)
         val elemento = lista[position]
 
         // Establecer los valores en las vistas
-        layout.tituloTxt.text = "${context.getString(R.string.pedido_titulo)}: ${elemento.data}"
-        layout.descripcionTxt.text = elemento.list
-        layout.precioTxt.text = "${context.getString(R.string.precio)}: ${elemento.price} €"
+        layout.tituloTxt.text = "${context.getString(R.string.pedido_titulo)}: ${elemento.order_date}"
+        val foodList = elemento.food_id?.split(",")
+
+        var foodListDecoded = ""
+        foodList?.forEach { food ->
+            val resourceId = context.resources.getIdentifier(food, "string", context.packageName)
+            val decodedString = if (resourceId != 0) context.getString(resourceId) else ""
+            foodListDecoded += "$decodedString\n"
+        }
+
+        layout.descripcionTxt.text = foodListDecoded
+        layout.precioTxt.text = "${context.getString(R.string.precio)}: ${elemento.order_price} €"
+
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/order_db")
+
+        if (elemento.GetStatus() == "delivered"){
+            layout.orderConfirm.text = "${context.getString(R.string.entregado)}"
+            layout.orderConfirm.isEnabled = false
+        } else{
+            layout.orderConfirm.text = "${context.getString(R.string.confirmarEntrega)}"
+            layout.orderConfirm.setOnClickListener{
+                elemento.ChangeStatus()
+                layout.orderConfirm.text = "${context.getString(R.string.entregado)}"
+                layout.orderConfirm.isEnabled = false
+                val orderRef = myRef.child(elemento.order_id.toString())
+                orderRef.child("order_status").setValue("delivered")
+            }
+        }
 
         return view
     }
@@ -78,6 +106,7 @@ class OrderAdapter(private val context: Context, private val lista: List<Order>)
         lateinit var tituloTxt: TextView
         lateinit var descripcionTxt: TextView
         lateinit var precioTxt: TextView
+        lateinit var orderConfirm: Button
     }
 }
 
@@ -147,19 +176,6 @@ class FoodAdapter(private val context: Context, private val foodList: List<Food>
 
             }
             else -> {}
-        }
-
-        fun setItems0(){
-            elementos.buttonAdd.text = context.getString(R.string.añadir)
-            elementos.buttonAdd.setOnClickListener {
-                selectedFood.addFood(food)
-            }
-        }
-        fun setItems1(){
-            elementos.buttonAdd.text = context.getString(R.string.quitar)
-            elementos.buttonAdd.setOnClickListener {
-                selectedFood.addFood(food)
-            }
         }
 
         return view

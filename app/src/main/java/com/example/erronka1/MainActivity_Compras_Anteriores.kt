@@ -1,9 +1,11 @@
 package com.example.erronka1
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ListView
+import androidx.annotation.RequiresApi
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -17,9 +19,11 @@ import java.util.Locale
 class MainActivity_Compras_Anteriores : AppCompatActivity() {
 
     //Variables
-    val orders = mutableListOf<Order>()
+    val myorders = mutableListOf<Order>()
     val user = FirebaseAuth.getInstance().currentUser
+    val myId = user?.providerId
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_compras_anteriores)
@@ -32,94 +36,25 @@ class MainActivity_Compras_Anteriores : AppCompatActivity() {
         //MenuNav
         MenuNav.Crear(this, user)
         //BD
-        if (user != null){
+        if (user != null) {
 
-            //Busca la info de la comida
-            var comidaList = mutableListOf<FoodIncomplete>()
-
-            myRefFood.addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot){
-                    for (orderSnapshot in dataSnapshot.children){
-                        //Guarda la informacion en una lista
-                        comidaList.add(FoodIncomplete(
-                            orderSnapshot.child("food_id").getValue(String::class.java),
-                            orderSnapshot.child("food_title").getValue(String::class.java),
-                            orderSnapshot.child("food_price").getValue(Double::class.java),
-                        ))
+            BD.GetOrders { allOrders ->
+                allOrders.forEach() { order ->
+                    if (order.user_id.equals(myId)) {
+                        myorders.add(order)
                     }
                 }
-                override fun onCancelled(error: DatabaseError){
-                    Log.e("firebase", "Error getting data", error.toException())
-                }
-            })
-
-            //Crear los pedidos
-            myRefOrder.addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    for (orderSnapshot in dataSnapshot.children) {
-
-                        //Variables de order
-                        var order: Order
-                        val userId = orderSnapshot.child("user_id").getValue(String::class.java)
-//                        val orderStatus = orderSnapshot.child("order_status").getValue(String::class.java)  *** PENDIENTE ***
-
-                        //Comprueba que los pedidos sean del usuario y que ya los a pedido
-                        if(userId == user.uid){
-
-                            val orderId = orderSnapshot.child("order_id").getValue(String::class.java)
-                            val orderDateString = orderSnapshot.child("order_date").getValue(String::class.java)
-                            val foodId = orderSnapshot.child("food_id").getValue(String::class.java)
-
-                            // Formatea la fecha
-                            val iso8601Format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
-                            var orderDate = Date()
-                            try {
-                                orderDate = iso8601Format.parse(orderDateString)
-                            } catch (e: Exception) {
-                                e.printStackTrace()
-                            }
-
-                            val desiredFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                            val formattedDate = desiredFormat.format(orderDate)
-
-                            //Crea el objeto dr order
-                            order = Order(orderId, formattedDate)
-
-                            //Suma el precio y los nombres de todas las comidas
-                            if (foodId != null){
-                                var precio: Double = 0.0
-                                var lista: String = ""
-
-                                val foodIdList = foodId.split(",").map { it.trim() }
-
-                                for (comida in comidaList){
-                                    if (foodIdList.contains(comida.id)) {
-                                        lista += " - ${comida.nombre} \n"
-                                        precio += comida.precio ?: 0.0
-                                    }
-                                }
-
-                                order.price = precio
-                                order.list = lista
-                            }
-
-                            //Añade el objeto a una lista
-                            orders.add(order)
-                        }
-                    }
-                    //Llama al creador del ListView
+                if(myorders.isNotEmpty()){
                     Crear()
                 }
-                override fun onCancelled(error: DatabaseError) {
-                    Log.e("firebase", "Error getting data", error.toException())
-                }
-            })
+
+            }
         }
     }
 
     fun Crear(){
         //ListView
-        val adapter = OrderAdapter(this, orders)
+        val adapter = OrderAdapter(this, myorders)
         findViewById<ListView>(R.id.lista_pedidos).adapter = adapter
     }
 

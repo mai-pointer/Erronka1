@@ -56,23 +56,17 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
                     val foodPrice = foodSnapshot.child("food_price").getValue(Double::class.java)
                     val foodSeason = foodSnapshot.child("food_season").getValue(String::class.java)
 
-                    val food = Food(foodId," getString(R.string.foodId)", foodPrice, foodPic, Food.Category.from(foodCategory.toString()), Food.Seasons.from(foodSeason.toString()))
+                    val food = Food(foodId, getString(resources.getIdentifier(foodId, "string", packageName)), foodPrice, foodPic, Food.Category.from(foodCategory.toString()), Food.Seasons.from(foodSeason.toString()))
                     comida.add(food)
                 }
-
-
                 for (boton in botones){
                     findViewById<Button>(boton.boton).setOnClickListener{
                         myCurrentCategory = boton.categoria
                         CargarLista(myCurrentCategory!!)
                     }
                 }
-
                 CargarLista(myCurrentCategory!!)
-
-
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Log.e("firebase", "Error getting data", error.toException())
             }

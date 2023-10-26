@@ -1,14 +1,11 @@
 package com.example.erronka1
 
-import android.Manifest
-import android.content.Context
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
-import androidx.core.content.ContextCompat
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
+import java.time.LocalDate
 
 data class Proveedor(
     var nombre: String,
@@ -27,11 +24,35 @@ interface Product {
 }
 
 data class Order(
-    val id: String?,
-    val data: String
+    val order_id: String?,
+    val order_date: String?,
+    val food_id: String?,
+    val user_id: String?,
+    val order_price: Double? = null,
+    var order_status: Status?
 ){
-    var list: String? = null
-    var price: Double? = null
+    enum class Status(val displayName: String) {
+        ordered("ordered"),
+        delivered("delivered");
+
+        companion object {
+            fun from(findValue: String): Status =
+                values().first { it.displayName.equals(findValue, true) }
+        }
+
+        override fun toString(): String {
+            return displayName
+        }
+    }
+    fun GetStatus(): String{
+        return order_status!!.displayName
+    }
+    fun ChangeStatus() {
+        if (order_status == Status.ordered) {
+            order_status = Status.delivered
+        }
+    }
+
 }
 
 data class GSorpresa(
@@ -47,13 +68,13 @@ interface OnImageDownloadListener {
 data class Food(
     override val id: String?,
     override val title: String?,
-    override val price: Double?,
+    override var price: Double?,
     override val pic: String?,
 
     val category: Category?,
     val season: Seasons?
 ) : Product {
-    enum class Seasons(private val displayName: String) {
+    enum class Seasons(val displayName: String) {
         SPRING("spring"),
         SUMMER("summer"),
         AUTUMN("fall"),
