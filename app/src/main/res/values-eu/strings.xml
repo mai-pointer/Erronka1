@@ -113,4 +113,8 @@
     <string name="food_18">Polpoa kalabazaren krema</string>
     <string name="food_19">Ahatea udare saltsarekin</string>
     <string name="food_20">Sagar "crumble" mandarina izozarekin</string>
+
+    <!-- Otros-->
+    <string name="tema">Tema</string>
+
 </resources>

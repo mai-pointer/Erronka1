@@ -11,10 +11,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="264dp"
+        android:layout_width="345dp"
+        android:layout_height="198dp"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="35dp"
         android:background="@drawable/rounded_button"
         android:orientation="vertical"
@@ -65,8 +65,8 @@
 
         <TextView
             android:id="@+id/numberSteps"
-            android:layout_width="match_parent"
-            android:layout_height="96dp" />
+            android:layout_width="319dp"
+            android:layout_height="56dp" />
 
         <Button
             android:id="@+id/btnLogout"
@@ -81,8 +81,9 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="256dp"
+        android:id="@+id/linearLayout6"
+        android:layout_width="339dp"
+        android:layout_height="204dp"
         android:layout_marginStart="35dp"
         android:layout_marginTop="34dp"
         android:layout_marginEnd="35dp"
@@ -141,6 +142,7 @@
             android:textColor="@color/white"
             tools:ignore="TextContrastCheck" />
     </LinearLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navMenu"
         android:layout_width="0dp"
@@ -150,4 +152,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="VisualLintBottomNav" />
+
+    <LinearLayout
+        android:layout_width="337dp"
+        android:layout_height="117dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="13dp"
+        android:background="@drawable/rounded_button"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/navMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" >
+
+        <Switch
+            android:id="@+id/tema"
+            android:layout_width="308dp"
+            android:layout_height="59dp"
+            android:text="@string/tema" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -113,4 +113,8 @@
     <string name="food_18">Pulpo con crema de calabaza</string>
     <string name="food_19">Ahatea udare saltsarekin</string>
     <string name="food_20">Manzana “crumble” con helado de mandarina</string>
+
+    <!--Otros-->
+    <string name="tema">Tema</string>
+
 </resources>
