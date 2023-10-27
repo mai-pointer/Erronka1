@@ -42,24 +42,32 @@ class MainActivity : AppCompatActivity() {
 
                 1, 2, 3 -> {
                     val intent = Intent(this, PantallaInvierno::class.java)
-                    intent.putExtra("season", getString(string.I))
+                    val bundle = Bundle()
+                    bundle.putString("season", getString(string.I))
+                    intent.putExtras(bundle)
                     startActivity(intent)
                 }
 
                 4, 5, 6 -> {
                     val intent = Intent(this, PantallaInvierno::class.java)
-                    intent.putExtra("season", getString(string.P))
+                    val bundle = Bundle()
+                    bundle.putString("season", getString(string.P))
+                    intent.putExtras(bundle)
                     startActivity(intent)
                 }
 
                 7, 8, 9 -> {
                     val intent = Intent(this, PantallaInvierno::class.java)
-                    intent.putExtra("season", getString(string.V))
+                    val bundle = Bundle()
+                    bundle.putString("season", getString(string.V))
+                    intent.putExtras(bundle)
                     startActivity(intent)
                 }
                 else -> {
                     val intent = Intent(this, PantallaInvierno::class.java)
-                    intent.putExtra("season", getString(string.O))
+                    val bundle = Bundle()
+                    bundle.putString("season", getString(string.O))
+                    intent.putExtras(bundle)
                     startActivity(intent)
                 }
             }
@@ -76,8 +84,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         zeroWaste.setOnClickListener {
-            /*val intent = Intent(this, ZeroWasteActivity::class.java)
-            startActivity(intent)*/
+            val intent = Intent(this, MainActivity_Pagina_Tienda::class.java)
+            startActivity(intent)
         }
     }
 

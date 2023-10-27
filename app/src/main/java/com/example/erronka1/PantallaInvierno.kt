@@ -51,7 +51,8 @@ class PantallaInvierno : AppCompatActivity() {
         val user = FirebaseAuth.getInstance().currentUser
         MenuNav.Crear(this, user)
 
-        val myseason = intent.getStringExtra("season")
+        val myseason = intent.extras?.getString("season")
+        Log.i("Error-TX", myseason ?: "")
         when (myseason) {
             getString(R.string.I) -> {
                 titulo.text=getString(R.string.I)
