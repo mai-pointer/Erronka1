@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/linearLayout5"
         android:layout_width="366dp"
-        android:layout_height="213dp"
+        android:layout_height="261dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="16dp"
@@ -23,8 +23,8 @@
 
 
         <LinearLayout
-            android:layout_width="304dp"
-            android:layout_height="183dp"
+            android:layout_width="317dp"
+            android:layout_height="251dp"
             android:layout_marginStart="0dp"
             android:layout_weight="1"
             android:orientation="vertical">
@@ -39,15 +39,15 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="172dp"
                 android:orientation="horizontal"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp">
 
                 <TextView
                     android:id="@+id/lista_pedidos"
-                    android:layout_width="160dp"
-                    android:layout_height="36dp"
+                    android:layout_width="164dp"
+                    android:layout_height="118dp"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorPrimary" />
 
@@ -65,7 +65,7 @@
             <TextView
                 android:id="@+id/precio_pedidos"
                 android:layout_width="match_parent"
-                android:layout_height="59dp"
+                android:layout_height="50dp"
                 android:fontFamily="@font/catamaran_black"
                 android:textColor="@color/colorPrimary" />
 
