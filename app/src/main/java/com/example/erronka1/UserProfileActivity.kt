@@ -1,5 +1,6 @@
 package com.example.erronka1
 
+import CambiarTema
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.view.Gravity
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Switch
 import android.widget.Toast
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
@@ -22,7 +24,18 @@ class UserProfileActivity : AppCompatActivity() {
     private lateinit var newPassword: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//      CambiarTema.Cargar(this) // Cargar el tema al iniciar la actividad
+        setTheme(androidx.appcompat.R.style.ThemeOverlay_AppCompat_DayNight)
         setContentView(R.layout.activity_user_profile)
+
+        //Tema
+        findViewById<Switch>(R.id.tema).setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                CambiarTema.Guardar(this, R.style.Theme_Erronka1)
+            } else {
+                CambiarTema.Guardar(this, androidx.appcompat.R.style.Theme_AppCompat_DayNight)
+            }
+        }
 
         mail = findViewById(R.id.txtMail)
         changePassword = findViewById(R.id.btnChangePassword)

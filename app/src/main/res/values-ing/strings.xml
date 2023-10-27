@@ -113,4 +113,8 @@
     <string name="food_18">Octopus with pumpkin cream</string>
     <string name="food_19">Duck with cherry sauce</string>
     <string name="food_20">Apple "crumble" with mandarin ice cream</string>
+
+    <!--Otros-->
+    <string name="tema">Theme</string>
+
 </resources>
