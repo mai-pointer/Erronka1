@@ -7,34 +7,34 @@
     android:background="@color/colorAccent"
     tools:context=".PantallaInvierno">
 
+    <ListView
+        android:id="@+id/lista_platos"
+        android:layout_width="380dp"
+        android:layout_height="292dp"
+        app:layout_constraintBottom_toBottomOf="@+id/navMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.612"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.528" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="387dp"
-        android:layout_height="187dp"
+        android:layout_width="395dp"
+        android:layout_height="172dp"
         android:background="@drawable/rounded_button"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.112">
+        app:layout_constraintVertical_bias="0.108">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="242dp"
             android:layout_height="190dp"
             android:background="#00FFFFFF">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="172dp"
-                android:layout_height="105dp"
-                android:text="En esta época acostumbramos a ofrecer a nuestros clientes los siguientes alimentos "
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.128"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.729" />
 
             <TextView
                 android:id="@+id/textview"
@@ -46,7 +46,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.115" />
+                app:layout_constraintVertical_bias="0.388" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
