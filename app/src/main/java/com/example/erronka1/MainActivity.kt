@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.erronka1.R.*
 import com.google.firebase.auth.FirebaseAuth
 import java.util.Calendar
@@ -21,6 +22,11 @@ class MainActivity : AppCompatActivity() {
         FirebaseAppCheck.getInstance().installAppCheckProviderFactory(
             PlayIntegrityAppCheckProviderFactory.getInstance()
         )*/
+
+        //Cambiar el tema
+        if (SharedPreferences.CargarBool(this, "tema")) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
 
         menu = findViewById(id.btnCarta)
         delivery = findViewById(id.btnDelivery)
