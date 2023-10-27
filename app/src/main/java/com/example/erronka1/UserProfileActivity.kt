@@ -135,14 +135,16 @@ class UserProfileActivity : AppCompatActivity() {
                 }
             }
 
+        //Envia el idioma español a la funcion
         espanol.setOnClickListener() {
             setLocale("es", resources)
         }
+        //Envia el idioma Ingles a la funcion
 
         ingles.setOnClickListener() {
             setLocale("ing", resources)
         }
-
+        //Envia el idioma Euskera a la funcion
         euskera.setOnClickListener() {
             setLocale("eu", resources)
         }
@@ -159,12 +161,16 @@ class UserProfileActivity : AppCompatActivity() {
 
             }
         }
+
     fun setLocale(language: String, resources: Resources) {
+        //Reciben el idioma y que es un resource
         val locale = Locale(language)
         Locale.setDefault(locale)
         val configuration = Configuration(resources.configuration)
+        //Se añade el idioma definido en la configuracion para cambiar de strings.xml
         configuration.setLocale(locale)
         resources.updateConfiguration(configuration, resources.displayMetrics)
+        //Actualica la pagina con los cambios
         recreate()
     }
 

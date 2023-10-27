@@ -82,8 +82,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout6"
-        android:layout_width="339dp"
-        android:layout_height="204dp"
+        android:layout_width="336dp"
+        android:layout_height="223dp"
         android:layout_marginStart="35dp"
         android:layout_marginTop="34dp"
         android:layout_marginEnd="35dp"
@@ -183,6 +183,7 @@
                 android:layout_height="wrap_content"
                 android:scaleType="fitCenter"
                 android:layout_weight="1"
+                android:background="@null"
                 app:srcCompat="@drawable/espanol" />
 
             <ImageButton
@@ -192,6 +193,7 @@
                 android:layout_height="wrap_content"
                 android:scaleType="fitCenter"
                 android:layout_weight="1"
+                android:background="@null"
                 app:srcCompat="@drawable/euskera" />
 
             <ImageButton
@@ -201,6 +203,7 @@
                 android:layout_height="wrap_content"
                 android:scaleType="fitCenter"
                 android:layout_weight="1"
+                android:background="@null"
                 app:srcCompat="@drawable/ingles" />
         </LinearLayout>
 
