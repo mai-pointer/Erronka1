@@ -56,13 +56,6 @@ class Proveedores : AppCompatActivity(), OnMapReadyCallback {
         // Agregar un OnItemClickListener al ListView
         listView.setOnItemClickListener { _, _, cont, _ ->
 
-//            if (colorOriginal == null){
-//                colorOriginal = listView.getChildAt(cont).background
-//                Log.i("Error-TX", colorOriginal.toString() + "----" + listView.getChildAt(cont).background)
-//            }
-//            if(seleccionado >= 0) listView.getChildAt(seleccionado).background = colorOriginal
-//            listView.getChildAt(cont).background = ColorDrawable(getColor(R.color.colorgrey))
-
             seleccionado = cont
 
             //Cambia la tarjeta
