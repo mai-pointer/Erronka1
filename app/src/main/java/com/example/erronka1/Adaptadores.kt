@@ -283,7 +283,8 @@ class GSorpresaAdapter(private val context: Context, private val goseList: List<
         }
 
         // Obtener el objeto Food en esta posición
-        val (title, price) = goseList[position]
+        val (id, title, price, pic) = goseList[position]
+        Log.i("ErrorTX", title + "///" + price)
 
         // Establecer los valores en las vistas
         elementos.textTitle.text = title
