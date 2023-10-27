@@ -189,6 +189,65 @@ class FoodAdapter(private val context: Context, private val foodList: List<Food>
         lateinit var buttonAdd: Button
     }
 }
+class SeasonFoodAdapter(private val context: Context, private val foodList: List<Food>) : BaseAdapter() {
+    //Funciones del adaptador
+    override fun getCount(): Int {
+        return foodList.size
+    }
+    override fun getItem(position: Int): Any {
+        return foodList[position]
+    }
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+
+    //Edita la view
+    @SuppressLint("ResourceType")
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+
+        //Declara la view y el alamcen de los datos
+        val view: View
+        val elementos: Elementos
+
+        if (convertView == null) {
+            view = LayoutInflater.from(context).inflate(R.layout.platos_season, parent, false)
+            elementos = Elementos() // declara la clase
+
+            // Obtener las vistas del diseño
+            elementos.textTitle = view.findViewById(R.id.titulo_platos)
+            elementos.textPrice = view.findViewById(R.id.precio_platos)
+            elementos.imageFood = view.findViewById(R.id.imagen_platos)
+
+            view.tag = elementos
+        } else {
+            view = convertView
+            elementos = view.tag as Elementos
+        }
+
+        // Obtener el objeto Food en esta posición
+        val food = foodList[position]
+
+        // Establecer los valores en las vistas
+        elementos.textTitle.text = food.title
+        elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
+        food.downloadImageFromCloudStorage { bitmap ->
+            if (bitmap != null) {
+                elementos.imageFood.setImageBitmap(bitmap)
+            } else {
+                Toast.makeText(context, "Failed to retrieve image", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        return view
+    }
+
+    //Clase para guardar los elementos de la view
+    private class Elementos {
+        lateinit var textTitle: TextView
+        lateinit var textPrice: TextView
+        lateinit var imageFood: ImageView
+    }
+}
 
 class GSorpresaAdapter(private val context: Context, private val goseList: List<GSorpresa>) : BaseAdapter() {
     //Funciones del adaptador
