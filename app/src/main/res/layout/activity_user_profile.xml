@@ -154,8 +154,8 @@
         tools:ignore="VisualLintBottomNav" />
 
     <LinearLayout
-        android:layout_width="337dp"
-        android:layout_height="117dp"
+        android:layout_width="335dp"
+        android:layout_height="147dp"
         android:layout_marginTop="23dp"
         android:layout_marginBottom="13dp"
         android:background="@drawable/rounded_button"
@@ -163,12 +163,46 @@
         app:layout_constraintBottom_toTopOf="@+id/navMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" >
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
 
         <Switch
             android:id="@+id/tema"
             android:layout_width="308dp"
-            android:layout_height="59dp"
+            android:layout_height="58dp"
             android:text="@string/tema" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:contentDescription="Botón para realizar una acción específica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/espanol" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:contentDescription="Botón para realizar una acción específica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/euskera" />
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:contentDescription="Botón para realizar una acción específica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ingles" />
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

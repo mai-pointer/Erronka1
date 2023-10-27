@@ -14,35 +14,40 @@ import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import java.security.AuthProvider
+import android.content.res.Configuration
+import android.content.res.Resources
+import java.util.Locale
 
 class UserProfileActivity : AppCompatActivity() {
     private lateinit var mail: EditText
     private lateinit var changePassword: Button
     private lateinit var logout: Button
+    private lateinit var espanol: ImageButton
+    private lateinit var euskera: ImageButton
+    private lateinit var ingles: ImageButton
     private lateinit var changeMail: ImageButton
     private lateinit var oldPassword: EditText
     private lateinit var newPassword: EditText
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//      CambiarTema.Cargar(this) // Cargar el tema al iniciar la actividad
-        setTheme(androidx.appcompat.R.style.ThemeOverlay_AppCompat_DayNight)
+
         setContentView(R.layout.activity_user_profile)
 
-        //Tema
-        findViewById<Switch>(R.id.tema).setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                CambiarTema.Guardar(this, R.style.Theme_Erronka1)
-            } else {
-                CambiarTema.Guardar(this, androidx.appcompat.R.style.Theme_AppCompat_DayNight)
-            }
-        }
+
 
         mail = findViewById(R.id.txtMail)
         changePassword = findViewById(R.id.btnChangePassword)
         changeMail = findViewById(R.id.btnEditMail)
         logout = findViewById(R.id.btnLogout)
+        espanol = findViewById(R.id.imageButton)
+        euskera = findViewById(R.id.imageButton2)
+        ingles = findViewById(R.id.imageButton3)
         oldPassword = findViewById(R.id.oldPassword)
         newPassword = findViewById(R.id.newPassword)
+
+
 
 
         val passwordChanged = Toast.makeText(this, "Pasahitza aldatu da", Toast.LENGTH_SHORT)
@@ -129,6 +134,22 @@ class UserProfileActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
             }
+
+        espanol.setOnClickListener() {
+            setLocale("es", resources)
+        }
+
+        ingles.setOnClickListener() {
+            setLocale("ing", resources)
+        }
+
+        euskera.setOnClickListener() {
+            setLocale("eu", resources)
+        }
+
+
+
+
         }
 
         fun UpdateData(user: FirebaseUser?) {
@@ -138,4 +159,15 @@ class UserProfileActivity : AppCompatActivity() {
 
             }
         }
+    fun setLocale(language: String, resources: Resources) {
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+        val configuration = Configuration(resources.configuration)
+        configuration.setLocale(locale)
+        resources.updateConfiguration(configuration, resources.displayMetrics)
+        recreate()
+    }
+
+
+
     }
