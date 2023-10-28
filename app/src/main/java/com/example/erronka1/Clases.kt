@@ -128,7 +128,8 @@ data class Food(
 
 typealias MyEventHandler = (MutableList<Food>) -> Unit
 class SelectedFood private constructor(
-    val selectedFoodList: MutableList<Food> = mutableListOf<Food>()
+    val selectedFoodList: MutableList<Food> = mutableListOf<Food>(),
+    val selectedGSorpresa: MutableList<GSorpresa> = mutableListOf<GSorpresa>()
 ){
     var eventHandlers: MutableList<MyEventHandler>? = null
 
@@ -138,24 +139,41 @@ class SelectedFood private constructor(
     companion object{
         @Volatile
         private var INSTANCE: SelectedFood? = null
-
         fun getInstance(): SelectedFood{
             return INSTANCE ?: synchronized(this){
                 INSTANCE ?: SelectedFood().also {INSTANCE = it}
             }
         }
     }
-    public fun addFood(newFood: Food){
+    fun addFood(newFood: Food){
         selectedFoodList.add(newFood)
         eventHandlers?.forEach { it(selectedFoodList) }
     }
+    fun addGSorpresa(newGSorpresa: GSorpresa){
+        selectedGSorpresa.add(newGSorpresa)
+        eventHandlers?.forEach { it(selectedFoodList) }
+    }
 
-    public fun deleteFood(foodToDelete: Food){
+    fun deleteFood(foodToDelete: Food){
         selectedFoodList.remove(foodToDelete)
         eventHandlers?.forEach { it.invoke(selectedFoodList) }
     }
 
-    public fun checkFood(foodToCheck: Food):Boolean{
+    fun deleteGSorpresa(sorpresaToDelete: GSorpresa){
+        selectedGSorpresa.remove(sorpresaToDelete)
+        eventHandlers?.forEach{it.invoke(selectedFoodList)}
+    }
+
+    fun checkFood(foodToCheck: Food):Boolean{
         return selectedFoodList.contains(foodToCheck)
+    }
+
+    fun checkGSorpresa (sorpresaToCheck: GSorpresa):Boolean{
+        return selectedGSorpresa.contains(sorpresaToCheck)
+    }
+
+    fun clearFoodList(){
+        selectedFoodList.clear()
+        selectedGSorpresa.clear()
     }
 }

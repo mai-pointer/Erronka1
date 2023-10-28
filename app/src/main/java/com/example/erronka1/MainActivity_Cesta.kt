@@ -1,6 +1,7 @@
 package com.example.erronka1
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -33,26 +34,41 @@ class MainActivity_Cesta : AppCompatActivity() {
         ChangeData(selectedFoodList.selectedFoodList)
 
         findViewById<Button>(R.id.btnPay).setOnClickListener{
-            var orderNumber: Int? = null
-            BD.GetOrdersNoUpdate{orders ->
-                orderNumber = orders?.count()?.plus(1)
+            if(user != null){
+                var orderNumber: Int?
+                BD.GetOrdersNoUpdate { orders ->
+                    orderNumber = orders?.count()?.plus(1)
 
+                    val orderId = "order_$orderNumber"
+                    var myFoods: String = ""
+                    var totalPrice: Double = 0.0
 
-                val orderId = "order_$orderNumber"
-                var myFoods: String = ""
-                var totalPrice :Double = 0.0
-                selectedFoodList.selectedFoodList.forEach{food ->
-                    myFoods += "${food.id},"
-                    totalPrice += food.price!!
+                    selectedFoodList.selectedFoodList.forEach { food ->
+                        myFoods += "${food.id}\n"
+                        totalPrice += food.price!!
+                    }
+                    selectedFoodList.selectedGSorpresa.forEach{gSorpresa ->
+                        myFoods += "${gSorpresa.id}\n"
+                        totalPrice += gSorpresa.price!!
+                    }
+
+                    /*if (myFoods.isNotEmpty()) {
+                        myFoods = myFoods.removeSuffix(",")
+                    }*/
+
+                    val newOrder = Order(orderId, LocalDate.now().toString(), myFoods, user.providerId, totalPrice,Order.Status.from("ordered"))
+
+                    BD.SetOrder(newOrder)
+
+                    val selectedFoodList = SelectedFood.getInstance()
+                    selectedFoodList.clearFoodList()
+
+                    val intent = Intent(this, MainActivity_Compras_Anteriores::class.java)
+                    startActivity(intent)
                 }
-
-                if (myFoods.isNotEmpty()) {
-                    myFoods = myFoods.removeSuffix(",")
-                }
-
-                val newOrder = Order(orderId, LocalDate.now().toString(), myFoods, user?.providerId.toString(), totalPrice, Order.Status.from("ordered"))
-
-                BD.SetOrder(newOrder)
+            }else{
+                val intent = Intent(this, Usuario::class.java)
+                startActivity(intent)
             }
         }
     }
