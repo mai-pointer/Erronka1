@@ -62,12 +62,12 @@
     <string name="btn_tienda_4">Gose Sorpresa</string>
     <string name="irten">Exit</string>
     <string name="denak_zure_gertu">Everything near you</string>
-    <string name="gure_ornitzileak">Our Suppliers</string>
+    <string name="gure_ornitzileak">Suppliers</string>
     <string name="logo">Logo</string>
     <string name="sasoikoa">Season</string>
     <string name="ikusi_zer_daukagun_menuan">See what we have on the menu</string>
     <string name="eskatu_etxera">Order for delivery</string>
-    <string name="guk_eramango_dizugu">We ll deliver it to you</string>
+    <string name="guk_eramango_dizugu">We\'ll deliver it to you</string>
     <string name="janaria_ez_doa_zaborrera">Food should not be wasted</string>
 
     <!-- Seasons -->

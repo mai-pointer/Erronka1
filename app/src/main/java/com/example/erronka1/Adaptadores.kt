@@ -174,7 +174,6 @@ class FoodAdapter(private val context: Context, private val foodList: List<Food>
                 }
 
             }
-            else -> {}
         }
 
         return view
@@ -248,7 +247,7 @@ class SeasonFoodAdapter(private val context: Context, private val foodList: List
     }
 }
 
-class GSorpresaAdapter(private val context: Context, private val goseList: List<GSorpresa>) : BaseAdapter() {
+class GSorpresaAdapter(private val context: Context, private val goseList: List<GSorpresa>,  private val selectedFood: SelectedFood) : BaseAdapter() {
     //Funciones del adaptador
     override fun getCount(): Int {
         return goseList.size
@@ -287,6 +286,23 @@ class GSorpresaAdapter(private val context: Context, private val goseList: List<
         Log.i("ErrorTX", title + "///" + price)
 
         // Establecer los valores en las vistas
+        elementos.textTitle.text = food.title
+        elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
+
+        when (selectedFood.checkGSorpresa(food)) {
+            false -> {
+                elementos.buttonAdd.text = context.getString(R.string.añadir)
+                elementos.buttonAdd.setOnClickListener {
+                    selectedFood.addGSorpresa(food)
+                }
+            }
+            true -> {
+                elementos.buttonAdd.text = context.getString(R.string.quitar)
+                elementos.buttonAdd.setOnClickListener {
+                    selectedFood.deleteGSorpresa(food)
+                }
+
+            }
         elementos.textTitle.text = title
         elementos.textPrice.text = "${context.getString(R.string.precio)}: ${price} €"
         elementos.buttonAdd.setOnClickListener {

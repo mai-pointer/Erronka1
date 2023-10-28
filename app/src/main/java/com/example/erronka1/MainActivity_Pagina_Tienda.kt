@@ -75,7 +75,7 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
         //Boton de GSorpresa
         BD.GetGose {gose ->
             findViewById<Button>(R.id.gose_platos).setOnClickListener{
-                val adapter = GSorpresaAdapter(this, gose)
+                val adapter = GSorpresaAdapter(this, gose, selectedFoodList)
                 findViewById<ListView>(R.id.lista_platos).adapter = adapter
             }
         }
