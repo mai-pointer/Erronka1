@@ -33,10 +33,10 @@ class MainActivity_Compras_Anteriores : AppCompatActivity() {
         if (user != null) {
 
             //Llama a la BD para conseguir la ordenes
-            BD.GetOrders { allOrders ->
+            BD.GetOrdersNoUpdate { allOrders ->
                 val myorders = mutableListOf<Order>()
                 //Las filtra
-                allOrders.forEach() { order ->
+                allOrders?.forEach() { order ->
                     if (order.user_id.equals(myId)) {
                         myorders.add(order)
                     }
