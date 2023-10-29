@@ -25,13 +25,19 @@ class MainActivity_Cesta : AppCompatActivity() {
         MenuNav.Crear(this, user)
 
         selectedFoodList = SelectedFood.getInstance()
-        if (selectedFoodList.eventHandlers == null) {
-            selectedFoodList.eventHandlers = mutableListOf()
+        if (selectedFoodList.eventFood == null) {
+            selectedFoodList.eventFood = mutableListOf()
         }
-        selectedFoodList.eventHandlers?.add {list ->
-            ChangeData(list)
+        if (selectedFoodList.eventGose == null) {
+            selectedFoodList.eventGose = mutableListOf()
         }
-        ChangeData(selectedFoodList.selectedFoodList)
+        selectedFoodList.eventFood?.add {
+            ChangeData (selectedFoodList.selectedFoodList, selectedFoodList.selectedGSorpresa)
+        }
+        selectedFoodList.eventGose?.add {
+            ChangeData (selectedFoodList.selectedFoodList, selectedFoodList.selectedGSorpresa)
+        }
+        ChangeData(selectedFoodList.selectedFoodList, selectedFoodList.selectedGSorpresa)
 
         findViewById<Button>(R.id.btnPay).setOnClickListener{
             if(user != null){
@@ -40,7 +46,7 @@ class MainActivity_Cesta : AppCompatActivity() {
                     orderNumber = orders?.count()?.plus(1)
 
                     val orderId = "order_$orderNumber"
-                    var myFoods: String = ""
+                    var myFoods = ""
                     var totalPrice: Double = 0.0
 
                     selectedFoodList.selectedFoodList.forEach { food ->
@@ -52,11 +58,7 @@ class MainActivity_Cesta : AppCompatActivity() {
                         totalPrice += gSorpresa.price!!
                     }
 
-                    /*if (myFoods.isNotEmpty()) {
-                        myFoods = myFoods.removeSuffix(",")
-                    }*/
-
-                    val newOrder = Order(orderId, LocalDate.now().toString(), myFoods, user.uid, totalPrice,Order.Status.from("ordered"))
+                    val newOrder = Order(orderId, LocalDate.now().toString(), myFoods, user.providerId, totalPrice,Order.Status.from("ordered"))
 
                     BD.SetOrder(newOrder)
 
@@ -77,12 +79,15 @@ class MainActivity_Cesta : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         selectedFoodList = SelectedFood.getInstance()
-        selectedFoodList.eventHandlers?.remove{list ->
-            ChangeData(list)
+        selectedFoodList.eventFood?.remove{
+            ChangeData (selectedFoodList.selectedFoodList, selectedFoodList.selectedGSorpresa)
+        }
+        selectedFoodList.eventGose?.remove{
+            ChangeData (selectedFoodList.selectedFoodList, selectedFoodList.selectedGSorpresa)
         }
     }
-    fun ChangeData (newList: MutableList<Food>) {
-        val adapter = FoodAdapter(this, newList, selectedFoodList)
+    fun ChangeData (newList: MutableList<Food>, goseList:MutableList<GSorpresa>) {
+        val adapter = FoodSorpresaAdapter(this, newList, goseList, selectedFoodList)
         findViewById<ListView>(R.id.lista_compras).adapter = adapter
         //Precio
         findViewById<TextView>(R.id.total).text = "${newList.sumOf { it.price!! }}€"

@@ -38,7 +38,7 @@
     <string name="cerrar">Saioa itxi</string>
 
     <!-- Profila -->
-    <string name="zure_pausuak">Zure gozamena</string>
+    <string name="zure_pausuak">Zure pausuak</string>
     <string name="editicon">Editatu ikurra</string>
     <string name="aldatu_pasahitza">Pasahitza aldatu</string>
     <string name="zure_pazahitza">Zure oraingo pasahitza</string>
@@ -68,7 +68,8 @@
     <string name="ikusi_zer_daukagun_menuan">Menuan daukaguna ikusi</string>
     <string name="eskatu_etxera">Erosketa etxera</string>
     <string name="guk_eramango_dizugu">Guk eramango dizugu</string>
-    <string name="janaria_ez_doa_zaborrera">Janaria ez da zaborretzen</string>
+    <string name="erreserbak">Erreserbatu</string>
+    <string name="erreserbakDesc">Zatoz gurekin</string>
 
     <!-- Denboraldiak -->
     <string name="precio">Prezioa</string>
@@ -83,6 +84,11 @@
     <!-- Eskaerak -->
     <string name="confirmarEntrega">Entrega baieztatu</string>
     <string name="entregado">Entregatuta</string>
+
+    <!-- Erreserbak -->
+    <string name="ordua">Ordua</string>
+    <string name="pertsonak">Pertsonak</string>
+    <string name="erreserbatu">Erreserbatu</string>
 
     <!-- JANARIAK -->
 
@@ -113,6 +119,11 @@
     <string name="food_18">Polpoa kalabazaren krema</string>
     <string name="food_19">Ahatea udare saltsarekin</string>
     <string name="food_20">Sagar "crumble" mandarina izozarekin</string>
+
+    <!-- GoseS -->
+    <string name="goseS_01">Afari sorpresa, eskatu zerbait arina afaltzeko</string>
+    <string name="goseS_02">Gose zara? Gure aperitiboek harrituko zaituzte</string>
+    <string name="goseS_03">Ez sukaldatu, gure Gose Sorpesa handiarekin nahikoa dago</string>
 
     <!-- Otros-->
     <string name="tema">Tema</string>

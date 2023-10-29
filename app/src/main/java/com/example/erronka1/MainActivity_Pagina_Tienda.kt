@@ -18,14 +18,16 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
     private lateinit var selectedFoodList: SelectedFood
     // Objetos Food
     var comida = mutableListOf<Food>()
+    var goseList= mutableListOf<GSorpresa>()
 
     val user = FirebaseAuth.getInstance().currentUser
     val botones = listOf(
-        BotonesInfo(R.id.entrantes_platos, Food.Category.STARTER),
-        BotonesInfo(R.id.principal_platos, Food.Category.MAIN)
+        BotonesInfo(R.id.entrantes_platos, "starter"),
+        BotonesInfo(R.id.principal_platos, "main"),
+        BotonesInfo(R.id.gose_platos, "gose")
 
     )
-    var myCurrentCategory: Food.Category? = Food.Category.STARTER
+    var myCurrentCategory = "starter"
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,62 +37,68 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
         val user = FirebaseAuth.getInstance().currentUser
         MenuNav.Crear(this, user)
 
-        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
-        val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db")
-
         selectedFoodList = SelectedFood.getInstance()
-        if (selectedFoodList.eventHandlers == null) {
-            selectedFoodList.eventHandlers = mutableListOf()
+        if (selectedFoodList.eventFood == null) {
+            selectedFoodList.eventFood = mutableListOf()
         }
-        selectedFoodList.eventHandlers?.add {
+        if (selectedFoodList.eventGose == null) {
+            selectedFoodList.eventGose = mutableListOf()
+        }
+        selectedFoodList.eventFood?.add {
             CargarLista(myCurrentCategory!!)
         }
-
-//        //Cargar de la base de datos
-        myRef.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for (foodSnapshot in dataSnapshot.children) {
-                    val foodId = foodSnapshot.child("food_id").getValue(String::class.java)
-                    val foodCategory = foodSnapshot.child("food_category").getValue(String::class.java)
-                    val foodPic = foodSnapshot.child("food_pic").getValue(String::class.java)
-                    val foodPrice = foodSnapshot.child("food_price").getValue(Double::class.java)
-                    val foodSeason = foodSnapshot.child("food_season").getValue(String::class.java)
-
-                    val food = Food(foodId, getString(resources.getIdentifier(foodId, "string", packageName)), foodPrice, foodPic, Food.Category.from(foodCategory.toString()), Food.Seasons.from(foodSeason.toString()))
-                    comida.add(food)
-                }
-                for (boton in botones){
-                    findViewById<Button>(boton.boton).setOnClickListener{
-                        myCurrentCategory = boton.categoria
-                        CargarLista(myCurrentCategory!!)
-                    }
-                }
-                CargarLista(myCurrentCategory!!)
-            }
-            override fun onCancelled(error: DatabaseError) {
-                Log.e("firebase", "Error getting data", error.toException())
-            }
-        })
-
-        //Boton de GSorpresa
-        BD.GetGose {gose ->
-            findViewById<Button>(R.id.gose_platos).setOnClickListener{
-                val adapter = GSorpresaAdapter(this, gose, selectedFoodList)
-                findViewById<ListView>(R.id.lista_platos).adapter = adapter
-            }
+        selectedFoodList.eventGose?.add {
+            CargarGose(goseList)
         }
 
+        BD.GetFood(this){foods ->
+            foods.forEach{food ->
+                comida.add(food)
+            }
+            for (boton in botones){
+                findViewById<Button>(boton.boton).setOnClickListener{
+                    myCurrentCategory = boton.categoria
+                    CargarLista(myCurrentCategory!!)
+                }
+            }
+
+            //Boton de GSorpresa
+            BD.GetGose(this) {gose ->
+                gose.forEach { gosebat ->
+                    goseList.add(gosebat)
+                }
+                findViewById<Button>(R.id.gose_platos).setOnClickListener{
+                    CargarGose(goseList)
+                    myCurrentCategory = "gose"
+                }
+            }
+
+            if(myCurrentCategory == "gose"){
+                CargarGose(goseList)
+            }else{
+                CargarLista(myCurrentCategory!!)
+            }
+        }
     }
     override fun onDestroy() {
         super.onDestroy()
         selectedFoodList = SelectedFood.getInstance()
-        selectedFoodList.eventHandlers?.remove{
+        selectedFoodList.eventFood?.remove{
             CargarLista(myCurrentCategory!!)
+
+        }
+        selectedFoodList.eventGose?.remove {
+            CargarGose(goseList)
         }
     }
 
-    fun CargarLista(categoria: Food.Category){
-        val comidaFiltrada = comida.filter { it.category == categoria }
+    fun CargarGose(gose: List<GSorpresa>){
+        val adapter = GSorpresaAdapter(this, gose, selectedFoodList)
+        findViewById<ListView>(R.id.lista_platos).adapter = adapter
+    }
+
+    fun CargarLista(categoria: String){
+        val comidaFiltrada = comida.filter { it.category.toString() == categoria }
 
         val selectedFoodList = SelectedFood.getInstance()
 
@@ -100,7 +108,7 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
 
     data class BotonesInfo(
         var boton: Int,
-        var categoria: Food.Category
+        var categoria: String
     )
 }
 

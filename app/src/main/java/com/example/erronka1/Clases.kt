@@ -19,7 +19,6 @@ interface Product {
     val id: String?
     val title: String?
     val price: Double?
-    val pic: String?
 }
 
 data class Order(
@@ -57,8 +56,7 @@ data class Order(
 data class GSorpresa(
     override val id: String?,
     override val title: String?,
-    override val price: Double?,
-    override val pic: String?
+    override val price: Double?
 ) : Product
 interface OnImageDownloadListener {
     fun onImageDownloaded(bitmap: Bitmap)
@@ -68,8 +66,8 @@ data class Food(
     override val id: String?,
     override val title: String?,
     override var price: Double?,
-    override val pic: String?,
 
+    val pic: String?,
     val category: Category?,
     val season: Seasons?
 ) : Product {
@@ -130,11 +128,9 @@ class SelectedFood private constructor(
     val selectedFoodList: MutableList<Food> = mutableListOf<Food>(),
     val selectedGSorpresa: MutableList<GSorpresa> = mutableListOf<GSorpresa>()
 ){
-    var eventHandlers: MutableList<MyEventHandler>? = null
+    var eventFood: MutableList<MyEventHandler>? = null
+    var eventGose: MutableList<MyEventHandler>? = null
 
-    fun setEventHandler(handlers: MutableList<MyEventHandler>?) {
-        eventHandlers = handlers
-    }
     companion object{
         @Volatile
         private var INSTANCE: SelectedFood? = null
@@ -146,21 +142,21 @@ class SelectedFood private constructor(
     }
     fun addFood(newFood: Food){
         selectedFoodList.add(newFood)
-        eventHandlers?.forEach { it(selectedFoodList) }
+        eventFood?.forEach { it(selectedFoodList) }
     }
     fun addGSorpresa(newGSorpresa: GSorpresa){
         selectedGSorpresa.add(newGSorpresa)
-        eventHandlers?.forEach { it(selectedFoodList) }
+        eventGose?.forEach { it(selectedFoodList) }
     }
 
     fun deleteFood(foodToDelete: Food){
         selectedFoodList.remove(foodToDelete)
-        eventHandlers?.forEach { it.invoke(selectedFoodList) }
+        eventFood?.forEach { it.invoke(selectedFoodList) }
     }
 
     fun deleteGSorpresa(sorpresaToDelete: GSorpresa){
         selectedGSorpresa.remove(sorpresaToDelete)
-        eventHandlers?.forEach{it.invoke(selectedFoodList)}
+        eventGose?.forEach{it.invoke(selectedFoodList)}
     }
 
     fun checkFood(foodToCheck: Food):Boolean{
