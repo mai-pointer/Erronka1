@@ -44,11 +44,11 @@ class MainActivity_Cesta : AppCompatActivity() {
                     var totalPrice: Double = 0.0
 
                     selectedFoodList.selectedFoodList.forEach { food ->
-                        myFoods += "${food.id}\n"
+                        myFoods += "${food.id},"
                         totalPrice += food.price!!
                     }
                     selectedFoodList.selectedGSorpresa.forEach{gSorpresa ->
-                        myFoods += "${gSorpresa.id}\n"
+                        myFoods += "${gSorpresa.id},"
                         totalPrice += gSorpresa.price!!
                     }
 
@@ -56,7 +56,7 @@ class MainActivity_Cesta : AppCompatActivity() {
                         myFoods = myFoods.removeSuffix(",")
                     }*/
 
-                    val newOrder = Order(orderId, LocalDate.now().toString(), myFoods, user.providerId, totalPrice,Order.Status.from("ordered"))
+                    val newOrder = Order(orderId, LocalDate.now().toString(), myFoods, user.uid, totalPrice,Order.Status.from("ordered"))
 
                     BD.SetOrder(newOrder)
 
@@ -64,6 +64,7 @@ class MainActivity_Cesta : AppCompatActivity() {
                     selectedFoodList.clearFoodList()
 
                     val intent = Intent(this, MainActivity_Compras_Anteriores::class.java)
+                    MenuNav.Seleccionar(2)
                     startActivity(intent)
                 }
             }else{

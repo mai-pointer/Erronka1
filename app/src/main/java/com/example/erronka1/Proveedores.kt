@@ -31,7 +31,6 @@ class Proveedores : AppCompatActivity(), OnMapReadyCallback {
 
 
     //Variables
-//    var colorOriginal: Drawable? = null
     var seleccionado = -1
     lateinit var proveedores: List<Proveedor>
     @SuppressLint("MissingInflatedId")
@@ -48,6 +47,11 @@ class Proveedores : AppCompatActivity(), OnMapReadyCallback {
         //Consige el json
         proveedores = JSON.Get(this, R.raw.proveedores)
 
+        //Añade el primer proveedor
+        if (proveedores.size > 0){
+            Editar(proveedores[0])
+        }
+
         //Crear el list View
         val listView = findViewById<ListView>(R.id.lista)
         val adapter = ProveedorAdapter(this, proveedores)
@@ -59,9 +63,7 @@ class Proveedores : AppCompatActivity(), OnMapReadyCallback {
             seleccionado = cont
 
             //Cambia la tarjeta
-            findViewById<TextView>(R.id.nombreProvTxt).text = proveedores[cont].nombre
-            findViewById<TextView>(R.id.desProvTxt).text = proveedores[cont].descripcion
-            findViewById<TextView>(R.id.listaProvTxt).text = " - ${proveedores[cont].productos.joinToString(separator = "\n - ")}"
+            Editar(proveedores[cont])
         }
 
     }
@@ -92,9 +94,7 @@ class Proveedores : AppCompatActivity(), OnMapReadyCallback {
                 val proveedor = proveedores.find { it.nombre == clickedMarker.title }
 
                 if (proveedor != null) {
-                    findViewById<TextView>(R.id.nombreProvTxt).text = proveedor.nombre
-                    findViewById<TextView>(R.id.desProvTxt).text = proveedor.descripcion
-                    findViewById<TextView>(R.id.listaProvTxt).text = " - ${proveedor.productos.joinToString(separator = "\n - ")}"
+                    Editar(proveedor)
                 }
                 false
             }
@@ -115,6 +115,14 @@ class Proveedores : AppCompatActivity(), OnMapReadyCallback {
             1000,
             null
         )
+    }
+
+    private fun Editar(proveedor: Proveedor){
+        val (nombre, descripcion, productos, _, _) = proveedor
+
+        findViewById<TextView>(R.id.nombreProvTxt).text = nombre
+        findViewById<TextView>(R.id.desProvTxt).text = descripcion
+        findViewById<TextView>(R.id.listaProvTxt).text = " - ${productos.joinToString(separator = "\n - ")}"
     }
 
 

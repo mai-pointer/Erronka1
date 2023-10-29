@@ -9,14 +9,16 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class BD {
     //OBJETOS INDIVIDUALES PARA COGER DATOS DE CADA BD
     companion object {
         //Comidas
         fun GetFood(callback: (foods: List<Food>) -> Unit) {
-            val bd =
-                Create("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db") { foodSnapshot ->
+            val bd = Create("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db") { foodSnapshot ->
                     Food(
                         foodSnapshot.child("food_id").getValue(String::class.java),
                         foodSnapshot.child("food_title").getValue(String::class.java),
@@ -77,8 +79,7 @@ class BD {
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun GetOrders(callback: (orders: List<Order>) -> Unit) {
-            val bd =
-                Create("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/order_db") { orderSnapshot ->
+            val bd = Create("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/order_db") { orderSnapshot ->
                     Order(
                         orderSnapshot.child("order_id").getValue(String::class.java),
                         orderSnapshot.child("order_date").getValue(String::class.java),

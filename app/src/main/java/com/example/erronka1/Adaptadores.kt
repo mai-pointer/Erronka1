@@ -20,6 +20,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
+//Adaptador para la clase de Order
 class OrderAdapter(private val context: Context, private val lista: List<Order>) : BaseAdapter() {
     //Funciones del adaptador
     override fun getCount(): Int {
@@ -75,12 +76,15 @@ class OrderAdapter(private val context: Context, private val lista: List<Order>)
         foodList?.forEach { food ->
             val resourceId = context.resources.getIdentifier(food, "string", context.packageName)
             val decodedString = if (resourceId != 0) context.getString(resourceId) else ""
-            foodListDecoded += "$decodedString\n"
+            if(decodedString.isNotEmpty()){
+                foodListDecoded += " - $decodedString\n"
+            }
         }
 
         layout.descripcionTxt.text = foodListDecoded
         layout.precioTxt.text = "${context.getString(R.string.precio)}: ${elemento.order_price} €"
 
+        //Establece el estado de la orden
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()
         val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/order_db")
 
@@ -110,6 +114,7 @@ class OrderAdapter(private val context: Context, private val lista: List<Order>)
     }
 }
 
+//Adaptador para la clase Food
 class FoodAdapter(private val context: Context, private val foodList: List<Food>,  private val selectedFood: SelectedFood) : BaseAdapter() {
     //Funciones del adaptador
     override fun getCount(): Int {
@@ -160,6 +165,7 @@ class FoodAdapter(private val context: Context, private val foodList: List<Food>
             }
         }
 
+        //Da la opcion para que las comidas se puedan añadir o quitar
         when (selectedFood.checkFood(food)) {
             false -> {
                 elementos.buttonAdd.text = context.getString(R.string.añadir)
@@ -187,6 +193,7 @@ class FoodAdapter(private val context: Context, private val foodList: List<Food>
         lateinit var buttonAdd: Button
     }
 }
+// Adaptador para la clase Food en la pantalla de Season
 class SeasonFoodAdapter(private val context: Context, private val foodList: List<Food>) : BaseAdapter() {
     //Funciones del adaptador
     override fun getCount(): Int {
@@ -246,7 +253,7 @@ class SeasonFoodAdapter(private val context: Context, private val foodList: List
         lateinit var imageFood: ImageView
     }
 }
-
+//Adaptador para la clase GSopresa
 class GSorpresaAdapter(private val context: Context, private val goseList: List<GSorpresa>,  private val selectedFood: SelectedFood) : BaseAdapter() {
     //Funciones del adaptador
     override fun getCount(): Int {
@@ -288,6 +295,7 @@ class GSorpresaAdapter(private val context: Context, private val goseList: List<
         elementos.textTitle.text = food.title
         elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
 
+        //Da la opcion para que los GSorpresa se puedan añadir o quitar
         when (selectedFood.checkGSorpresa(food)) {
             false -> {
                 elementos.buttonAdd.text = context.getString(R.string.añadir)
@@ -304,6 +312,7 @@ class GSorpresaAdapter(private val context: Context, private val goseList: List<
 
             }
         }
+        //Añade la informacion de los elementos
         elementos.textTitle.text = food.title
         elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
         elementos.buttonAdd.setOnClickListener {
@@ -320,7 +329,7 @@ class GSorpresaAdapter(private val context: Context, private val goseList: List<
         lateinit var buttonAdd: Button
     }
 }
-
+//Adaptador simple para la clase Proveedores
 class ProveedorAdapter(private val context: Context, private val proveedores: List<Proveedor>) : BaseAdapter() {
 
     override fun getCount(): Int = proveedores.size

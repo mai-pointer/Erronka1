@@ -13,7 +13,6 @@ data class Proveedor(
     var productos: List<String>,
     var latitud: Double,
     var longitud: Double
-
 )
 
 interface Product {

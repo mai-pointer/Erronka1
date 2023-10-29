@@ -19,49 +19,40 @@ import java.util.Locale
 class MainActivity_Compras_Anteriores : AppCompatActivity() {
 
     //Variables
-    val myorders = mutableListOf<Order>()
     val user = FirebaseAuth.getInstance().currentUser
-    val myId = user?.providerId
+    val myId = user?.uid
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_compras_anteriores)
 
-        //Referencias a la BD
-        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
-        val myRefOrder: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/order_db")
-        val myRefFood: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db")
-
         //MenuNav
         MenuNav.Crear(this, user)
         //BD
         if (user != null) {
 
+            //Llama a la BD para conseguir la ordenes
             BD.GetOrders { allOrders ->
+                val myorders = mutableListOf<Order>()
+                //Las filtra
                 allOrders.forEach() { order ->
                     if (order.user_id.equals(myId)) {
                         myorders.add(order)
                     }
                 }
-                if(myorders.isNotEmpty()){
-                    Crear()
+                val neworders = myorders.distinctBy { it.order_id }
+                //Crea el adaptador
+                if(neworders.isNotEmpty()){
+                    Crear(neworders)
                 }
-
             }
         }
     }
 
-    fun Crear(){
+    fun Crear(myorders: List<Order>){
         //ListView
         val adapter = OrderAdapter(this, myorders)
         findViewById<ListView>(R.id.lista_pedidos).adapter = adapter
     }
-
-    //Clases locales
-    data class FoodIncomplete(
-        val id: String?,
-        val nombre: String?,
-        val precio: Double?
-    )
 }

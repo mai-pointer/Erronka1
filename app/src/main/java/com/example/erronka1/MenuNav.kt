@@ -66,7 +66,7 @@ class MenuNav : AppCompatActivity() {
 
         //Selecciona a que clase te vas a dirigir
         fun Seleccionar(i : Int){
-            val ids = listOf<Int>(2131230963, 2131231240, 2131231083, 2131230854)
+            val ids = listOf(2131362053, 2131362368, 2131362210, 2131361937)
             seleccionado = ids[i]
         }
     }
