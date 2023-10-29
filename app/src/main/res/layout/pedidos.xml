@@ -32,7 +32,7 @@
             <TextView
                 android:id="@+id/titulo_pedidos"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="49dp"
                 android:fontFamily="@font/catamaran_black"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
@@ -46,8 +46,8 @@
 
                 <TextView
                     android:id="@+id/lista_pedidos"
-                    android:layout_width="164dp"
-                    android:layout_height="118dp"
+                    android:layout_width="167dp"
+                    android:layout_height="141dp"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorPrimary" />
 

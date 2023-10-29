@@ -282,8 +282,7 @@ class GSorpresaAdapter(private val context: Context, private val goseList: List<
         }
 
         // Obtener el objeto Food en esta posición
-        val (id, title, price, pic) = goseList[position]
-        Log.i("ErrorTX", title + "///" + price)
+        val food = goseList[position]
 
         // Establecer los valores en las vistas
         elementos.textTitle.text = food.title
@@ -296,6 +295,7 @@ class GSorpresaAdapter(private val context: Context, private val goseList: List<
                     selectedFood.addGSorpresa(food)
                 }
             }
+
             true -> {
                 elementos.buttonAdd.text = context.getString(R.string.quitar)
                 elementos.buttonAdd.setOnClickListener {
@@ -303,8 +303,9 @@ class GSorpresaAdapter(private val context: Context, private val goseList: List<
                 }
 
             }
-        elementos.textTitle.text = title
-        elementos.textPrice.text = "${context.getString(R.string.precio)}: ${price} €"
+        }
+        elementos.textTitle.text = food.title
+        elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
         elementos.buttonAdd.setOnClickListener {
             // *** Agregar lógica para manejar el botón "Añadir" ***
         }
