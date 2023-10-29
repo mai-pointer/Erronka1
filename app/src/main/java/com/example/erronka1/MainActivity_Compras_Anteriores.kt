@@ -30,20 +30,19 @@ class MainActivity_Compras_Anteriores : AppCompatActivity() {
 
         //Referencias a la BD
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()
-        val myRefOrder: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/order_db")
-        val myRefFood: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db")
 
         //MenuNav
         MenuNav.Crear(this, user)
         //BD
         if (user != null) {
 
-            BD.GetOrders { allOrders ->
-                allOrders.forEach() { order ->
+            BD.GetOrdersNoUpdate { allOrders ->
+                allOrders!!.forEach() { order ->
                     if (order.user_id.equals(myId)) {
                         myorders.add(order)
                     }
                 }
+
                 if(myorders.isNotEmpty()){
                     Crear()
                 }

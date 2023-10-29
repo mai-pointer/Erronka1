@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         menu = findViewById(id.btnCarta)
         delivery = findViewById(id.btnDelivery)
         providers = findViewById(id.btnProviders)
-        zeroWaste = findViewById(id.btnZeroWaste)
+        zeroWaste = findViewById(id.btnErreserbak)
 
         val user = FirebaseAuth.getInstance().currentUser
         MenuNav.Crear(this, user)
@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         zeroWaste.setOnClickListener {
-            val intent = Intent(this, MainActivity_Pagina_Tienda::class.java)
+            val intent = Intent(this, ErreserbakActivity::class.java)
             startActivity(intent)
         }
     }

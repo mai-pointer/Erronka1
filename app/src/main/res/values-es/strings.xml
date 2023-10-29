@@ -38,7 +38,7 @@
     <string name="cerrar">Cerrar Sesión</string>
 
     <!-- Perfil -->
-    <string name="zure_pausuak">Tus preferencias</string>
+    <string name="zure_pausuak">Tus pasos</string>
     <string name="editicon">Icono de edición</string>
     <string name="aldatu_pasahitza">Cambiar contraseña</string>
     <string name="zure_pazahitza">Tu contraseña actual</string>
@@ -68,7 +68,8 @@
     <string name="ikusi_zer_daukagun_menuan">Ver lo que tenemos en el menú</string>
     <string name="eskatu_etxera">Pedido a domicilio</string>
     <string name="guk_eramango_dizugu">Te lo llevamos</string>
-    <string name="janaria_ez_doa_zaborrera">La comida no se tira</string>
+    <string name="erreserbak">Reserva</string>
+    <string name="erreserbakDesc">Ven con nosotros</string>
 
     <!-- Estaciones -->
     <string name="precio">Precio</string>
@@ -83,6 +84,11 @@
     <!-- Pedidos -->
     <string name="confirmarEntrega">Confirmar entrega</string>
     <string name="entregado">Entregado</string>
+
+    <!-- Erreserbak -->
+    <string name="ordua">Hora</string>
+    <string name="pertsonak">Personas</string>
+    <string name="erreserbatu">Reservar</string>
 
     <!-- JANARIAK -->
 
@@ -113,6 +119,11 @@
     <string name="food_18">Pulpo con crema de calabaza</string>
     <string name="food_19">Ahatea udare saltsarekin</string>
     <string name="food_20">Manzana “crumble” con helado de mandarina</string>
+
+    <!-- GoseS -->
+    <string name="goseS_01">Cena sorpresa, pide algo ligero para cenar</string>
+    <string name="goseS_02">Tienes hambre? Nuestros aperitivos te sorprenderan</string>
+    <string name="goseS_03">No cocines, con nuestro Gose Sorpesa grande es suficiente</string>
 
     <!--Otros-->
     <string name="tema">Tema</string>

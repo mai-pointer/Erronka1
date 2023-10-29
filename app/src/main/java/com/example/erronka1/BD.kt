@@ -1,6 +1,7 @@
 package com.example.erronka1
 
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
@@ -14,12 +15,12 @@ class BD {
     //OBJETOS INDIVIDUALES PARA COGER DATOS DE CADA BD
     companion object {
         //Comidas
-        fun GetFood(callback: (foods: List<Food>) -> Unit) {
+        fun GetFood(context: Context, callback: (foods: List<Food>) -> Unit) {
             val bd =
                 Create("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db") { foodSnapshot ->
                     Food(
                         foodSnapshot.child("food_id").getValue(String::class.java),
-                        foodSnapshot.child("food_title").getValue(String::class.java),
+                        context.getString(context.resources.getIdentifier((foodSnapshot.child("food_id").getValue(String::class.java)), "string", context.packageName)),
                         foodSnapshot.child("food_price").getValue(Double::class.java),
                         foodSnapshot.child("food_pic").getValue(String::class.java),
                         Food.Category.from(
@@ -34,13 +35,12 @@ class BD {
         }
 
         //Carro de la compra
-        fun GetGose(callback: (list: List<GSorpresa>) -> Unit) {
+        fun GetGose(context: Context, callback: (list: List<GSorpresa>) -> Unit) {
             val bd = Create("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/goseS_db") { Snapshot ->
                 GSorpresa(
                     Snapshot.child("goseS_id").getValue(String::class.java),
-                    Snapshot.child("goseS_title").getValue(String::class.java),
-                    Snapshot.child("goseS_price").getValue(Double::class.java),
-                    Snapshot.child("goseS_pic").getValue(String::class.java),
+                    context.getString(context.resources.getIdentifier((Snapshot.child("goseS_id").getValue(String::class.java)), "string", context.packageName)),
+                    Snapshot.child("goseS_price").getValue(Double::class.java)
                 )
             }
             bd.Get(callback)
@@ -102,8 +102,7 @@ class BD {
             val key = newOrder.order_id
             if (key != null) {
                 myRef.child(key).setValue(newOrder).addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                    } else {
+                    if(!task.isSuccessful) {
                         Log.e("firebase", "Error writing data")
                     }
                 }

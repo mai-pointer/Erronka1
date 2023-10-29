@@ -38,7 +38,7 @@
     <string name="cerrar">Logout</string>
 
     <!-- Profile -->
-    <string name="zure_pausuak">Your Preferences</string>
+    <string name="zure_pausuak">Your Steps</string>
     <string name="editicon">Edit Icon</string>
     <string name="aldatu_pasahitza">Change Password</string>
     <string name="zure_pazahitza">Your Current Password</string>
@@ -68,7 +68,8 @@
     <string name="ikusi_zer_daukagun_menuan">See what we have on the menu</string>
     <string name="eskatu_etxera">Order for delivery</string>
     <string name="guk_eramango_dizugu">We\'ll deliver it to you</string>
-    <string name="janaria_ez_doa_zaborrera">Food should not be wasted</string>
+    <string name="erreserbak">Get a reservation</string>
+    <string name="erreserbakDesc">Come with us</string>
 
     <!-- Seasons -->
     <string name="precio">Price</string>
@@ -83,6 +84,11 @@
     <!-- Orders -->
     <string name="confirmarEntrega">Confirm delivery</string>
     <string name="entregado">Delivered</string>
+
+    <!-- Erreserbak -->
+    <string name="ordua">Time</string>
+    <string name="pertsonak">People</string>
+    <string name="erreserbatu">Get reservation</string>
 
     <!-- FOOD -->
 
@@ -113,6 +119,11 @@
     <string name="food_18">Octopus with pumpkin cream</string>
     <string name="food_19">Duck with cherry sauce</string>
     <string name="food_20">Apple "crumble" with mandarin ice cream</string>
+
+    <!-- GoseS -->
+    <string name="goseS_01">Surprise dinner, order something light for dinner</string>
+    <string name="goseS_02">Are you hungry? Our appetizers will surprise you</string>
+    <string name="goseS_03">Don\'t cook, our large Gose Sorpesa is enough</string>
 
     <!--Otros-->
     <string name="tema">Theme</string>

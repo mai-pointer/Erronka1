@@ -24,7 +24,7 @@
 
         <LinearLayout
             android:layout_width="317dp"
-            android:layout_height="251dp"
+            android:layout_height="206dp"
             android:layout_marginStart="0dp"
             android:layout_weight="1"
             android:orientation="vertical">
@@ -32,40 +32,64 @@
             <TextView
                 android:id="@+id/titulo_pedidos"
                 android:layout_width="match_parent"
-                android:layout_height="49dp"
+                android:layout_height="58dp"
                 android:fontFamily="@font/catamaran_black"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="172dp"
+                android:layout_height="103dp"
                 android:orientation="horizontal"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp">
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp">
 
-                <TextView
-                    android:id="@+id/lista_pedidos"
-                    android:layout_width="167dp"
-                    android:layout_height="141dp"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorPrimary" />
+                <LinearLayout
+                    android:layout_width="206dp"
+                    android:layout_height="89dp"
+                    android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/btnConfirmOrder"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/rounded_button_green"
-                    android:minHeight="48dp"
-                    android:text="Button"
-                    android:textColor="@color/colorgrey" />
+                    <TextView
+                        android:id="@+id/lista_pedidos"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/colorPrimary" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="31dp"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:id="@+id/btnConfirmOrder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_button_green"
+                        android:minHeight="48dp"
+                        android:text="Button"
+                        android:textColor="@color/colorgrey" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <TextView
                 android:id="@+id/precio_pedidos"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="45dp"
                 android:fontFamily="@font/catamaran_black"
                 android:textColor="@color/colorPrimary" />
 

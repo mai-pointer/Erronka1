@@ -187,6 +187,156 @@ class FoodAdapter(private val context: Context, private val foodList: List<Food>
         lateinit var buttonAdd: Button
     }
 }
+
+class FoodSorpresaAdapter(private val context: Context, private val foodList: List<Food>, private val sorpresaList: List<GSorpresa>,  private val selectedFood: SelectedFood) : BaseAdapter() {
+    //Funciones del adaptador
+    override fun getCount(): Int {
+        return foodList.size + sorpresaList.size
+    }
+    override fun getItem(position: Int): Any {
+        return if (position < foodList.size) {
+            foodList[position]
+        } else {
+            sorpresaList[position - foodList.size]
+        }
+    }
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+    override fun getViewTypeCount(): Int {
+        return 2
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (position < foodList.size) {
+            0
+        } else {
+            1
+        }
+    }
+
+    //Edita la view
+    @SuppressLint("ResourceType")
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        val viewType = getItemViewType(position)
+        val view: View
+
+        if (viewType == 0) {
+
+            val elementos: Elementos
+
+            if (convertView == null) {
+                view = LayoutInflater.from(context).inflate(R.layout.platos_tienda, parent, false)
+                elementos = Elementos() // declara la clase
+
+                // Obtener las vistas del diseño
+                elementos.textTitle = view.findViewById(R.id.titulo_platos)
+                elementos.textPrice = view.findViewById(R.id.precio_platos)
+                elementos.imageFood = view.findViewById(R.id.imagen_platos)
+                elementos.buttonAdd = view.findViewById(R.id.boton_platos)
+
+                view.tag = elementos
+            } else {
+                view = convertView
+                elementos = view.tag as Elementos
+            }
+
+            // Obtener el objeto Food en esta posición
+
+            if (position < foodList.size) {
+                val food = foodList[position]
+
+                // Establecer los valores en las vistas
+                elementos.textTitle.text = food.title
+                elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
+                food.downloadImageFromCloudStorage { bitmap ->
+                    if (bitmap != null) {
+                        elementos.imageFood.setImageBitmap(bitmap)
+                    } else {
+                        Toast.makeText(context, "Failed to retrieve image", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                when (selectedFood.checkFood(food)) {
+                    false -> {
+                        elementos.buttonAdd.text = context.getString(R.string.añadir)
+                        elementos.buttonAdd.setOnClickListener {
+                            selectedFood.addFood(food)
+                        }
+                    }
+                    true -> {
+                        elementos.buttonAdd.text = context.getString(R.string.quitar)
+                        elementos.buttonAdd.setOnClickListener {
+                            selectedFood.deleteFood(food)
+                        }
+
+                    }
+                }
+            }
+
+        } else {
+
+            val elementos: Gose
+
+            if (convertView == null) {
+                view = LayoutInflater.from(context).inflate(R.layout.gsorpresa, parent, false)
+                elementos = Gose()
+
+                // Obtener las vistas del diseño
+                elementos.textTitle = view.findViewById(R.id.titulo_platos)
+                elementos.textPrice = view.findViewById(R.id.precio_platos)
+                elementos.buttonAdd = view.findViewById(R.id.boton_platos)
+
+                view.tag = elementos
+            } else {
+                view = convertView
+                elementos = view.tag as Gose
+            }
+
+            // Obtener el objeto Food en esta posición
+            if (position - foodList.size < sorpresaList.size) {
+                val food = sorpresaList[position - foodList.size]
+
+                // Establecer los valores en las vistas
+                elementos.textTitle.text = food.id
+                elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
+
+                when (selectedFood.checkGSorpresa(food)) {
+                    false -> {
+                        elementos.buttonAdd.text = context.getString(R.string.añadir)
+                        elementos.buttonAdd.setOnClickListener {
+                            selectedFood.addGSorpresa(food)
+                        }
+                    }
+
+                    true -> {
+                        elementos.buttonAdd.text = context.getString(R.string.quitar)
+                        elementos.buttonAdd.setOnClickListener {
+                            selectedFood.deleteGSorpresa(food)
+                        }
+
+                    }
+                }
+                elementos.textTitle.text = food.title
+                elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
+            }
+        }
+        return view
+    }
+
+    //Clase para guardar los elementos de la view
+    private class Elementos {
+        lateinit var textTitle: TextView
+        lateinit var textPrice: TextView
+        lateinit var imageFood: ImageView
+        lateinit var buttonAdd: Button
+    }
+    private class Gose {
+        lateinit var textTitle: TextView
+        lateinit var textPrice: TextView
+        lateinit var buttonAdd: Button
+    }
+}
 class SeasonFoodAdapter(private val context: Context, private val foodList: List<Food>) : BaseAdapter() {
     //Funciones del adaptador
     override fun getCount(): Int {
@@ -306,9 +456,7 @@ class GSorpresaAdapter(private val context: Context, private val goseList: List<
         }
         elementos.textTitle.text = food.title
         elementos.textPrice.text = "${context.getString(R.string.precio)}: ${food.price} €"
-        elementos.buttonAdd.setOnClickListener {
-            // *** Agregar lógica para manejar el botón "Añadir" ***
-        }
+
 
         return view
     }
