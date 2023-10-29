@@ -37,8 +37,6 @@ class UserProfileActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_profile)
 
         //Tema
-        Log.i("Error-TX", SharedPreferences.CargarBool(this, "tema").toString())
-
         val switch = findViewById<Switch>(R.id.tema);
         switch.isChecked = SharedPreferences.CargarBool(this, "tema")
 
@@ -157,15 +155,18 @@ class UserProfileActivity : AppCompatActivity() {
         //Envia el idioma español a la funcion
         espanol.setOnClickListener() {
             setLocale("es", resources)
+            SharedPreferences.GuardarString(this, "idioma", "es")
         }
         //Envia el idioma Ingles a la funcion
 
         ingles.setOnClickListener() {
             setLocale("ing", resources)
+            SharedPreferences.GuardarString(this, "idioma", "ing")
         }
         //Envia el idioma Euskera a la funcion
         euskera.setOnClickListener() {
             setLocale("eu", resources)
+            SharedPreferences.GuardarString(this, "idioma", "eu")
         }
 
 

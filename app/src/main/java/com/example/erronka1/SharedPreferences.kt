@@ -16,5 +16,17 @@ class SharedPreferences {
             val archivo: SharedPreferences = context.getSharedPreferences(NOMBRE, Context.MODE_PRIVATE)
             return archivo.getBoolean(nombre, false)
         }
+
+        fun GuardarString(context: Context, nombre: String, dato: String) {
+            val archivo: SharedPreferences = context.getSharedPreferences(NOMBRE, Context.MODE_PRIVATE)
+            val editor = archivo.edit()
+            editor.putString(nombre, dato)
+            editor.apply()
+        }
+
+        fun CargarString(context: Context, nombre: String): String? {
+            val archivo: SharedPreferences = context.getSharedPreferences(NOMBRE, Context.MODE_PRIVATE)
+            return archivo.getString(nombre, "")
+        }
     }
 }

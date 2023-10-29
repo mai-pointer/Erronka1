@@ -1,6 +1,8 @@
 package com.example.erronka1
 
 import android.content.Intent
+import android.content.res.Configuration
+import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
@@ -8,6 +10,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.example.erronka1.R.*
 import com.google.firebase.auth.FirebaseAuth
 import java.util.Calendar
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     private lateinit var menu: LinearLayout
@@ -15,6 +18,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var providers: LinearLayout
     private lateinit var zeroWaste: LinearLayout
     override fun onCreate(savedInstanceState: Bundle?) {
+        //Cambia el idioma
+        setLocale(SharedPreferences.CargarString(this, "idioma") ?: "eu", resources)
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_main)
 
@@ -27,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         if (SharedPreferences.CargarBool(this, "tema")) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
+
 
         menu = findViewById(id.btnCarta)
         delivery = findViewById(id.btnDelivery)
@@ -93,5 +99,15 @@ class MainActivity : AppCompatActivity() {
         val calendario = Calendar.getInstance()
         val mes = calendario.get(Calendar.MONTH) + 1
         return mes
+    }
+
+    fun setLocale(language: String, resources: Resources) {
+        //Reciben el idioma y que es un resource
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+        val configuration = Configuration(resources.configuration)
+        //Se añade el idioma definido en la configuracion para cambiar de strings.xml
+        configuration.setLocale(locale)
+        resources.updateConfiguration(configuration, resources.displayMetrics)
     }
 }
