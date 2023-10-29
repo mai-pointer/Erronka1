@@ -64,7 +64,7 @@
 
                     <Space
                         android:layout_width="match_parent"
-                        android:layout_height="31dp"
+                        android:layout_height="23dp"
                         android:layout_weight="1" />
 
                     <Button
@@ -80,7 +80,7 @@
 
                     <Space
                         android:layout_width="match_parent"
-                        android:layout_height="35dp"
+                        android:layout_height="29dp"
                         android:layout_weight="1" />
                 </LinearLayout>
 

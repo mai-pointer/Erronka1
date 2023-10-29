@@ -18,7 +18,7 @@ class BD {
     //OBJETOS INDIVIDUALES PARA COGER DATOS DE CADA BD
     companion object {
         //Comidas
-        fun GetFood(callback: (foods: List<Food>) -> Unit) {
+        fun GetFood(context: Context, callback: (foods: List<Food>) -> Unit) {
             val bd = Create("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/food_db") { foodSnapshot ->
                     Food(
                         foodSnapshot.child("food_id").getValue(String::class.java),
