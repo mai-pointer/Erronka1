@@ -1,21 +1,18 @@
 package com.example.erronka1
 
-import SharedPreferences
+import SP
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Switch
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import java.security.AuthProvider
 import android.content.res.Configuration
 import android.content.res.Resources
 import java.util.Locale
@@ -38,19 +35,19 @@ class UserProfileActivity : AppCompatActivity() {
 
         //Tema
         val switch = findViewById<Switch>(R.id.tema);
-        switch.isChecked = SharedPreferences.CargarBool(this, "tema")
+        switch.isChecked = SP.CargarBool(this, "tema")
 
         switch.findViewById<Switch>(R.id.tema).setOnCheckedChangeListener { _, isChecked ->
 //            if (isChecked) {
 //                // Cambiar al tema oscuro
 //                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 //                delegate.applyDayNight()
-//                SharedPreferences.GuardarBool(this, "tema", true)
+//                SP.GuardarBool(this, "tema", true)
 //            } else {
 //                // Cambiar al tema claro (por defecto)
 //                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 //                delegate.applyDayNight()
-//                SharedPreferences.GuardarBool(this, "tema", false)
+//                SP.GuardarBool(this, "tema", false)
 //            }
         }
 
@@ -152,21 +149,27 @@ class UserProfileActivity : AppCompatActivity() {
                 }
             }
 
+        //Idiomas
+        val preferenceManager = PreferenceManager.getInstance(this)
+
         //Envia el idioma español a la funcion
         espanol.setOnClickListener() {
             setLocale("es", resources)
-            SharedPreferences.GuardarString(this, "idioma", "es")
+            preferenceManager.saveString("idioma", "es")
+//            SP.GuardarString(this, "idioma", "es")
         }
         //Envia el idioma Ingles a la funcion
 
         ingles.setOnClickListener() {
             setLocale("ing", resources)
-            SharedPreferences.GuardarString(this, "idioma", "ing")
+            preferenceManager.saveString("idioma", "ing")
+//            SP.GuardarString(this, "idioma", "ing")
         }
         //Envia el idioma Euskera a la funcion
         euskera.setOnClickListener() {
             setLocale("eu", resources)
-            SharedPreferences.GuardarString(this, "idioma", "eu")
+            preferenceManager.saveString("idioma", "eu")
+//            SP.GuardarString(this, "idioma", "eu")
         }
 
 

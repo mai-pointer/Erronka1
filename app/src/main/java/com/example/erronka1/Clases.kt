@@ -1,11 +1,13 @@
 package com.example.erronka1
 
+import SP
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
-import java.time.LocalDate
 
 data class Proveedor(
     var nombre: String,
@@ -170,5 +172,34 @@ class SelectedFood private constructor(
     fun clearFoodList(){
         selectedFoodList.clear()
         selectedGSorpresa.clear()
+    }
+}
+
+class PreferenceManager private constructor(context: Context) {
+
+    private val prefFileName = "Prefs"
+    private val sharedPreferences: SharedPreferences
+
+    init {
+        sharedPreferences = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
+    }
+
+    companion object {
+        private var instance: PreferenceManager? = null
+
+        fun getInstance(context: Context): PreferenceManager {
+            if (instance == null) {
+                instance = PreferenceManager(context)
+            }
+            return instance!!
+        }
+    }
+
+    fun saveString(key: String, value: String) {
+        sharedPreferences.edit().putString(key, value).apply()
+    }
+
+    fun getString(key: String, defaultValue: String): String {
+        return sharedPreferences.getString(key, defaultValue) ?: defaultValue
     }
 }
