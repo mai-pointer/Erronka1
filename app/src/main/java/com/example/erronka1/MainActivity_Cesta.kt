@@ -58,7 +58,7 @@ class MainActivity_Cesta : AppCompatActivity() {
                         totalPrice += gSorpresa.price!!
                     }
 
-                    val newOrder = Order(orderId, LocalDate.now().toString(), myFoods, user.providerId, totalPrice,Order.Status.from("ordered"))
+                    val newOrder = Order(orderId, LocalDate.now().toString(), myFoods, user.uid, totalPrice,Order.Status.from("ordered"))
 
                     BD.SetOrder(newOrder)
 

@@ -20,7 +20,7 @@ class MainActivity_Compras_Anteriores : AppCompatActivity() {
 
     //Variables
     val user = FirebaseAuth.getInstance().currentUser
-    val myId = user?.providerId
+    val myId = user?.uid
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {

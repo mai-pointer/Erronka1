@@ -20,6 +20,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         //Cambia el idioma
         setLocale(SharedPreferences.CargarString(this, "idioma") ?: "eu", resources)
+        //Cambiar el tema
+        if (SharedPreferences.CargarBool(this, "tema")) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+
         super.onCreate(savedInstanceState)
         setContentView(layout.activity_main)
 
@@ -27,12 +32,6 @@ class MainActivity : AppCompatActivity() {
         FirebaseAppCheck.getInstance().installAppCheckProviderFactory(
             PlayIntegrityAppCheckProviderFactory.getInstance()
         )*/
-
-        //Cambiar el tema
-        if (SharedPreferences.CargarBool(this, "tema")) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        }
-
 
         menu = findViewById(id.btnCarta)
         delivery = findViewById(id.btnDelivery)
