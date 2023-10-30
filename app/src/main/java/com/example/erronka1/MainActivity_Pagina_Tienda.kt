@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.annotation.SuppressLint
+import android.app.ProgressDialog
+import android.view.View
 import android.widget.Button
 import android.widget.ListView
+import android.widget.ProgressBar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -51,10 +54,14 @@ class MainActivity_Pagina_Tienda : AppCompatActivity() {
             CargarGose(goseList)
         }
 
+        val progressBar = findViewById<ProgressBar>(R.id.progressBar)
+        progressBar.visibility = View.VISIBLE
+
         BD.GetFood(this){foods ->
             foods.forEach{food ->
                 comida.add(food)
             }
+            progressBar.visibility = View.GONE
             for (boton in botones){
                 findViewById<Button>(boton.boton).setOnClickListener{
                     myCurrentCategory = boton.categoria
