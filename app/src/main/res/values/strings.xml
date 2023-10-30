@@ -83,6 +83,7 @@
     <!-- Pedidos -->
     <string name="confirmarEntrega">Entrega baieztatu</string>
     <string name="entregado">Entregatuta</string>
+    <string name="eliminar">Ezabatu</string>
 
     <!-- Erreserbak -->
     <string name="ordua">Ordua</string>

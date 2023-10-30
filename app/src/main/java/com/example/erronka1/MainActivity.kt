@@ -6,7 +6,6 @@ import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
-import androidx.appcompat.app.AppCompatDelegate
 import com.example.erronka1.R.*
 import com.google.firebase.auth.FirebaseAuth
 import java.util.Calendar
@@ -19,9 +18,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var zeroWaste: LinearLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         //Cambia el idioma
-        setLocale(SharedPreferences.CargarString(this, "idioma") ?: "eu", resources)
+        val preferenceManager = PreferenceManager.getInstance(this)
+        val valorRecuperado = preferenceManager.getString("idioma", "eu")
+        setLocale(valorRecuperado, resources)
+
+//        setLocale(SP.CargarString(this, "idioma") ?: "eu", resources)
+
         //Cambiar el tema
-//        if (SharedPreferences.CargarBool(this, "tema")) {
+//        if (SP.CargarBool(this, "tema")) {
 //            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 //        }
 

@@ -84,6 +84,7 @@
     <!-- Orders -->
     <string name="confirmarEntrega">Confirm delivery</string>
     <string name="entregado">Delivered</string>
+    <string name="eliminar">Delete</string>
 
     <!-- Erreserbak -->
     <string name="ordua">Time</string>

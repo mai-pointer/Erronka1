@@ -1,7 +1,7 @@
 import android.content.Context
 import android.content.SharedPreferences
 
-class SharedPreferences {
+class SP {
     companion object {
         private const val NOMBRE = "Kimo"
 
