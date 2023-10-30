@@ -41,17 +41,17 @@ class UserProfileActivity : AppCompatActivity() {
         switch.isChecked = SharedPreferences.CargarBool(this, "tema")
 
         switch.findViewById<Switch>(R.id.tema).setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                // Cambiar al tema oscuro
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                delegate.applyDayNight()
-                SharedPreferences.GuardarBool(this, "tema", true)
-            } else {
-                // Cambiar al tema claro (por defecto)
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                delegate.applyDayNight()
-                SharedPreferences.GuardarBool(this, "tema", false)
-            }
+//            if (isChecked) {
+//                // Cambiar al tema oscuro
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//                delegate.applyDayNight()
+//                SharedPreferences.GuardarBool(this, "tema", true)
+//            } else {
+//                // Cambiar al tema claro (por defecto)
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+//                delegate.applyDayNight()
+//                SharedPreferences.GuardarBool(this, "tema", false)
+//            }
         }
 
         mail = findViewById(R.id.txtMail)
