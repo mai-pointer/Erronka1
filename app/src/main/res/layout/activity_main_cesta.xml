@@ -87,6 +87,7 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navMenu"
+        app:itemIconTint="@color/colorPrimary"
         android:layout_width="0dp"
         android:layout_height="75dp"
         android:background="@drawable/roundednav"
