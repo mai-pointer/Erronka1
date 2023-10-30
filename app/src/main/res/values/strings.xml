@@ -125,4 +125,8 @@
     <string name="goseS_01">Afari sorpresa, eskatu zerbait arina afaltzeko</string>
     <string name="goseS_02">Gose zara? Gure aperitiboek harrituko zaituzte</string>
     <string name="goseS_03">Ez sukaldatu, gure Gose Sorpesa handiarekin nahikoa dago</string>
+
+    <!-- Erreserbak -->
+    <string name="erreserba">Erreserba baieztatu da</string>
+
 </resources>

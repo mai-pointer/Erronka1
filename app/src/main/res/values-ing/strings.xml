@@ -128,5 +128,6 @@
 
     <!--Otros-->
     <string name="tema">Theme</string>
+    <string name="erreserba">Reservation confirmed</string>
 
 </resources>

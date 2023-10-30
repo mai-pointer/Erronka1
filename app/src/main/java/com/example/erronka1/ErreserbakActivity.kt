@@ -3,8 +3,13 @@ package com.example.erronka1
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class ErreserbakActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,5 +32,14 @@ class ErreserbakActivity : AppCompatActivity() {
 
         spinnerordua.adapter = adapterOrduak
         spinnerpertsonak.adapter = adapterPertsonak
+
+        findViewById<Button>(R.id.confirmar).setOnClickListener{
+            GlobalScope.launch {
+                delay(2000) // Espera 2 segundos (2000 milisegundos)
+                runOnUiThread {
+                    Toast.makeText(applicationContext,  getString(R.string.erreserba), Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 }

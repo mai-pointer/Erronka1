@@ -105,7 +105,7 @@
                 android:layout_height="17dp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/confirmar"
                 android:layout_width="303dp"
                 android:layout_height="48dp"
                 android:background="@drawable/rounded_button_green"
