@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.ListView
+import android.widget.ProgressBar
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -88,26 +89,7 @@ class PantallaInvierno : AppCompatActivity() {
             verano.visibility = View.VISIBLE
             argazkia.setImageResource(R.drawable.otono)
             myCurrentSeason = Food.Seasons.AUTUMN
-            comida.clear()
-            myRef.addValueEventListener(object : ValueEventListener{
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    for (foodSnapshot in dataSnapshot.children) {
-                        val foodId = foodSnapshot.child("food_id").getValue(String::class.java)
-                        val foodCategory = foodSnapshot.child("food_category").getValue(String::class.java)
-                        val foodPic = foodSnapshot.child("food_pic").getValue(String::class.java)
-                        val foodPrice = foodSnapshot.child("food_price").getValue(Double::class.java)
-                        val foodSeason = foodSnapshot.child("food_season").getValue(String::class.java)
-
-                        val food = Food(foodId, getString(resources.getIdentifier(foodId, "string", packageName)), foodPrice, foodPic, Food.Category.from(foodCategory.toString()), Food.Seasons.from(foodSeason.toString()))
-                        comida.add(food)
-                    }
-
-                    CargarLista(myCurrentSeason)
-                }
-                override fun onCancelled(error: DatabaseError) {
-                    Log.e("firebase", "Error getting data", error.toException())
-                }
-            })
+            ReadDatabase()
         }
         primavera.setOnClickListener{
             titulo.text=getString(R.string.P)
@@ -117,26 +99,7 @@ class PantallaInvierno : AppCompatActivity() {
             verano.visibility = View.VISIBLE
             argazkia.setImageResource(R.drawable.primavera)
             myCurrentSeason = Food.Seasons.SPRING
-            comida.clear()
-            myRef.addValueEventListener(object : ValueEventListener{
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    for (foodSnapshot in dataSnapshot.children) {
-                        val foodId = foodSnapshot.child("food_id").getValue(String::class.java)
-                        val foodCategory = foodSnapshot.child("food_category").getValue(String::class.java)
-                        val foodPic = foodSnapshot.child("food_pic").getValue(String::class.java)
-                        val foodPrice = foodSnapshot.child("food_price").getValue(Double::class.java)
-                        val foodSeason = foodSnapshot.child("food_season").getValue(String::class.java)
-
-                        val food = Food(foodId, getString(resources.getIdentifier(foodId, "string", packageName)), foodPrice, foodPic, Food.Category.from(foodCategory.toString()), Food.Seasons.from(foodSeason.toString()))
-                        comida.add(food)
-                    }
-
-                    CargarLista(myCurrentSeason)
-                }
-                override fun onCancelled(error: DatabaseError) {
-                    Log.e("firebase", "Error getting data", error.toException())
-                }
-            })
+            ReadDatabase()
         }
         verano.setOnClickListener{
             titulo.text=getString(R.string.V)
@@ -146,26 +109,7 @@ class PantallaInvierno : AppCompatActivity() {
             invierno.visibility = View.VISIBLE
             argazkia.setImageResource(R.drawable.verano)
             myCurrentSeason = Food.Seasons.SUMMER
-            comida.clear()
-            myRef.addValueEventListener(object : ValueEventListener{
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    for (foodSnapshot in dataSnapshot.children) {
-                        val foodId = foodSnapshot.child("food_id").getValue(String::class.java)
-                        val foodCategory = foodSnapshot.child("food_category").getValue(String::class.java)
-                        val foodPic = foodSnapshot.child("food_pic").getValue(String::class.java)
-                        val foodPrice = foodSnapshot.child("food_price").getValue(Double::class.java)
-                        val foodSeason = foodSnapshot.child("food_season").getValue(String::class.java)
-
-                        val food = Food(foodId, getString(resources.getIdentifier(foodId, "string", packageName)), foodPrice, foodPic, Food.Category.from(foodCategory.toString()), Food.Seasons.from(foodSeason.toString()))
-                        comida.add(food)
-                    }
-
-                    CargarLista(myCurrentSeason)
-                }
-                override fun onCancelled(error: DatabaseError) {
-                    Log.e("firebase", "Error getting data", error.toException())
-                }
-            })
+            ReadDatabase()
         }
         invierno.setOnClickListener{
             titulo.text=getString(R.string.I)
@@ -175,49 +119,25 @@ class PantallaInvierno : AppCompatActivity() {
             verano.visibility = View.VISIBLE
             argazkia.setImageResource(R.drawable.invierno)
             myCurrentSeason = Food.Seasons.WINTER
-            comida.clear()
-            myRef.addValueEventListener(object : ValueEventListener{
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    for (foodSnapshot in dataSnapshot.children) {
-                        val foodId = foodSnapshot.child("food_id").getValue(String::class.java)
-                        val foodCategory = foodSnapshot.child("food_category").getValue(String::class.java)
-                        val foodPic = foodSnapshot.child("food_pic").getValue(String::class.java)
-                        val foodPrice = foodSnapshot.child("food_price").getValue(Double::class.java)
-                        val foodSeason = foodSnapshot.child("food_season").getValue(String::class.java)
-
-                        val food = Food(foodId, getString(resources.getIdentifier(foodId, "string", packageName)), foodPrice, foodPic, Food.Category.from(foodCategory.toString()), Food.Seasons.from(foodSeason.toString()))
-                        comida.add(food)
-                    }
-
-                    CargarLista(myCurrentSeason)
-                }
-                override fun onCancelled(error: DatabaseError) {
-                    Log.e("firebase", "Error getting data", error.toException())
-                }
-            })
+            ReadDatabase()
         }
 
 
-        myRef.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for (foodSnapshot in dataSnapshot.children) {
-                    val foodId = foodSnapshot.child("food_id").getValue(String::class.java)
-                    val foodCategory = foodSnapshot.child("food_category").getValue(String::class.java)
-                    val foodPic = foodSnapshot.child("food_pic").getValue(String::class.java)
-                    val foodPrice = foodSnapshot.child("food_price").getValue(Double::class.java)
-                    val foodSeason = foodSnapshot.child("food_season").getValue(String::class.java)
+        ReadDatabase()
 
-                    val food = Food(foodId, getString(resources.getIdentifier(foodId, "string", packageName)), foodPrice, foodPic, Food.Category.from(foodCategory.toString()), Food.Seasons.from(foodSeason.toString()))
-                    comida.add(food)
-                }
+    }
+    fun ReadDatabase(){
+        comida.clear()
+        val progressBar = findViewById<ProgressBar>(R.id.progressBar)
+        progressBar.visibility = View.VISIBLE
 
-                CargarLista(myCurrentSeason)
+        BD.GetFood(this) { foods ->
+            foods.forEach { food ->
+                comida.add(food)
             }
-            override fun onCancelled(error: DatabaseError) {
-                Log.e("firebase", "Error getting data", error.toException())
-            }
-        })
-
+            progressBar.visibility = View.GONE
+            CargarLista(myCurrentSeason)
+        }
     }
     fun CargarLista(season: Food.Seasons){
         val comidaFiltrada = comida.filter { it.season == season }

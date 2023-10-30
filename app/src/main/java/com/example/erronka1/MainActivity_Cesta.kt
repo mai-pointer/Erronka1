@@ -90,7 +90,7 @@ class MainActivity_Cesta : AppCompatActivity() {
         val adapter = FoodSorpresaAdapter(this, newList, goseList, selectedFoodList)
         findViewById<ListView>(R.id.lista_compras).adapter = adapter
         //Precio
-        findViewById<TextView>(R.id.total).text = "${newList.sumOf { it.price!! }}€"
+        findViewById<TextView>(R.id.total).text = "${newList.sumOf { it.price!! } + goseList.sumOf{it.price!!}}€"
     }
 
 }

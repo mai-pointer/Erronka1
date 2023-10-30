@@ -8,20 +8,18 @@
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="388dp"
-        android:layout_height="177dp"
+        android:layout_width="343dp"
+        android:layout_height="172dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_button"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.079">
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <LinearLayout
@@ -30,18 +28,8 @@
             android:layout_marginStart="16dp"
             android:layout_weight="1"
             android:orientation="vertical"
-            tools:ignore="ExtraText"><![CDATA[
+            tools:ignore="ExtraText">
 
-
-
-
-
-            />
-
-
-
-
-            ]]>
 
             <TextView
                 android:id="@+id/titulo_platos"

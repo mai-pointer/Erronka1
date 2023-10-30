@@ -4,7 +4,9 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ListView
+import android.widget.ProgressBar
 import androidx.annotation.RequiresApi
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -32,6 +34,9 @@ class MainActivity_Compras_Anteriores : AppCompatActivity() {
         //BD
         if (user != null) {
 
+            val progressBar = findViewById<ProgressBar>(R.id.progressBar)
+            progressBar.visibility = View.VISIBLE
+
             //Llama a la BD para conseguir la ordenes
             BD.GetOrdersNoUpdate { allOrders ->
                 val myorders = mutableListOf<Order>()
@@ -41,12 +46,17 @@ class MainActivity_Compras_Anteriores : AppCompatActivity() {
                         myorders.add(order)
                     }
                 }
+
+                progressBar.visibility = View.GONE
+
                 val neworders = myorders.distinctBy { it.order_id }
                 //Crea el adaptador
                 if(neworders.isNotEmpty()){
                     Crear(neworders)
                 }
             }
+
+
         }
     }
 
