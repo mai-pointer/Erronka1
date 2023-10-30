@@ -24,7 +24,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 //Adaptador para la clase de Order
-class OrderAdapter(private val context: Context, private val lista: List<Order>) : BaseAdapter() {
+class OrderAdapter(private val context: Context, private val lista: List<Order>,private val callback: () -> Unit) : BaseAdapter() {
     //Funciones del adaptador
     override fun getCount(): Int {
         return lista.size
@@ -93,16 +93,17 @@ class OrderAdapter(private val context: Context, private val lista: List<Order>)
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()
         val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/order_db")
 
+
         if (elemento.GetStatus() == "delivered"){
             layout.orderConfirm.text = "${context.getString(R.string.eliminar)}"
             layout.orderConfirm.setOnClickListener{
                 val orderRef = myRef.child(elemento.order_id.toString())
                 orderRef.removeValue().addOnSuccessListener {
                     eventNoReturn?.forEach { it() }
+                    callback()
+                }.addOnFailureListener {
+                    Log.e("firebase", "Error deleting data from food_db: $it")
                 }
-                    .addOnFailureListener {
-                        // Manejar errores de eliminación aquí
-                    }
             }
         } else{
             layout.orderConfirm.text = "${context.getString(R.string.confirmarEntrega)}"

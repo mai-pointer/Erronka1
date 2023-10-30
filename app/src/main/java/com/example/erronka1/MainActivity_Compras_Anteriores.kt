@@ -65,7 +65,9 @@ class MainActivity_Compras_Anteriores : AppCompatActivity() {
 
     fun Crear(myorders: List<Order>){
         //ListView
-        val adapter = OrderAdapter(this, myorders)
+        val adapter = OrderAdapter(this, myorders){
+            recreate()
+        }
         findViewById<ListView>(R.id.lista_pedidos).adapter = adapter
     }
 }
