@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firestore.v1.StructuredQuery
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -31,6 +32,8 @@ class MainActivity_Compras_Anteriores : AppCompatActivity() {
 
         //MenuNav
         MenuNav.Crear(this, user)
+
+        
         //BD
         if (user != null) {
 
@@ -38,7 +41,7 @@ class MainActivity_Compras_Anteriores : AppCompatActivity() {
             progressBar.visibility = View.VISIBLE
 
             //Llama a la BD para conseguir la ordenes
-            BD.GetOrdersNoUpdate { allOrders ->
+            BD.GetOrders { allOrders ->
                 val myorders = mutableListOf<Order>()
                 //Las filtra
                 allOrders?.forEach() { order ->

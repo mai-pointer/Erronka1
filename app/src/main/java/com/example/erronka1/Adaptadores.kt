@@ -4,6 +4,7 @@ package com.example.erronka1
 import androidx.appcompat.app.AppCompatActivity
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.provider.Settings.Global.getString
@@ -17,6 +18,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat.recreate
+import androidx.core.content.ContextCompat.startActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -32,6 +35,8 @@ class OrderAdapter(private val context: Context, private val lista: List<Order>)
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }
+
+    var eventNoReturn: MutableList<MyEventHandler2>? = null
 
     //Edita la view
     @SuppressLint("ResourceType")
@@ -89,14 +94,21 @@ class OrderAdapter(private val context: Context, private val lista: List<Order>)
         val myRef: DatabaseReference = database.getReference("1wMAfnTstA0Rhe5cVcRUR3xq2r82GNsXB7CxKSM8LYgM/order_db")
 
         if (elemento.GetStatus() == "delivered"){
-            layout.orderConfirm.text = "${context.getString(R.string.entregado)}"
-            layout.orderConfirm.isEnabled = false
+            layout.orderConfirm.text = "${context.getString(R.string.eliminar)}"
+            layout.orderConfirm.setOnClickListener{
+                val orderRef = myRef.child(elemento.order_id.toString())
+                orderRef.removeValue().addOnSuccessListener {
+                    eventNoReturn?.forEach { it() }
+                }
+                    .addOnFailureListener {
+                        // Manejar errores de eliminación aquí
+                    }
+            }
         } else{
             layout.orderConfirm.text = "${context.getString(R.string.confirmarEntrega)}"
             layout.orderConfirm.setOnClickListener{
                 elemento.ChangeStatus()
-                layout.orderConfirm.text = "${context.getString(R.string.entregado)}"
-                layout.orderConfirm.isEnabled = false
+                layout.orderConfirm.text = "${context.getString(R.string.eliminar)}"
                 val orderRef = myRef.child(elemento.order_id.toString())
                 orderRef.child("order_status").setValue("delivered")
             }
@@ -113,6 +125,9 @@ class OrderAdapter(private val context: Context, private val lista: List<Order>)
         lateinit var orderConfirm: Button
     }
 }
+
+typealias MyEventHandler2 = () -> Unit
+
 
 //Adaptador para la clase Food
 class FoodAdapter(private val context: Context, private val foodList: List<Food>,  private val selectedFood: SelectedFood) : BaseAdapter() {
