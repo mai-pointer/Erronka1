@@ -57,25 +57,37 @@ class PantallaInvierno : AppCompatActivity() {
         when (myseason) {
             getString(R.string.I) -> {
                 titulo.text=getString(R.string.I)
-                invierno.visibility = View.GONE
+                invierno.imageAlpha = 255
+                primavera.imageAlpha = 100
+                verano.imageAlpha = 100
+                otoño.imageAlpha = 100
                 argazkia.setImageResource(R.drawable.invierno)
                 myCurrentSeason = Food.Seasons.WINTER
             }
             getString(R.string.P) -> {
                 titulo.text=getString(R.string.P)
-                primavera.visibility = View.GONE
+                primavera.imageAlpha = 255
+                invierno.imageAlpha = 100
+                verano.imageAlpha = 100
+                otoño.imageAlpha = 100
                 argazkia.setImageResource(R.drawable.primavera)
                 myCurrentSeason = Food.Seasons.SPRING
             }
             getString(R.string.V) -> {
                 titulo.text=getString(R.string.V)
-                verano.visibility = View.GONE
+                verano.imageAlpha = 255
+                invierno.imageAlpha = 100
+                primavera.imageAlpha = 100
+                otoño.imageAlpha = 100
                 argazkia.setImageResource(R.drawable.verano)
                 myCurrentSeason = Food.Seasons.SUMMER
             }
             getString(R.string.O) -> {
                 titulo.text=getString(R.string.O)
-                otoño.visibility = View.GONE
+                otoño.imageAlpha = 255
+                verano.imageAlpha = 100
+                primavera.imageAlpha = 100
+                invierno.imageAlpha = 100
                 argazkia.setImageResource(R.drawable.otono)
                 myCurrentSeason = Food.Seasons.AUTUMN
             }
@@ -83,40 +95,40 @@ class PantallaInvierno : AppCompatActivity() {
 
         otoño.setOnClickListener{
             titulo.text=getString(R.string.O)
-            otoño.visibility = View.GONE
-            primavera.visibility = View.VISIBLE
-            invierno.visibility = View.VISIBLE
-            verano.visibility = View.VISIBLE
+            otoño.imageAlpha = 255
+            invierno.imageAlpha = 100
+            primavera.imageAlpha = 100
+            invierno.imageAlpha = 100
             argazkia.setImageResource(R.drawable.otono)
             myCurrentSeason = Food.Seasons.AUTUMN
             ReadDatabase()
         }
         primavera.setOnClickListener{
             titulo.text=getString(R.string.P)
-            primavera.visibility = View.GONE
-            invierno.visibility = View.VISIBLE
-            otoño.visibility = View.VISIBLE
-            verano.visibility = View.VISIBLE
+            primavera.imageAlpha = 255
+            invierno.imageAlpha = 100
+            verano.imageAlpha = 100
+            otoño.imageAlpha = 100
             argazkia.setImageResource(R.drawable.primavera)
             myCurrentSeason = Food.Seasons.SPRING
             ReadDatabase()
         }
         verano.setOnClickListener{
             titulo.text=getString(R.string.V)
-            verano.visibility = View.GONE
-            primavera.visibility = View.VISIBLE
-            otoño.visibility = View.VISIBLE
-            invierno.visibility = View.VISIBLE
+            verano.imageAlpha = 255
+            invierno.imageAlpha = 100
+            primavera.imageAlpha = 100
+            otoño.imageAlpha = 100
             argazkia.setImageResource(R.drawable.verano)
             myCurrentSeason = Food.Seasons.SUMMER
             ReadDatabase()
         }
         invierno.setOnClickListener{
             titulo.text=getString(R.string.I)
-            invierno.visibility = View.GONE
-            primavera.visibility = View.VISIBLE
-            otoño.visibility = View.VISIBLE
-            verano.visibility = View.VISIBLE
+            invierno.imageAlpha = 255
+            primavera.imageAlpha = 100
+            verano.imageAlpha = 100
+            otoño.imageAlpha = 100
             argazkia.setImageResource(R.drawable.invierno)
             myCurrentSeason = Food.Seasons.WINTER
             ReadDatabase()
