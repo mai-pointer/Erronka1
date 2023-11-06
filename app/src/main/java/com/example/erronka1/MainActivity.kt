@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var delivery: LinearLayout
     private lateinit var providers: LinearLayout
     private lateinit var zeroWaste: LinearLayout
+    private lateinit var aboutUs: LinearLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         //Cambia el idioma
         val preferenceManager = PreferenceManager.getInstance(this)
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         delivery = findViewById(id.btnDelivery)
         providers = findViewById(id.btnProviders)
         zeroWaste = findViewById(id.btnErreserbak)
+        aboutUs = findViewById(id.btnAboutUs)
 
         val user = FirebaseAuth.getInstance().currentUser
         MenuNav.Crear(this, user)
@@ -93,6 +95,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         zeroWaste.setOnClickListener {
+            val intent = Intent(this, ErreserbakActivity::class.java)
+            startActivity(intent)
+        }
+        aboutUs.setOnClickListener{
             val intent = Intent(this, ErreserbakActivity::class.java)
             startActivity(intent)
         }

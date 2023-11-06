@@ -70,6 +70,8 @@
     <string name="guk_eramango_dizugu">We\'ll deliver it to you</string>
     <string name="erreserbak">Get a reservation</string>
     <string name="erreserbakDesc">Come with us</string>
+    <string name="guriBuruz">About us</string>
+    <string name="guriBuruzDesc">Get to know us</string>
 
     <!-- Seasons -->
     <string name="precio">Price</string>

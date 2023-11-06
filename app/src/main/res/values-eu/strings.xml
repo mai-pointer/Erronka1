@@ -70,6 +70,8 @@
     <string name="guk_eramango_dizugu">Guk eramango dizugu</string>
     <string name="erreserbak">Erreserbatu</string>
     <string name="erreserbakDesc">Zatoz gurekin</string>
+    <string name="guriBuruz">Guri buruz</string>
+    <string name="guriBuruzDesc">Ezagutu gaitzazu</string>
 
     <!-- Denboraldiak -->
     <string name="precio">Prezioa</string>

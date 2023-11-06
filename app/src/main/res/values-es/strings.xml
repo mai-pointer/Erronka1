@@ -70,6 +70,8 @@
     <string name="guk_eramango_dizugu">Te lo llevamos</string>
     <string name="erreserbak">Reserva</string>
     <string name="erreserbakDesc">Ven con nosotros</string>
+    <string name="guriBuruz">Sobre nosotros</string>
+    <string name="guriBuruzDesc">Conócenos</string>
 
     <!-- Estaciones -->
     <string name="precio">Precio</string>

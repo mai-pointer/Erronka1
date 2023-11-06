@@ -11,7 +11,7 @@
         android:id="@+id/topNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="35dp"
         android:orientation="horizontal"
         android:paddingStart="0dp"
         android:paddingEnd="0dp"
@@ -69,12 +69,13 @@
         <LinearLayout
             android:id="@+id/btnCarta"
             android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="28dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/rounded_button"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.509"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_weight="1"
@@ -124,23 +125,33 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/btnDelivery"
+            android:id="@+id/btnProviders"
             android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/rounded_button"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnCarta"
+            app:layout_constraintTop_toBottomOf="@+id/btnDelivery"
             app:layout_constraintVertical_weight="1"
             app:layout_constraintWidth_default="percent"
             app:layout_constraintWidth_percent="0.9">
 
+            <ImageView
+                android:layout_width="79dp"
+                android:layout_height="69dp"
+                android:contentDescription="@string/farmericon"
+                android:src="@drawable/farmer" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <LinearLayout
-                android:layout_width="179dp"
+                android:layout_width="188dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:gravity="start"
@@ -148,46 +159,34 @@
                 tools:ignore="TextSizeCheck">
 
                 <TextView
-                    android:id="@+id/orderTitle"
-                    android:layout_width="match_parent"
+                    android:id="@+id/providerTitle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
                     android:fontFamily="@font/catamaran_black"
                     android:includeFontPadding="false"
-                    android:text="@string/eskatu_etxera"
+                    android:text="@string/gure_ornitzileak"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorAccent"
                     android:textSize="24sp" />
 
                 <TextView
-                    android:id="@+id/orderDesc"
+                    android:id="@+id/providerDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="@string/guk_eramango_dizugu"
+                    android:text="@string/denak_zure_gertu"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
             </LinearLayout>
-
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="36dp"
-                android:layout_weight="1" />
-
-            <ImageView
-                android:layout_width="85dp"
-                android:layout_height="67dp"
-                android:contentDescription="@string/menuicon"
-                android:src="@drawable/food" />
-
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/btnErreserbak"
             android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/rounded_button"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -245,25 +244,26 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/btnProviders"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="20dp"
+            android:id="@+id/btnAboutUs"
+            android:layout_width="305dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/rounded_button"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnDelivery"
+            app:layout_constraintTop_toBottomOf="@+id/btnErreserbak"
             app:layout_constraintVertical_weight="1"
             app:layout_constraintWidth_default="percent"
             app:layout_constraintWidth_percent="0.9">
 
+
             <ImageView
-                android:layout_width="79dp"
-                android:layout_height="69dp"
-                android:contentDescription="@string/farmericon"
-                android:src="@drawable/farmer" />
+                android:layout_width="78dp"
+                android:layout_height="70dp"
+                android:contentDescription="@string/menuicon"
+                android:src="@drawable/aboutUs" />
 
             <Space
                 android:layout_width="0dp"
@@ -271,7 +271,7 @@
                 android:layout_weight="1" />
 
             <LinearLayout
-                android:layout_width="188dp"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
                 android:gravity="start"
@@ -279,27 +279,89 @@
                 tools:ignore="TextSizeCheck">
 
                 <TextView
-                    android:id="@+id/providerTitle"
+                    android:id="@+id/aboutUsTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
                     android:fontFamily="@font/catamaran_black"
                     android:includeFontPadding="false"
-                    android:text="@string/gure_ornitzileak"
+                    android:text="@string/guriBuruz"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="24sp"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/aboutUsDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/catamaran"
+                    android:text="@string/guriBuruzDesc"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnDelivery"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rounded_button"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCarta"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.9">
+
+
+            <LinearLayout
+                android:layout_width="179dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:gravity="start"
+                android:orientation="vertical"
+                tools:ignore="TextSizeCheck">
+
+                <TextView
+                    android:id="@+id/orderTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:fontFamily="@font/catamaran_black"
+                    android:includeFontPadding="false"
+                    android:text="@string/eskatu_etxera"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorAccent"
                     android:textSize="24sp" />
 
                 <TextView
-                    android:id="@+id/providerDesc"
+                    android:id="@+id/orderDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="@string/denak_zure_gertu"
+                    android:text="@string/guk_eramango_dizugu"
                     android:textAlignment="viewStart"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
             </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="85dp"
+                android:layout_height="67dp"
+                android:contentDescription="@string/menuicon"
+                android:src="@drawable/food" />
+
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
